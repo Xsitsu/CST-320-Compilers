@@ -32,13 +32,22 @@ int Return(int val);
 letters						[a-z]
 %%
 
-[(){}\[\];,\.+\-*\/%=><]        {
-                                    DO_RETURN(yytext[0]);
-                                }
+ /*Punctuation*/
+[(){}\[\];,\.+\-*\/%=><]		{
+									DO_RETURN(yytext[0]);
+								}
+ /*Operators*/
+"!="							DO_RETURN(NOT_EQUALS);
+"=="							DO_RETURN(EQUALS);
+"&&"							DO_RETURN(AND);
+"||"							DO_RETURN(OR);
+">="							DO_RETURN(GE);
+"<="							DO_RETURN(LE);
+
 
 
  /* token definitions. I gave "program" as an example*/
-"program"                       DO_RETURN(PROGRAM);
+"program"						DO_RETURN(PROGRAM);
 
 %%
 
