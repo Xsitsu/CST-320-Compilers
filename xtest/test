@@ -24,7 +24,7 @@ for test in tests:
     
     subprocess.call([LANG_PROG, testpath, OUT_TEST_FILE])
 
-    output_file = open(OUT_TEST_FILE", mode='r')
+    output_file = open(OUT_TEST_FILE, mode='r')
     test_output = output_file.read()
     output_file.close()
 
