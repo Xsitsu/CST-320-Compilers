@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import os, sys
 import re
+import subprocess
 
-TEST_DIR = "./xtest/tests/"
+TEST_DIR = "xtest/tests/"
 
 RE_TEST = re.compile(".+\.lang$")
 RE_CORRECT = re.compile(".+\.lang\.correct")
@@ -11,4 +12,18 @@ dirs = os.listdir(TEST_DIR)
 tests = []
 for file in dirs:
     if RE_TEST.match(file):
-        print("matched: " + file)
+        tests.append(file)
+
+for test in tests:
+    testpath = TEST_DIR + test
+    output_file = open(testpath + ".correct", mode='r')
+    expected_output = output_file.read()
+    output_file.close()
+    
+    process = subprocess.Popen("./lang " + testpath, stdout=subprocess.PIPE)
+    process.wait()
+
+    if process.stdout == expected_output:
+        print("Passed!")
+    else:
+        print("Failed!")
