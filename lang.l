@@ -37,7 +37,7 @@ letters						[a-z]
                                 }
 
 
-	// token definitions. I gave "program" as an example
+ /* token definitions. I gave "program" as an example*/
 "program"                       DO_RETURN(PROGRAM);
 
 %%
