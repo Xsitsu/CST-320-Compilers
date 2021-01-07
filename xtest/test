@@ -1,1 +1,14 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+import os, sys
+import re
+
+TEST_DIR = "./xtest/tests/"
+
+RE_TEST = re.compile(".+\.lang$")
+RE_CORRECT = re.compile(".+\.lang\.correct")
+
+dirs = os.listdir(TEST_DIR)
+tests = []
+for file in dirs:
+    if RE_TEST.match(file):
+        print("matched: " + file)
