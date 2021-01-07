@@ -19,11 +19,12 @@ for test in tests:
     output_file = open(testpath + ".correct", mode='r')
     expected_output = output_file.read()
     output_file.close()
+    
+    subprocess.call(["./lang", testpath, "out.txt"])
 
-    process = subprocess.Popen(["./lang", testpath], stdout=subprocess.PIPE)
-    process.wait()
-
-    test_output = process.stdout.read()
+    output_file = open("out.txt", mode='r')
+    test_output = output_file.read()
+    output_file.close()
 
     if test_output == expected_output:
         print("Passed!")
