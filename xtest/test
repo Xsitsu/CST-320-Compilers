@@ -3,7 +3,9 @@ import os, sys
 import re
 import subprocess
 
+LANG_PROG = "./lang"
 TEST_DIR = "xtest/tests/"
+OUT_TEST_FILE = "xtest/out.txt"
 
 RE_TEST = re.compile(".+\.lang$")
 RE_CORRECT = re.compile(".+\.lang\.correct")
@@ -20,9 +22,9 @@ for test in tests:
     expected_output = output_file.read()
     output_file.close()
     
-    subprocess.call(["./lang", testpath, "out.txt"])
+    subprocess.call([LANG_PROG, testpath, OUT_TEST_FILE])
 
-    output_file = open("out.txt", mode='r')
+    output_file = open(OUT_TEST_FILE", mode='r')
     test_output = output_file.read()
     output_file.close()
 
