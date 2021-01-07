@@ -27,28 +27,15 @@ int Return(int val);
 %option yylineno
 
 
-(							'('
-)							')'
-{							'{'
-}							'}'
-[							'['
-]							']'
-;							';'
-,							','
-.							'.'
-+							'+'
--							'-'
-*							'*'
-/							'/'
-%							'%'
-=							'='
->							'>'
-<							'<'
-
 	/* definitions go here. period is an example. */
 	/* NOTE: You do not need to use definitions */
 letters						[a-z]
 %%
+
+[(){}\[\];,\.+\-*/%=><]		{
+                                DO_RETURN(yytext[0]);
+                            }
+
 
 	// token definitions. I gave "program" as an example
 "program"					DO_RETURN(PROGRAM);
