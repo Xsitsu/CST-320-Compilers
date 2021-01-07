@@ -32,13 +32,13 @@ int Return(int val);
 letters						[a-z]
 %%
 
-[(){}\[\];,\.+\-*/%=><]		{
-                                DO_RETURN(yytext[0]);
-                            }
+[(){}\[\];,\.+\-*\/%=><]        {
+                                    DO_RETURN(yytext[0]);
+                                }
 
 
 	// token definitions. I gave "program" as an example
-"program"					DO_RETURN(PROGRAM);
+"program"                       DO_RETURN(PROGRAM);
 
 %%
 
