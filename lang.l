@@ -4,7 +4,7 @@
 //
 // scanner definition file. flex uses this file to create the scanner
 //
-// Author: <<<< insert your name here >>>>
+// Author: Jacob Locke
 //
 
 #include "lex.h"
@@ -27,13 +27,31 @@ int Return(int val);
 %option yylineno
 
 
-    /* definitions go here. period is an example. */
-    /* NOTE: You do not need to use definitions */
-letters          [a-z]
+(							'('
+)							')'
+{							'{'
+}							'}'
+[							'['
+]							']'
+;							';'
+,							','
+.							'.'
++							'+'
+-							'-'
+*							'*'
+/							'/'
+%							'%'
+=							'='
+>							'>'
+<							'<'
+
+	/* definitions go here. period is an example. */
+	/* NOTE: You do not need to use definitions */
+letters						[a-z]
 %%
 
-    // token definitions. I gave "program" as an example
-"program"                   DO_RETURN(PROGRAM);
+	// token definitions. I gave "program" as an example
+"program"					DO_RETURN(PROGRAM);
 
 %%
 
@@ -41,6 +59,6 @@ letters          [a-z]
 // It is used to generate lexer debug info
 int Return(int val)
 {
-    printf("Scanned '%s': %d\n", yytext, val);
-    return val;
+	printf("Scanned '%s': %d\n", yytext, val);
+	return val;
 }
