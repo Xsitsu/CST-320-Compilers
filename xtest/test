@@ -19,7 +19,7 @@ for file in dirs:
 for test in tests:
     solution_name = test + ".correct"
     test_file = TEST_DIR + test
-    solution_file = TEST_DIR = solution_name
+    solution_file = TEST_DIR + solution_name
     expected_output = ""
     test_output = ""
 
