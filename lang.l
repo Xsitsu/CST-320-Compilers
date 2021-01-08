@@ -44,10 +44,19 @@ letters						[a-z]
 ">="							DO_RETURN(GE);
 "<="							DO_RETURN(LE);
 
-
-
- /* token definitions. I gave "program" as an example*/
+ /*Keywords*/
 "program"						DO_RETURN(PROGRAM);
+"if"							DO_RETURN(IF);
+"else"							DO_RETURN(ELSE);
+"endif"							DO_RETURN(ENDIF);
+"while"							DO_RETURN(WHILE);
+"print"							DO_RETURN(PRINT);
+"int"							DO_RETURN(INT);
+"float"							DO_RETURN(FLOAT);
+"char"							DO_RETURN(CHAR);
+"struct"						DO_RETURN(STRUCT);
+"array"							DO_RETURN(ARRAY);
+"return"						DO_RETURN(RETURN);
 
 %%
 
