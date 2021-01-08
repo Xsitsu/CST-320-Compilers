@@ -2,6 +2,7 @@
 import os, sys
 import re
 import subprocess
+import difflib
 
 LANG_PROG = "./lang"
 TEST_DIR = "xtest/tests/"
@@ -39,15 +40,13 @@ for test in tests:
     output_file = open(OUT_TEST_FILE, mode='r')
     test_output = output_file.read()
     output_file.close()
-    os.remove(OUT_TEST_FILE)
 
     if test_output == expected_output:
         print("Passed!")
     else:
         print("Failed!")
-        print("Got:")
-        print(test_output)
-        print("Expected:")
-        print(expected_output)
+        diff = difflib.unified_diff(expected_output, test_output)
+        sys.stdout.writelines(diff)
     
+    os.remove(OUT_TEST_FILE)
     print("")
