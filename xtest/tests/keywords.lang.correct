@@ -1,0 +1,12 @@
+1000:program
+1001:if
+1002:else
+1003:endif
+1004:while
+1005:print
+1006:int
+1007:float
+1008:char
+1011:struct
+1012:array
+1013:return
