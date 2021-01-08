@@ -30,9 +30,9 @@ int Return(int val);
 	/* definitions go here. period is an example. */
 	/* NOTE: You do not need to use definitions */
 letters						[a-z]
-whitespace					[\t\n\r ]
+
 %%
-whitespace						; /* ignore whitespace */
+[\t\n\r ]*						; /* ignore whitespace */
 
  /*Punctuation*/
 [(){}\[\];,\.+\-*\/%=><]		{
