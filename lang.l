@@ -66,6 +66,9 @@ letters						[a-z]
  [a-zA-Z_][a-zA-Z0-9]*			DO_RETURN(IDENTIFIER);
  -?[0-9]+						DO_RETURN(INT_VAL);
  -?[0-9]+\.[0-9]+				DO_RETURN(FLOAT_VAL);
+
+ /*Junk*/
+ [.]							DO_RETURN(JUNK_TOKEN);
 %%
 
 // This function allows us to do extra processing on each token
