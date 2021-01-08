@@ -63,7 +63,7 @@ letters						[a-z]
 "return"						DO_RETURN(RETURN);
 
  /*Others*/
- [a-zA-Z_][a-zA-Z0-9]*			DO_RETURN(IDENTIFIER);
+ [a-zA-Z_][a-zA-Z0-9_]*			DO_RETURN(IDENTIFIER);
  -?[0-9]+						DO_RETURN(INT_VAL);
  -?[0-9]+\.[0-9]+				DO_RETURN(FLOAT_VAL);
 
