@@ -60,6 +60,10 @@ letters						[a-z]
 "array"							DO_RETURN(ARRAY);
 "return"						DO_RETURN(RETURN);
 
+ /*Others*/
+ [a-zA-Z_][a-zA-Z0-9]*			DO_RETURN(IDENTIFIER);
+ -?[0-9]+						DO_RETURN(INT_VAL);
+ -?[0-9]+\.[0-9]+				DO_RETURN(FLOAT_VAL);
 %%
 
 // This function allows us to do extra processing on each token
