@@ -17,19 +17,20 @@ for file in dirs:
         tests.append(file)
 
 for test in tests:
+    solution_name = test + ".correct"
     test_file = TEST_DIR + test
-    solution_file = test_file + ".correct"
+    solution_file = TEST_DIR = solution_name
     expected_output = ""
     test_output = ""
 
-    print("Running test:" + test)
+    print("Running test: " + test)
 
     try:
         output_file = open(solution_file, mode='r')
         expected_output = output_file.read()
         output_file.close()
     except IOError:
-        print("Could not open solution file: " + solution_file)
+        print("Could not open solution file: " + solution_name)
         continue
 
     subprocess.call([LANG_PROG, test_file, OUT_TEST_FILE])
