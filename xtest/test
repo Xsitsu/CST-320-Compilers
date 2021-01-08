@@ -24,11 +24,16 @@ for test in tests:
     expected_output = ""
     test_output = ""
 
+    expected_lines = []
+    test_lines = []
+
     print("Running test: " + test)
 
     try:
         output_file = open(solution_file, mode='r')
         expected_output = output_file.read()
+        output_file.seek(0)
+        expected_lines = output_file.readlines()
         output_file.close()
     except IOError:
         print("Could not open solution file: " + solution_name)
@@ -39,13 +44,15 @@ for test in tests:
 
     output_file = open(OUT_TEST_FILE, mode='r')
     test_output = output_file.read()
+    output_file.seek(0)
+    test_lines = output_file.readlines()
     output_file.close()
 
     if test_output == expected_output:
         print("Passed!")
     else:
         print("Failed!")
-        diff = difflib.unified_diff(expected_output, test_output)
+        diff = difflib.unified_diff(expected_lines, test_lines)
         sys.stdout.writelines(diff)
     
     os.remove(OUT_TEST_FILE)
