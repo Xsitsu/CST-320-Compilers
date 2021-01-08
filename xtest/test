@@ -17,16 +17,27 @@ for file in dirs:
         tests.append(file)
 
 for test in tests:
-    testpath = TEST_DIR + test
-    output_file = open(testpath + ".correct", mode='r')
-    expected_output = output_file.read()
-    output_file.close()
-    
-    subprocess.call([LANG_PROG, testpath, OUT_TEST_FILE])
+    test_file = TEST_DIR + test
+    solution_file = test_file + ".correct"
+    expected_output = ""
+    test_output = ""
+
+    print("Running test:" + test)
+
+    try:
+        output_file = open(solution_file, mode='r')
+        expected_output = output_file.read()
+        output_file.close()
+    except IOError:
+        print("Could not open solution file: " + solution_file)
+        continue
+
+    subprocess.call([LANG_PROG, test_file, OUT_TEST_FILE])
 
     output_file = open(OUT_TEST_FILE, mode='r')
     test_output = output_file.read()
     output_file.close()
+    os.remove(OUT_TEST_FILE)
 
     if test_output == expected_output:
         print("Passed!")
