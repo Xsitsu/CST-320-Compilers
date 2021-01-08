@@ -33,6 +33,8 @@ letters						[a-z]
 
 %%
 [\t\n\r ]*						; /* ignore whitespace */
+"//".*"\n"                  	; /* ignore C++ style comments */
+
 
  /*Punctuation*/
 [(){}\[\];,\.+\-*\/%=><]		{
