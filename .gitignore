@@ -1,0 +1,3 @@
+*.o
+lang
+langlex.c

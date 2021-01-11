@@ -1,0 +1,59 @@
+#!/usr/bin/python3
+import os, sys
+import re
+import subprocess
+import difflib
+
+LANG_PROG = "./lang"
+TEST_DIR = "xtest/tests/"
+OUT_TEST_FILE = "xtest/out.txt"
+
+RE_TEST = re.compile(".+\.lang$")
+RE_CORRECT = re.compile(".+\.lang\.correct")
+
+dirs = os.listdir(TEST_DIR)
+tests = []
+for file in dirs:
+    if RE_TEST.match(file):
+        tests.append(file)
+
+for test in tests:
+    solution_name = test + ".correct"
+    test_file = TEST_DIR + test
+    solution_file = TEST_DIR + solution_name
+    expected_output = ""
+    test_output = ""
+
+    expected_lines = []
+    test_lines = []
+
+    print("Running test: " + test)
+
+    try:
+        output_file = open(solution_file, mode='r')
+        expected_output = output_file.read()
+        output_file.seek(0)
+        expected_lines = output_file.readlines()
+        output_file.close()
+    except IOError:
+        print("Could not open solution file: " + solution_name)
+        print("")
+        continue
+
+    subprocess.call([LANG_PROG, test_file, OUT_TEST_FILE])
+
+    output_file = open(OUT_TEST_FILE, mode='r')
+    test_output = output_file.read()
+    output_file.seek(0)
+    test_lines = output_file.readlines()
+    output_file.close()
+
+    if test_output == expected_output:
+        print("Passed!")
+    else:
+        print("Failed!")
+        diff = difflib.unified_diff(expected_lines, test_lines)
+        sys.stdout.writelines(diff)
+    
+    os.remove(OUT_TEST_FILE)
+    print("")

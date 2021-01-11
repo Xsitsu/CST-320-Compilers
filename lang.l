@@ -4,7 +4,7 @@
 //
 // scanner definition file. flex uses this file to create the scanner
 //
-// Author: <<<< insert your name here >>>>
+// Author: Jacob Locke
 //
 
 #include "lex.h"
@@ -27,20 +27,55 @@ int Return(int val);
 %option yylineno
 
 
-    /* definitions go here. period is an example. */
-    /* NOTE: You do not need to use definitions */
-letters          [a-z]
+	/* definitions go here. period is an example. */
+	/* NOTE: You do not need to use definitions */
+letters						[a-z]
+whitespace					[\t\n\r ]
+
 %%
+{whitespace}*					; /* ignore whitespace */
+"//".*"\n"                  	; /* ignore C++ style comments */
 
-    // token definitions. I gave "program" as an example
-"program"                   DO_RETURN(PROGRAM);
 
+ /*Punctuation*/
+[(){}\[\];,\.+\-*\/%=><]		{
+									DO_RETURN(yytext[0]);
+								}
+ /*Operators*/
+"!="							DO_RETURN(NOT_EQUALS);
+"=="							DO_RETURN(EQUALS);
+"&&"							DO_RETURN(AND);
+"||"							DO_RETURN(OR);
+">="							DO_RETURN(GE);
+"<="							DO_RETURN(LE);
+
+ /*Keywords*/
+"program"						DO_RETURN(PROGRAM);
+"if"							DO_RETURN(IF);
+"else"							DO_RETURN(ELSE);
+"endif"							DO_RETURN(ENDIF);
+"while"							DO_RETURN(WHILE);
+"print"							DO_RETURN(PRINT);
+"int"							DO_RETURN(INT);
+"float"							DO_RETURN(FLOAT);
+"char"							DO_RETURN(CHAR);
+"struct"						DO_RETURN(STRUCT);
+"array"							DO_RETURN(ARRAY);
+"return"						DO_RETURN(RETURN);
+
+ /*Others*/
+ [a-zA-Z_][a-zA-Z0-9_]*			DO_RETURN(IDENTIFIER);
+ -?[0-9]+						DO_RETURN(INT_VAL);
+ -?[0-9]+\.[0-9]+				DO_RETURN(FLOAT_VAL);
+
+ /*Junk*/
+ .								DO_RETURN(JUNK_TOKEN);
 %%
 
 // This function allows us to do extra processing on each token
 // It is used to generate lexer debug info
 int Return(int val)
 {
-    printf("Scanned '%s': %d\n", yytext, val);
-    return val;
+	printf("Scanned '%s': %d\n", yytext, val);
+	return val;
 }
