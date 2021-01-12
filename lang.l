@@ -65,8 +65,8 @@ whitespace                  [\t\n\r ]
 
  /*Others*/
  [a-zA-Z_][a-zA-Z0-9_]*         DO_RETURN(IDENTIFIER);
- -?[0-9]+                       DO_RETURN(INT_VAL);
- -?[0-9]+\.[0-9]+               DO_RETURN(FLOAT_VAL);
+ [0-9]+                         DO_RETURN(INT_VAL);
+ [0-9]+\.[0-9]+                 DO_RETURN(FLOAT_VAL);
 
  /*Junk*/
  .                              DO_RETURN(JUNK_TOKEN);
