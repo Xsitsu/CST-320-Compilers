@@ -1,11 +1,9 @@
 #include "fileopen.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-int fileopen(int argc, char **argv, FILE &*input)
+int fileopen(int argc, char **argv, FILE *&input)
 {
+    const char *outfile_name;
+
     // open input
     if (argc > 1)
     {
@@ -20,7 +18,8 @@ int fileopen(int argc, char **argv, FILE &*input)
     // open output
     if (argc > 2)
     {
-        FILE *output = fopen(argv[2], "w");
+        outfile_name = argv[2];
+        FILE *output = fopen(outfile_name, "w");
         if (output == NULL)
         {
             std::cerr << "Unable to open output file " << outfile_name << "\n";
