@@ -31,6 +31,7 @@ int Return(int val);
     /* NOTE: You do not need to use definitions */
 letters                     [a-z]
 whitespace                  [\t\n\r ]
+identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
 %%
 {whitespace}*                   ; /* ignore whitespace */
@@ -38,9 +39,20 @@ whitespace                  [\t\n\r ]
 
 
  /*Punctuation*/
-[(){}\[\];,\.+\-*\/%=><]        {
+[()\[\];,\.+\-*\/%=><]          {
                                     DO_RETURN(yytext[0]);
                                 }
+
+"{"                             {
+                                    IncreaseScope();
+                                    DO_RETURN(yytext[0]);
+                                }
+"}"                             {
+                                    DecreaseScope();
+                                    DO_RETURN(yytext[0]);
+                                }
+
+
  /*Operators*/
 "!="                            DO_RETURN(NOT_EQUALS);
 "=="                            DO_RETURN(EQUALS);
@@ -64,7 +76,11 @@ whitespace                  [\t\n\r ]
 "return"                        DO_RETURN(RETURN);
 
  /*Others*/
- [a-zA-Z_][a-zA-Z0-9_]*         DO_RETURN(IDENTIFIER);
+ {identifier}                   {
+                                    yylval.symbol = Insert(yytext);
+                                    DO_RETURN(IDENTIFIER);
+                                }
+
  [0-9]+                         DO_RETURN(INT_VAL);
  [0-9]+\.[0-9]+                 DO_RETURN(FLOAT_VAL);
 
