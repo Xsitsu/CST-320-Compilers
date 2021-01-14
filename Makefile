@@ -45,7 +45,7 @@ langlex.o: langlex.c
 	g++ $(COPTS) -Wno-sign-compare $? -o $@
 
 lang: $(OBJS) main.o
-	g++ $(OBJS) lang.o -o $@
+	g++ $(OBJS) main.o -o $@
 
 testscanner: $(OBJS) testscanner.o
 	g++ $(OBJS) testscanner.o -o $@
