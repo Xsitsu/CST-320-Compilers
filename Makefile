@@ -68,7 +68,7 @@ langlex.o: langlex.c
 	$(CC) $(COPTS) -Wno-sign-compare $? -o $(OBJ)/$@
 
 $(OBJ)/%.o: $(SRC)/%.cpp obj
-    $(CC) $(COPTS) $? -o $@
+	$(CC) $(COPTS) $? -o $@
 
 obj:
 	mkdir obj/
