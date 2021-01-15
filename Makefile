@@ -18,15 +18,14 @@ COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL)
 SRCS := $(wildcard $(SRC)/*.cpp)
 OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
 
-PROGS = lang
-TESTPROGS = test_scanner \
-			test_symbol_table
+PROG = lang
+TESTPROG = lang_test
 
-all: $(PROGS)
+all: $(PROG)
 
 test: buildt runt
 
-buildt: $(TESTPROGS)
+buildt: $(TESTPROG)
 
 runt:
 	xtest/test
@@ -41,14 +40,14 @@ clean:
 	rm -f out.xml
 	rm -f out2.xml
 
-#$(PROGS): $(PROGS).o $(OBJS) langlex.o
-#	$(CC) $(COPTS) $(OBJS) $(PROGS).o langlex.o -o $@
+$(PROG): $(PROG).o $(OBJS) langlex.o
+	$(CC) $(COPTS) $(OBJS) $(PROG).o langlex.o -o $@
+
+$(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
+	$(CC) $(COPTS) $(OBJS) $(TESTPROG).o langlex.o -o $@
 
 #$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
 #	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
-
-#$(TESTPROGS): $?.o $(OBJS) langlex.o
-#	$(CC) $(COPTS) $(OBJS) $?.o langlex.o -o $@
 
 #$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
 #	$(CC) $(COPTS) $? -o $@
