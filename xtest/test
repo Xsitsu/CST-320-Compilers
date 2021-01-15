@@ -46,7 +46,7 @@ def run_test_suite(test_suite):
         expected_lines = []
         test_lines = []
 
-        print("Running test: " + test)
+        print("Running test: " + test + " | ", end='')
 
         try:
             output_file = open(solution_file, mode='r')
@@ -56,7 +56,6 @@ def run_test_suite(test_suite):
             output_file.close()
         except IOError:
             print("Could not open solution file: " + solution_name)
-            print("")
             continue
 
         subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
@@ -68,14 +67,13 @@ def run_test_suite(test_suite):
         output_file.close()
 
         if test_output == expected_output:
-            print("Passed!")
+            print("[PASSED]")
         else:
-            print("Failed!")
+            print("[FAILED]")
             diff = difflib.unified_diff(expected_lines, test_lines)
             sys.stdout.writelines(diff)
         
         os.remove(OUT_TEST_FILE)
-        print("")
 
 def main():
     for test_suite in TEST_SUITES:
