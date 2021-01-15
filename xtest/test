@@ -13,7 +13,7 @@ TEST_SUITES = [
     {
         "name": "Symbol Table",
         "test_dir": "symbol_table/",
-        "test_prog": 2
+        "test_mode": 2
     }
 ]
 
