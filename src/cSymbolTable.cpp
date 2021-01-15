@@ -22,7 +22,7 @@ symbolTable_t *cSymbolTable::DecreaseScope()
         this->scopes.pop_back();
         return this->scopes.back();
     }
-    return null;
+    return nullptr;
 }
 
 void cSymbolTable::Insert(cSymbol *sym)
@@ -37,7 +37,7 @@ void cSymbolTable::Insert(cSymbol *sym)
 
 cSymbol *cSymbolTable::Find(string name)
 {
-    cSymbol *find = null;
+    cSymbol *find = nullptr;
 
     std::list<symbolTable_t*>::reverse_iterator itr;
     for (itr = this->scopes.rbegin(); itr != this->scopes.rend(); ++itr)
@@ -46,7 +46,7 @@ cSymbol *cSymbolTable::Find(string name)
         if (find != null)
             return find;    
     }
-    return null;
+    return nullptr;
 }
 
 cSymbol *cSymbolTable::FindLocal(string name)
@@ -61,5 +61,5 @@ cSymbol *cSymbolTable::_FindInScope(symbolTable_t *scope, string name)
     {
         return got->second;
     }
-    return null;
+    return nullptr;
 }
