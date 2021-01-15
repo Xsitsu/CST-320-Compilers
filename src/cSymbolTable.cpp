@@ -43,7 +43,7 @@ cSymbol *cSymbolTable::Find(string name)
     for (itr = this->scopes.rbegin(); itr != this->scopes.rend(); ++itr)
     {
         find = _FindInScope(*itr, name);
-        if (find != null)
+        if (find != nullptr)
             return find;    
     }
     return nullptr;
