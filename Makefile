@@ -8,11 +8,12 @@
 # Date: Jan. 14, 2021
 #
 
-CC=g++
-COPTS=-Wall -g -c -O0 -std=c++11
-
 SRC := src
 OBJ := obj
+INCL := hdr
+
+CC=g++
+COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL)
 
 SRCS := $(wildcard $(SRC)/*.cpp)
 OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
