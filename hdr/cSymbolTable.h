@@ -1,8 +1,5 @@
-//****************************************************
-// Starter code for a symbol table definition.
-// You are not required to use any of these names, but you will need the 
-// described functionality
-//
+#pragma once
+
 class cSymbolTable
 {
     public:
