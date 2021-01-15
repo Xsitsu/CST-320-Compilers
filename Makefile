@@ -33,18 +33,18 @@ runt:
 clean:
 	rm -rf $(OBJ)
 	rm -f *.o
-	rm -f $(PROGS)
-	rm -f $(TESTPROGS)
+	rm -f $(PROG)
+	rm -f $(TESTPROG)
 	rm -f langlex.c
 	rm -f langlex.o
 	rm -f out.xml
 	rm -f out2.xml
 
 $(PROG): $(PROG).o $(OBJS) langlex.o
-	$(CC) $(COPTS) $(OBJS) $(PROG).o langlex.o -o $@
+	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
 $(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
-	$(CC) $(COPTS) $(OBJS) $(TESTPROG).o langlex.o -o $@
+	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
 #$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
 #	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
@@ -79,5 +79,5 @@ $(OBJ)/%.o: $(SRC)/%.cpp obj
 obj:
 	mkdir $(OBJ)
 
-%: %.o $(OBJS) langlex.o
-	$(CC) $(COPTS) $(OBJS) langlex.o $? -o $@
+#%: %.o $(OBJS) langlex.o
+#	$(CC) $(COPTS) $(OBJS) langlex.o $? -o $@
