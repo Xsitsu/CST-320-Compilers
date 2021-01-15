@@ -14,13 +14,13 @@
 #include <iostream>
 #include <fstream>
 #include "cSymbol.h"
-#include "cSymbolTable.h"
+//#include "cSymbolTable.h"
 #include "lex.h"
 #include "tokens.h"
 
 #include "fileopen.h"
 
-cSymbolTable g_symbolTable;
+//cSymbolTable g_symbolTable;
 long long cSymbol::nextId = 0;
 yylval_t yylval;
 
