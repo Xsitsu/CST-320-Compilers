@@ -11,6 +11,7 @@
 
 #include <iostream>
 
+#include "lex.h"
 #include "test_symbol_table.h"
 
 // **************************************************
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
 
     std::cout << "Jacob Locke" << std::endl;
 
+    g_symbolTable = new cSymbolTable();
     result = test_symbol_table(argc, argv);
 
     return result;

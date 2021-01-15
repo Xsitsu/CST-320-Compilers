@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <iostream>
 
+#include "lex.h"
 #include "test_scanner.h"
 #include "test_symbol_table.h"
 
@@ -29,6 +30,8 @@ int main(int argc, char **argv)
 {
     int result = 0;
     int test_mode = TEST_MODE_NONE;
+
+    g_symbolTable = new cSymbolTable();
 
     if (argc > 1)
     {
