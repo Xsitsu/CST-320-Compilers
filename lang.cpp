@@ -22,8 +22,8 @@
 #include "fileopen.h"
 
 //cSymbolTable g_symbolTable;
-long long cSymbol::nextId = 0;
-yylval_t yylval;
+//long long cSymbol::nextId = 0;
+//yylval_t yylval;
 
 // **************************************************
 // argv[1] is the input file
