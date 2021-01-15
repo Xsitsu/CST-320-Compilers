@@ -1,7 +1,7 @@
 //**************************************
 // test_symbol_table.cpp
 //
-// Test program for the symbol table.
+// Test routine for the symbol table.
 //
 // Author: Jacob Locke
 //
@@ -24,7 +24,7 @@ yylval_t yylval;
 // **************************************************
 // argv[1] is the input file
 // argv[2] if present, is the output file
-int main(int argc, char **argv)
+int test_symbol_table(int argc, char **argv)
 {
     int result = 0;
     int open_result;

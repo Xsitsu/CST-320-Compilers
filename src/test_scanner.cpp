@@ -1,13 +1,13 @@
 //**************************************
 // test_scanner.cpp
 //
-// Main routine for lang compiler.
-// This version only runs the lexer
+// Test routine for the scanner.
 //
 // Author: Jacob Locke
 //
 // Date: Jan. 14, 2021
 //
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +27,7 @@ yylval_t yylval;
 // **************************************************
 // argv[1] is the input file
 // argv[2] if present, is the output file
-int main(int argc, char **argv)
+int test_scanner(int argc, char **argv)
 {
     int result = 0;
     int open_result;
