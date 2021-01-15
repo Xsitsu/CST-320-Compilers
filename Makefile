@@ -31,8 +31,7 @@ runt:
 	xtest/test
 
 clean:
-	rm -f $(OBJ)/*.o
-	rmdir $(OBJ)
+	rm -rf $(OBJ)
 	rm -f $(PROGS)
 	rm -f $(TESTPROGS)
 	rm -f langlex.c
