@@ -8,11 +8,8 @@
 // Date: Jan. 14, 2021
 //
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#include <fstream>
+
 #include "cSymbol.h"
 //#include "cSymbolTable.h"
 #include "lex.h"
@@ -21,8 +18,8 @@
 #include "fileopen.h"
 
 //cSymbolTable g_symbolTable;
-long long cSymbol::nextId = 0;
-yylval_t yylval;
+//long long cSymbol::nextId = 0;
+//yylval_t yylval;
 
 // **************************************************
 // argv[1] is the input file

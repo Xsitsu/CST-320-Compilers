@@ -10,6 +10,7 @@
 //
 
 #include <stdlib.h>
+#include <iostream>
 
 #include "test_scanner.h"
 #include "test_symbol_table.h"
