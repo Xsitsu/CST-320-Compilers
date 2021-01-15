@@ -72,8 +72,10 @@ def run_test_suite(test_suite):
             print("[FAILED]")
             diff = difflib.unified_diff(expected_lines, test_lines)
             sys.stdout.writelines(diff)
-        
+
         os.remove(OUT_TEST_FILE)
+
+    print("")
 
 def main():
     for test_suite in TEST_SUITES:
