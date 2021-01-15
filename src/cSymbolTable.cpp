@@ -24,7 +24,7 @@ symbolTable_t *cSymbolTable::DecreaseScope()
 
 void cSymbolTable::Insert(cSymbol *sym)
 {
-    if (this->FindLocal(sym->GetName())
+    if (this->FindLocal(sym->GetName()))
     {
         // Probably should error idk
     }
