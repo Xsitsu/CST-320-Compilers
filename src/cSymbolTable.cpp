@@ -1,5 +1,6 @@
 #include "cSymbolTable.h"
 
+#include <stdlib.h>
 #include <string>
 
 cSymbolTable::cSymbolTable()
@@ -10,7 +11,7 @@ cSymbolTable::cSymbolTable()
 symbolTable_t *cSymbolTable::IncreaseScope()
 {
     symbolTable_t *newScope = new symbolTable_t();
-    this->scopes.append(newScope);
+    this->scopes.push_back(newScope);
     return newScope;
 }
 
@@ -55,10 +56,10 @@ cSymbol *cSymbolTable::FindLocal(string name)
 
 cSymbol *cSymbolTable::_FindInScope(symbolTable_t *scope, string name)
 {
-    symbolTable_t::iterator got = scope->Find(name);
+    symbolTable_t::iterator got = scope->find(name);
     if (got != scope->end())
     {
-        return got.second;
+        return got->second;
     }
     return null;
 }
