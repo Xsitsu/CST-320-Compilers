@@ -4,7 +4,7 @@ import re
 import subprocess
 import difflib
 
-LANG_PROG = "./lang"
+LANG_PROG = "./test_scanner"
 TEST_DIR = "xtest/tests/"
 OUT_TEST_FILE = "xtest/out.txt"
 
