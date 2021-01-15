@@ -1,5 +1,12 @@
 #pragma once
 
+#include <list>
+#include <unordered_map>
+
+#include "cSymbol.h"
+
+#typedef std::unordered_map<string, cSymbol*> symbolTable_t
+
 class cSymbolTable
 {
     public:
@@ -30,5 +37,8 @@ class cSymbolTable
         // Returns nullptr if the symbol is not found.
         cSymbol *FindLocal(string name);
 
+    private:
+        std::list<symbolTable_t*> scopes;
+        cSymbol *_FindInScope(symbolTable_t *scope, string name);
 };
 
