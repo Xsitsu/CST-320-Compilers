@@ -42,13 +42,13 @@ clean:
 $(PROGS): $(OBJS) $(OBJ)/$(PROGS).o
 	$(CC) $(OBJS) $(OBJ)/$(PROGS).o langlex.o -o $@
 
-$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.c
+$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
 	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
 $(TESTPROGS): $(OBJS) $(OBJ)/$(TESTPROGS).o
 	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o langlex.o -o $@
 
-$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.c
+$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
 	$(CC) $(COPTS) $(TESTPROGS).cpp -o $(OBJ)/$(TESTPROGS).o
 
 #lang: $(OBJS) $(OBJ)/main.o
