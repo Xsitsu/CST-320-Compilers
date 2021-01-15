@@ -44,11 +44,11 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
                                 }
 
 "{"                             {
-                                    IncreaseScope();
+/*                                    IncreaseScope();*/
                                     DO_RETURN(yytext[0]);
                                 }
 "}"                             {
-                                    DecreaseScope();
+/*                                    DecreaseScope();*/
                                     DO_RETURN(yytext[0]);
                                 }
 
@@ -77,7 +77,7 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
  /*Others*/
  {identifier}                   {
-                                    yylval.symbol = Insert(yytext);
+/*                                    yylval.symbol = Insert(yytext);*/
                                     DO_RETURN(IDENTIFIER);
                                 }
 
