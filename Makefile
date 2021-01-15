@@ -41,14 +41,14 @@ clean:
 	rm -f out.xml
 	rm -f out2.xml
 
-$(PROGS): $(OBJS) $(PROGS).o
-	$(CC) $(OBJS) $(PROGS).o langlex.o -o $@
+#$(PROGS): $(PROGS).o $(OBJS) langlex.o
+#	$(CC) $(COPTS) $(OBJS) $(PROGS).o langlex.o -o $@
 
 #$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
 #	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
-$(TESTPROGS): $(TESTPROGS).o $(OBJS) 
-	$(CC) $(OBJS) $(TESTPROGS).o langlex.o -o $@
+#$(TESTPROGS): $?.o $(OBJS) langlex.o
+#	$(CC) $(COPTS) $(OBJS) $?.o langlex.o -o $@
 
 #$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
 #	$(CC) $(COPTS) $? -o $@
@@ -79,3 +79,6 @@ $(OBJ)/%.o: $(SRC)/%.cpp obj
 
 obj:
 	mkdir $(OBJ)
+
+%: %.o $(OBJS) langlex.o
+	$(CC) $(COPTS) $(OBJS) langlex.o $? -o $@
