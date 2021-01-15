@@ -1,8 +1,10 @@
 //**************************************
 // lang_test.cpp
 //
-// Main routine for lang compiler.
-// This version only runs the lexer
+// Test program for lang compiler.
+// Takes a lang file as input and outputs
+// to a file depending on the output
+// mode.
 //
 // Author: Jacob Locke
 //
