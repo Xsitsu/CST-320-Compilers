@@ -34,17 +34,18 @@ clean:
 	rm -f $(PROGS)
 	rm -f $(TESTPROGS)
 	rm -f langlex.c
+	rm -f langlex.o
 	rm -f out.xml
 	rm -f out2.xml
 
 $(PROGS): $(OBJS) $(OBJ)/$(PROGS).o
-	$(CC) $(OBJS) $(OBJ)/$(PROGS).o -o $@
+	$(CC) $(OBJS) $(OBJ)/$(PROGS).o langlex.o -o $@
 
 $(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.c
 	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
 $(TESTPROGS): $(OBJS) $(OBJ)/$(TESTPROGS).o
-	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o -o $@
+	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o langlex.o -o $@
 
 $(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.c
 	$(CC) $(COPTS) $(TESTPROGS).cpp -o $(OBJ)/$(TESTPROGS).o
@@ -65,7 +66,7 @@ langlex.c: lang.l
 	flex -o langlex.c lang.l
 
 langlex.o: langlex.c
-	$(CC) $(COPTS) -Wno-sign-compare $? -o $(OBJ)/$@
+	$(CC) $(COPTS) -Wno-sign-compare $? -o $@
 
 $(OBJ)/%.o: $(SRC)/%.cpp obj
 	$(CC) $(COPTS) $? -o $@
