@@ -6,9 +6,14 @@ import difflib
 
 TEST_SUITES = [
     {
-        "name": "scanner",
+        "name": "Scanner",
         "test_dir": "scanner/",
         "test_prog": "./test_scanner"
+    },
+    {
+        "name": "Symbol Table",
+        "test_dir": "symbol_table/",
+        "test_prog": "./test_symbol_table"
     }
 ]
 
