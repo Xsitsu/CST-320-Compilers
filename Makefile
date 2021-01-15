@@ -19,7 +19,8 @@ SRCS := $(wildcard $(SRC)/*.cpp)
 OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
 
 PROGS = lang
-TESTPROGS = test_scanner
+TESTPROGS = test_scanner \
+			test_symbol_table
 
 all: $(PROGS)
 
