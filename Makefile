@@ -32,6 +32,7 @@ runt:
 
 clean:
 	rm -f $(OBJ)/*.o
+	rmdir $(OBJ)
 	rm -f $(PROGS)
 	rm -f $(TESTPROGS)
 	rm -f langlex.c
@@ -73,4 +74,4 @@ $(OBJ)/%.o: $(SRC)/%.cpp obj
 	$(CC) $(COPTS) $? -o $@
 
 obj:
-	mkdir obj/
+	mkdir $(OBJ)
