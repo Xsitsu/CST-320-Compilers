@@ -33,6 +33,7 @@ runt:
 
 clean:
 	rm -rf $(OBJ)
+	rm -f *.o
 	rm -f $(PROGS)
 	rm -f $(TESTPROGS)
 	rm -f langlex.c
@@ -40,17 +41,17 @@ clean:
 	rm -f out.xml
 	rm -f out2.xml
 
-$(PROGS): $(OBJS) $(OBJ)/$(PROGS).o
-	$(CC) $(OBJS) $(OBJ)/$(PROGS).o langlex.o -o $@
+$(PROGS): $(OBJS) $(PROGS).o
+	$(CC) $(OBJS) $(PROGS).o langlex.o -o $@
 
-$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
-	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
+#$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
+#	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
-$(TESTPROGS): $(OBJ)/$(TESTPROGS).o $(OBJS) 
-	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o langlex.o -o $@
+$(TESTPROGS): $(TESTPROGS).o $(OBJS) 
+	$(CC) $(OBJS) $(TESTPROGS).o langlex.o -o $@
 
-$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
-	$(CC) $(COPTS) $? -o $@
+#$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
+#	$(CC) $(COPTS) $? -o $@
 
 #lang: $(OBJS) $(OBJ)/main.o
 #	$(CC) $(OBJS) $(OBJ)/main.o -o $@
@@ -69,6 +70,9 @@ langlex.c: lang.l
 
 langlex.o: langlex.c
 	$(CC) $(COPTS) -Wno-sign-compare $? -o $@
+
+%.o: %.cpp
+	$(CC) $(COPTS) $? -o $@
 
 $(OBJ)/%.o: $(SRC)/%.cpp obj
 	$(CC) $(COPTS) $? -o $@
