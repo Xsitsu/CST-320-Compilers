@@ -8,16 +8,17 @@ TEST_SUITES = [
     {
         "name": "Scanner",
         "test_dir": "scanner/",
-        "test_prog": "./test_scanner"
+        "test_mode": 1
     },
     {
         "name": "Symbol Table",
         "test_dir": "symbol_table/",
-        "test_prog": "./test_symbol_table"
+        "test_prog": 2
     }
 ]
 
 TEST_DIR = "xtest/tests/"
+TEST_PROG = "./lang_test"
 OUT_TEST_FILE = "xtest/out.txt"
 
 RE_TEST = re.compile(".+\.lang$")
@@ -32,7 +33,7 @@ def get_tests(test_dir):
 
 def run_test_suite(test_suite):
     test_dir = TEST_DIR + test_suite["test_dir"]
-    test_prog = test_suite["test_prog"]
+    test_mode = test_suite["test_mode"]
 
     tests = get_tests(test_dir)
     for test in tests:
@@ -58,7 +59,7 @@ def run_test_suite(test_suite):
             print("")
             continue
 
-        subprocess.call([test_prog, test_file, OUT_TEST_FILE])
+        subprocess.call([TEST_PROG, test_mode, test_file, OUT_TEST_FILE])
 
         output_file = open(OUT_TEST_FILE, mode='r')
         test_output = output_file.read()
