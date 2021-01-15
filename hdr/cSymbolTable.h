@@ -1,11 +1,12 @@
 #pragma once
 
+#include <string>
 #include <list>
 #include <unordered_map>
 
 #include "cSymbol.h"
 
-typedef std::unordered_map<string, cSymbol*> symbolTable_t
+typedef std::unordered_map<string, cSymbol*> symbolTable_t;
 
 class cSymbolTable
 {

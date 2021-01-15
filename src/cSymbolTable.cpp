@@ -1,5 +1,7 @@
 #include "cSymbolTable.h"
 
+#include <string>
+
 cSymbolTable::cSymbolTable()
 {
 
