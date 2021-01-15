@@ -46,11 +46,11 @@ $(PROGS): $(OBJS) $(OBJ)/$(PROGS).o
 $(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
 	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
-$(TESTPROGS): $(OBJS) $(OBJ)/$(TESTPROGS).o
+$(TESTPROGS): $(OBJ)/$(TESTPROGS).o $(OBJS) 
 	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o langlex.o -o $@
 
 $(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
-	$(CC) $(COPTS) $(TESTPROGS).cpp -o $(OBJ)/$(TESTPROGS).o
+	$(CC) $(COPTS) $? -o $@
 
 #lang: $(OBJS) $(OBJ)/main.o
 #	$(CC) $(OBJS) $(OBJ)/main.o -o $@
