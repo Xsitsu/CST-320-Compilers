@@ -3,49 +3,72 @@
 #
 # Makefile for lang compiler
 #
-# Author: Phil Howard 
-# phil.howard@oit.edu
+# Author: Jacob Locke
 #
-# Date: Jan. 12, 2016
+# Date: Jan. 14, 2021
 #
 
+CC=g++
 COPTS=-Wall -g -c -O0 -std=c++11
-OBJS = langlex.o \
-	fileopen.o
 
-all: lang
+SRC := src
+OBJ := obj
 
-test: testscanner
+SRCS := $(wildcard $(SRC)/*.cpp)
+OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
+
+PROGS = lang
+TESTPROGS = test_scanner
+
+all: $(PROGS)
+
+test: buildt runt
+
+buildt: $(TESTPROGS)
+
+runt:
+	xtest/test
 
 clean:
-	rm -f $(OBJS)
-	rm -f *.o
+	rm -f $(OBJ)/*.o
+	rm -f $(PROGS)
+	rm -f $(TESTPROGS)
 	rm -f langlex.c
-	rm -f lang
-	rm -f testscanner
 	rm -f out.xml
 	rm -f out2.xml
 
-.c.o:
-	g++ $(COPTS) $? -o $@
+$(PROGS): $(OBJS) $(OBJ)/$(PROGS).o
+	$(CC) $(OBJS) $(OBJ)/$(PROGS).o -o $@
 
-.cpp.o:
-	g++ $(COPTS) $? -o $@
+$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.c
+	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
 
-main.o: main.cpp langlex.c
-	g++ $(COPTS) main.cpp -o main.o
+$(TESTPROGS): $(OBJS) $(OBJ)/$(TESTPROGS).o
+	$(CC) $(OBJS) $(OBJ)/$(TESTPROGS).o -o $@
 
-testscanner.o: testscanner.cpp langlex.c
-	g++ $(COPTS) testscanner.cpp -o testscanner.o
+$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.c
+	$(CC) $(COPTS) $(TESTPROGS).cpp -o $(OBJ)/$(TESTPROGS).o
 
+#lang: $(OBJS) $(OBJ)/main.o
+#	$(CC) $(OBJS) $(OBJ)/main.o -o $@
+#
+#$(OBJ)/main.o: main.cpp langlex.c
+#	$(CC) $(COPTS) main.cpp -o $(OBJ)/main.o
+#
+#test_scanner: $(OBJS) $(OBJ)/test_scanner.o
+#	$(CC) $(OBJS) $(OBJ)/test_scanner.o -o $@
+#
+#$(OBJ)/test_scanner.o: test_scanner.cpp langlex.c
+#	$(CC) $(COPTS) test_scanner.cpp -o $(OBJ)/test_scanner.o
+#
 langlex.c: lang.l
 	flex -o langlex.c lang.l
 
 langlex.o: langlex.c
-	g++ $(COPTS) -Wno-sign-compare $? -o $@
+	$(CC) $(COPTS) -Wno-sign-compare $? -o $(OBJ)/$@
 
-lang: $(OBJS) main.o
-	g++ $(OBJS) main.o -o $@
+$(OBJ)/%.o: $(SRC)/%.cpp obj
+    $(CC) $(COPTS) $? -o $@
 
-testscanner: $(OBJS) testscanner.o
-	g++ $(OBJS) testscanner.o -o $@
+obj:
+	mkdir obj/
