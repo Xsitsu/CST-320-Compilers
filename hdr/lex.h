@@ -26,6 +26,6 @@ extern char *yytext;        // text of the current token
 extern int yylineno;        // line number of current token
 extern FILE *yyin;          // input file for lexer
 
-cSymbol *Insert(const char *name);
+cSymbol *Insert(const char *text);
 void IncreaseScope();
 void DecreaseScope();

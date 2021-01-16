@@ -5,10 +5,16 @@
 yylval_t yylval;
 cSymbolTable *g_symbolTable;
 
-cSymbol *Insert(const char *name)
+cSymbol *Insert(const char *text)
 {
-    std::string to_insert = name;
-    return g_symbolTable->Insert(to_insert);
+    std::string name = text;
+    cSymbol *symbol = g_symbolTable->FindLocal(name);
+    if (!symbol)
+    {
+        symbol = new cSymbol(name);
+        g_symbolTable->Insert(symbol);
+    }
+    return symbol;
 }
 
 void IncreaseScope()
