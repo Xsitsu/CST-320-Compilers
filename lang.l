@@ -44,11 +44,11 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
                                 }
 
 "{"                             {
-                                    g_symbolTable->IncreaseScope();
+                                    IncreaseScope();
                                     DO_RETURN(yytext[0]);
                                 }
 "}"                             {
-                                    g_symbolTable->DecreaseScope();
+                                    DecreaseScope();
                                     DO_RETURN(yytext[0]);
                                 }
 
@@ -77,7 +77,7 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
  /*Others*/
  {identifier}                   {
-                                    yylval.symbol = g_symbolTable->Insert(yytext);
+                                    yylval.symbol = Insert(yytext);
                                     DO_RETURN(IDENTIFIER);
                                 }
 
