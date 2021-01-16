@@ -5,7 +5,7 @@
 
 cSymbolTable::cSymbolTable()
 {
-
+    this->IncreaseScope(); // Global Scope
 }
 
 symbolTable_t *cSymbolTable::IncreaseScope()
