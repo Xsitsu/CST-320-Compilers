@@ -2,6 +2,8 @@
 
 #include <string>
 
+long long cSymbol::nextId = 0;
+
 cSymbol::cSymbol(std::string name)
 {
     m_id = ++nextId;
