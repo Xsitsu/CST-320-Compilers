@@ -77,7 +77,7 @@ $(OBJ)/%.o: $(SRC)/%.cpp obj
 	$(CC) $(COPTS) $? -o $@
 
 obj:
-	mkdir $(OBJ)
+	mkdir -p $(OBJ)
 
 #%: %.o $(OBJS) langlex.o
 #	$(CC) $(COPTS) $(OBJS) langlex.o $? -o $@
