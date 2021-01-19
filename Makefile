@@ -74,7 +74,7 @@ langlex.o: langlex.c
 	$(CC) $(COPTS) $? -o $@
 
 $(OBJ)/%.o: $(SRC)/%.cpp obj
-	$(CC) $(COPTS) $? -o $@
+	$(CC) $(COPTS) $< -o $@
 
 obj:
 	mkdir -p $(OBJ)
