@@ -46,24 +46,6 @@ $(PROG): $(PROG).o $(OBJS) langlex.o
 $(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
 	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
-#$(OBJ)/$(PROGS).o: $(PROGS).cpp langlex.o
-#	$(CC) $(COPTS) $(PROGS).cpp -o $(OBJ)/$(PROGS).o
-
-#$(OBJ)/$(TESTPROGS).o: $(TESTPROGS).cpp langlex.o
-#	$(CC) $(COPTS) $? -o $@
-
-#lang: $(OBJS) $(OBJ)/main.o
-#	$(CC) $(OBJS) $(OBJ)/main.o -o $@
-#
-#$(OBJ)/main.o: main.cpp langlex.c
-#	$(CC) $(COPTS) main.cpp -o $(OBJ)/main.o
-#
-#test_scanner: $(OBJS) $(OBJ)/test_scanner.o
-#	$(CC) $(OBJS) $(OBJ)/test_scanner.o -o $@
-#
-#$(OBJ)/test_scanner.o: test_scanner.cpp langlex.c
-#	$(CC) $(COPTS) test_scanner.cpp -o $(OBJ)/test_scanner.o
-#
 langlex.c: lang.l
 	flex -o langlex.c lang.l
 
@@ -78,6 +60,3 @@ $(OBJ)/%.o: $(SRC)/%.cpp obj
 
 obj:
 	mkdir -p $(OBJ)
-
-#%: %.o $(OBJS) langlex.o
-#	$(CC) $(COPTS) $(OBJS) langlex.o $? -o $@
