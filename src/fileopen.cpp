@@ -1,3 +1,8 @@
+//**************************************
+// fileopen.cpp
+// Author: Jacob Locke
+//
+
 #include "fileopen.h"
 
 int fileopen(int argc, char **argv, FILE *&input)

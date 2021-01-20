@@ -1,3 +1,8 @@
+//**************************************
+// cSymbol.cpp
+// Author: Jacob Locke
+//
+
 #include "cSymbol.h"
 
 #include <string>

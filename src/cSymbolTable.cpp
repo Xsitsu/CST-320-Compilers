@@ -1,3 +1,8 @@
+//**************************************
+// cSymbolTable.cpp
+// Author: Jacob Locke
+//
+
 #include "cSymbolTable.h"
 
 #include <stdlib.h>

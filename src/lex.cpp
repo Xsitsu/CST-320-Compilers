@@ -1,3 +1,10 @@
+//**************************************
+// lex.cpp
+// Author: Jacob Locke
+//
+// Globals functions and variables used by the compiler.
+//
+
 #include "lex.h"
 
 #include <string>

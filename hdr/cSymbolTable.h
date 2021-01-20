@@ -1,4 +1,8 @@
 #pragma once
+//**************************************
+// cSymbolTable.h
+// Author: Jacob Locke
+//
 
 #include <string>
 #include <list>

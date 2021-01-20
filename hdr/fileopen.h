@@ -1,4 +1,8 @@
 #pragma once
+//**************************************
+// fileopen.h
+// Author: Jacob Locke
+//
 
 #include <unistd.h>
 #include <stdio.h>
