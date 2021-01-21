@@ -1,38 +1,62 @@
-##############################################
-# Makefile for CST320 labs
+#**************************************
+# Makefile
 #
-# Author: Philip Howard
-# phil.howard@oit.edu
+# Makefile for lang compiler
 #
-# Nov. 24, 2015
+# Author: Jacob Locke
+#
+# Date: Jan. 14, 2021
 #
 
-COPTS=-Wall -g -c  -O0
-OBJS=main.o \
-	 langlex.o \
+SRC := src
+OBJ := obj
+INCL := hdr
 
-all: lang
+CC=g++
+COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL)
+
+SRCS := $(wildcard $(SRC)/*.cpp)
+OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
+
+PROG = lang
+TESTPROG = lang_test
+
+all: $(PROG)
+
+test: buildt runt
+
+buildt: $(TESTPROG)
+
+runt:
+	xtest/test
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ)
+	rm -f *.o
+	rm -f $(PROG)
+	rm -f $(TESTPROG)
 	rm -f langlex.c
-	rm -f lang
-	rm -f out
+	rm -f langlex.o
+	rm -f out.xml
+	rm -f out2.xml
 
-.c.o:
-	g++ $(COPTS) $? -o $@
+$(PROG): $(PROG).o $(OBJS) langlex.o
+	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
-.cpp.o:
-	g++ $(COPTS) $? -o $@
-
-main.o: main.cpp langlex.c 
-	g++ $(COPTS) main.cpp -o main.o
+$(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
+	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
 langlex.c: lang.l
 	flex -o langlex.c lang.l
 
 langlex.o: langlex.c
-	g++ $(COPTS) -Wno-sign-compare $? -o $@
-lang: $(OBJS)
-	g++ $(OBJS) -o lang
+	$(CC) $(COPTS) -Wno-sign-compare $? -o $@
 
+%.o: %.cpp
+	$(CC) $(COPTS) $? -o $@
+
+$(OBJ)/%.o: $(SRC)/%.cpp obj
+	$(CC) $(COPTS) $< -o $@
+
+obj:
+	mkdir -p $(OBJ)

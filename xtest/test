@@ -4,56 +4,85 @@ import re
 import subprocess
 import difflib
 
-LANG_PROG = "./lang"
+TEST_SUITES = [
+    {
+        "name": "Scanner",
+        "test_dir": "scanner/",
+        "test_mode": 1
+    },
+    {
+        "name": "Symbol Table",
+        "test_dir": "symbol_table/",
+        "test_mode": 2
+    }
+]
+
 TEST_DIR = "xtest/tests/"
+TEST_PROG = "./lang_test"
 OUT_TEST_FILE = "xtest/out.txt"
 
 RE_TEST = re.compile(".+\.lang$")
-RE_CORRECT = re.compile(".+\.lang\.correct")
 
-dirs = os.listdir(TEST_DIR)
-tests = []
-for file in dirs:
-    if RE_TEST.match(file):
-        tests.append(file)
+def get_tests(test_dir):
+    files = os.listdir(test_dir)
+    tests = []
+    for file in files:
+        if RE_TEST.match(file):
+            tests.append(file)
+    return tests
 
-for test in tests:
-    solution_name = test + ".correct"
-    test_file = TEST_DIR + test
-    solution_file = TEST_DIR + solution_name
-    expected_output = ""
-    test_output = ""
+def run_test_suite(test_suite):
+    test_dir = TEST_DIR + test_suite["test_dir"]
+    test_mode = test_suite["test_mode"]
 
-    expected_lines = []
-    test_lines = []
+    tests = get_tests(test_dir)
+    for test in tests:
+        solution_name = test + ".correct"
+        test_file = test_dir + test
+        solution_file = test_dir + solution_name
 
-    print("Running test: " + test)
+        expected_output = ""
+        test_output = ""
+        expected_lines = []
+        test_lines = []
 
-    try:
-        output_file = open(solution_file, mode='r')
-        expected_output = output_file.read()
+        print("Running test: " + test + " | ", end='')
+
+        try:
+            output_file = open(solution_file, mode='r')
+            expected_output = output_file.read()
+            output_file.seek(0)
+            expected_lines = output_file.readlines()
+            output_file.close()
+        except IOError:
+            print("Could not open solution file: " + solution_name)
+            continue
+
+        subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
+
+        if test_mode == 2:
+            subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
+
+        output_file = open(OUT_TEST_FILE, mode='r')
+        test_output = output_file.read()
         output_file.seek(0)
-        expected_lines = output_file.readlines()
+        test_lines = output_file.readlines()
         output_file.close()
-    except IOError:
-        print("Could not open solution file: " + solution_name)
-        print("")
-        continue
 
-    subprocess.call([LANG_PROG, test_file, OUT_TEST_FILE])
+        if test_output == expected_output:
+            print("[PASSED]")
+        else:
+            print("[FAILED]")
+            diff = difflib.unified_diff(expected_lines, test_lines)
+            sys.stdout.writelines(diff)
 
-    output_file = open(OUT_TEST_FILE, mode='r')
-    test_output = output_file.read()
-    output_file.seek(0)
-    test_lines = output_file.readlines()
-    output_file.close()
+        os.remove(OUT_TEST_FILE)
 
-    if test_output == expected_output:
-        print("Passed!")
-    else:
-        print("Failed!")
-        diff = difflib.unified_diff(expected_lines, test_lines)
-        sys.stdout.writelines(diff)
-    
-    os.remove(OUT_TEST_FILE)
     print("")
+
+def main():
+    for test_suite in TEST_SUITES:
+        print("Running Test Suite: " + test_suite["name"])
+        run_test_suite(test_suite)
+
+main()

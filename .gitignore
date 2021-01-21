@@ -1,3 +1,7 @@
+test/
+.vscode/
+obj/
+
 *.o
 lang
 langlex.c
