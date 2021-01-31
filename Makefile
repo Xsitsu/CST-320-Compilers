@@ -42,10 +42,10 @@ clean:
 	rm -f out.xml
 	rm -f out2.xml
 
-$(PROG): $(PROG).o $(OBJS) langlex.o langparse.o
+$(PROG): $(PROG).o langlex.o langparse.o $(OBJS)
 	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
-$(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o langparse.o
+$(TESTPROG): $(TESTPROG).o langlex.o langparse.o $(OBJS)
 	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
 langlex.c: lang.l langparse.c
