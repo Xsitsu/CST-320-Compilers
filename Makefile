@@ -46,11 +46,14 @@ $(PROG): $(PROG).o $(OBJS) langlex.o
 $(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
 	$(CC) $(OBJS) langlex.o $@.o  -o $@
 
-langlex.c: lang.l
+langlex.c: lang.l langparse.c
 	flex -o langlex.c lang.l
 
 langlex.o: langlex.c
 	$(CC) $(COPTS) -Wno-sign-compare $? -o $@
+
+langparse.c: lang.y
+	bison --defines=langparse.h lang.y -o langparse.c
 
 %.o: %.cpp
 	$(CC) $(COPTS) $? -o $@
