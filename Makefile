@@ -37,6 +37,8 @@ clean:
 	rm -f $(TESTPROG)
 	rm -f langlex.c
 	rm -f langlex.o
+	rm -f langparse.c
+	rm -f langparse.h
 	rm -f out.xml
 	rm -f out2.xml
 
