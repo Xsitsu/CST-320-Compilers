@@ -13,7 +13,7 @@ OBJ := obj
 INCL := hdr
 
 CC=g++
-COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL)
+COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL) -I./
 
 SRCS := $(wildcard $(SRC)/*.cpp)
 OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
