@@ -39,11 +39,11 @@ int test_symbol_table(int argc, char **argv)
     {
         if (result == 0)
         {
-            output << yyast_root->ToString() << std::endl;
+            std::cout << yyast_root->ToString() << std::endl;
         }
         else
         {
-            output << yynerrs << " Errors in compile\n";
+            std::cout << yynerrs << " Errors in compile\n";
         }
     }
 
