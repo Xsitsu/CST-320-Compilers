@@ -42,10 +42,10 @@ clean:
 	rm -f out.xml
 	rm -f out2.xml
 
-$(PROG): $(PROG).o langlex.o langparse.o $(OBJS)
+$(PROG): $(PROG).o langparse.o langlex.o $(OBJS)
 	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
-$(TESTPROG): $(TESTPROG).o langlex.o langparse.o $(OBJS)
+$(TESTPROG): $(TESTPROG).o langparse.o langlex.o $(OBJS)
 	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
 langlex.c: lang.l langparse.c
@@ -56,6 +56,9 @@ langlex.o: langlex.c
 
 langparse.c: lang.y
 	bison --defines=langparse.h lang.y -o langparse.c
+
+langparse.o: langparse.c
+		$(CC) $(COPTS) $? -o $@
 
 %.o: %.cpp
 	$(CC) $(COPTS) $? -o $@
