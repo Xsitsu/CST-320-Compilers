@@ -23,7 +23,7 @@
 // **************************************************
 // argv[1] is the input file
 // argv[2] if present, is the output file
-int test_symbol_table(int argc, char **argv)
+int test_parse_tree(int argc, char **argv)
 {
     int result = 0;
     int open_result;
