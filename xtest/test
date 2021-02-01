@@ -14,7 +14,12 @@ TEST_SUITES = [
         "name": "Symbol Table",
         "test_dir": "symbol_table/",
         "test_mode": 2
-    }
+    },
+    {
+        "name": "Lab 4 Provided Tests",
+        "test_dir": "lab4_provided/",
+        "test_mode": 3
+    },
 ]
 
 TEST_DIR = "xtest/tests/"
