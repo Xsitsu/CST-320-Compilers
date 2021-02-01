@@ -46,6 +46,8 @@
 %token <int_val>   OR
 %token <int_val>   EQUALS
 %token <int_val>   NOT_EQUALS
+%token <int_val>   GE
+%token <int_val>   LE
 
 %token  PROGRAM
 %token  PRINT
