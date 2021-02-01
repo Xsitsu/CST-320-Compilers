@@ -4,4 +4,7 @@ obj/
 
 *.o
 lang
+lang_test
 langlex.c
+langparse.c
+langparse.h
