@@ -168,14 +168,14 @@ param:      expr                {  }
 expr:       expr EQUALS addit   {  }
         |   addit               { $$ = $1; }
 
-addit:      addit '+' term      {  }
-        |   addit '-' term      {  }
-        |   term                {  }
+addit:      addit '+' term      { $$ = new cBinaryExprNode($1, $2, $3); }
+        |   addit '-' term      { $$ = new cBinaryExprNode($1, $2, $3); }
+        |   term                { $$ = $1 }
 
-term:       term '*' fact       {  }
-        |   term '/' fact       {  }
-        |   term '%' fact       {  }
-        |   fact                {  }
+term:       term '*' fact       { $$ = new cBinaryExprNode($1, $2, $3); }
+        |   term '/' fact       { $$ = new cBinaryExprNode($1, $2, $3); }
+        |   term '%' fact       { $$ = new cBinaryExprNode($1, $2, $3); }
+        |   fact                { $$ = $1 }
 
 fact:        '(' expr ')'       {  }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
