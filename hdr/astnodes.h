@@ -18,6 +18,7 @@
 #include "cDeclNode.h"
 #include "cDeclsNode.h"
 #include "cBlockNode.h"
+#include "cBinaryExprNode.h"
 #include "cProgramNode.h"
 #include "cOpNode.h"
 #include "cPrintNode.h"
