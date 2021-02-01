@@ -68,7 +68,7 @@ def run_test_suite(test_suite):
 
         subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
-        if test_mode == 2:
+        if test_mode == 2 || test_mode == 3:
             subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
 
         output_file = open(OUT_TEST_FILE, mode='r')
