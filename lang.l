@@ -8,7 +8,7 @@
 //
 
 #include "lex.h"
-#include "tokens.h"
+#include "langparse.h"
 
 // Macros that can be used to create debug output from the scanner
 // The first one does NOT create debug output, the second does.
