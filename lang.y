@@ -19,6 +19,7 @@
  /* union defines the type for lexical values */
 %union{
     int             int_val;
+    double          float_val;
     cAstNode*       ast_node;
     cProgramNode*   program_node;
     cBlockNode*     block_node;
