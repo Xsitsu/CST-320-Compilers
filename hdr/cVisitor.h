@@ -36,6 +36,7 @@ class cVisitor
         virtual void Visit(cDeclsNode *node);
         virtual void Visit(cExprNode *node);
         virtual void Visit(cIntExprNode *node);
+        virtual void Visit(cFloatExprNode *node);
         virtual void Visit(cOpNode *node);
         virtual void Visit(cPrintNode *node);
         virtual void Visit(cProgramNode *node);
