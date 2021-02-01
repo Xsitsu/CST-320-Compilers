@@ -66,9 +66,9 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 "endif"                         DO_RETURN(ENDIF);
 "while"                         DO_RETURN(WHILE);
 "print"                         DO_RETURN(PRINT);
-"int" | "float" | "char"        {
+"int"|"float"|"char"            {
                                     DO_RETURN(TYPE_ID);
-                                }
+                                };
 "struct"                        DO_RETURN(STRUCT);
 "array"                         DO_RETURN(ARRAY);
 "return"                        DO_RETURN(RETURN);
