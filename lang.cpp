@@ -12,7 +12,7 @@
 #include <iostream>
 
 #include "lex.h"
-#include "test_symbol_table.h"
+#include "test_parse_tree.h"
 
 // **************************************************
 // argv[1] is the input file
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     std::cout << "Jacob Locke" << std::endl;
 
     g_symbolTable = new cSymbolTable();
-    result = test_symbol_table(argc, argv);
+    result = test_parse_tree(argc, argv);
 
     return result;
 }
