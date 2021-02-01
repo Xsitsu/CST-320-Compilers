@@ -93,9 +93,9 @@ program: PROGRAM block          { $$ = new cProgramNode($2);
 block:  open decls stmts close  {  }
     |   open stmts close        { $$ = new cBlockNode(nullptr, $2); }
 
-open:   '{'                     { /* $$ = g_SymbolTable.IncreaseScope(); */ }
+open:   '{'                     { $$ = IncreaseScope(); }
 
-close:  '}'                     { /* $$ = g_SymbolTable.DecreaseScope(); */ }
+close:  '}'                     { $$ = DecreaseScope(); }
 
 decls:      decls decl          {  }
         |   decl                {  }
