@@ -179,7 +179,7 @@ term:       term '*' fact       {  }
 
 fact:        '(' expr ')'       {  }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
-        |   FLOAT_VAL           {  }
+        |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
         |   varref              {  }
 
 %%
