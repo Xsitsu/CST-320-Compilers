@@ -75,6 +75,7 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
  /*Others*/
  {identifier}                   {
+                                    Insert(yytext);
                                     DO_RETURN(IDENTIFIER);
                                 }
 
