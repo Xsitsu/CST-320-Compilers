@@ -19,7 +19,7 @@ class cFloatExprNode : public cExprNode
 {
     public:
         // param is the value of the integer constant
-        cFloatExprNode(int value) : cExprNode()
+        cFloatExprNode(float value) : cExprNode()
         {
             m_value = value;
         }
