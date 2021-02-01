@@ -16,6 +16,7 @@ class cDeclNode;
 class cDeclsNode;
 class cExprNode;
 class cIntExprNode;
+class cFloatExprNode;
 class cOpNode;
 class cPrintNode;
 class cProgramNode;
