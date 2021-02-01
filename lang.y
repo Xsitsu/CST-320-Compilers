@@ -170,12 +170,12 @@ expr:       expr EQUALS addit   {  }
 
 addit:      addit '+' term      { $$ = new cBinaryExprNode($1, '+', $3); }
         |   addit '-' term      { $$ = new cBinaryExprNode($1, '-', $3); }
-        |   term                { $$ = $1 }
+        |   term                { $$ = $1; }
 
 term:       term '*' fact       { $$ = new cBinaryExprNode($1, '*', $3); }
         |   term '/' fact       { $$ = new cBinaryExprNode($1, '/', $3); }
         |   term '%' fact       { $$ = new cBinaryExprNode($1, '%', $3); }
-        |   fact                { $$ = $1 }
+        |   fact                { $$ = $1; }
 
 fact:        '(' expr ')'       {  }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
