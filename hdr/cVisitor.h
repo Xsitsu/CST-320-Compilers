@@ -12,6 +12,7 @@
 // Forward (incomplete) declarations for all AST node types
 class cAstNode;
 class cBlockNode;
+class cBinaryExprNode;
 class cDeclNode;
 class cDeclsNode;
 class cExprNode;
@@ -33,6 +34,7 @@ class cVisitor
 
         virtual void Visit(cAstNode *node);
         virtual void Visit(cBlockNode *node);
+        virtual void Visit(cBinaryExprNode *node);
         virtual void Visit(cDeclNode *node);
         virtual void Visit(cDeclsNode *node);
         virtual void Visit(cExprNode *node);

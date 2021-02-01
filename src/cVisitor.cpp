@@ -12,6 +12,7 @@
 // The code for each method is identical: simply visit all children
 void cVisitor::Visit(cAstNode *node)          { node->VisitAllChildren(this); }
 void cVisitor::Visit(cBlockNode *node)        { node->VisitAllChildren(this); }
+void cVisitor::Visit(cBinaryExprNode *node)   { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclsNode *node)        { node->VisitAllChildren(this); }
 void cVisitor::Visit(cExprNode *node)         { node->VisitAllChildren(this); }
