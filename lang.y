@@ -66,9 +66,9 @@
 %type <decls_node> decls
 %type <decl_node> decl
 %type <decl_node> var_decl
-%type <ast_node> struct_decl
-%type <ast_node> array_decl
-%type <ast_node> func_decl
+%type <decl_node> struct_decl
+%type <decl_node> array_decl
+%type <decl_node> func_decl
 %type <ast_node> func_header
 %type <ast_node> func_prefix
 %type <ast_node> func_call
