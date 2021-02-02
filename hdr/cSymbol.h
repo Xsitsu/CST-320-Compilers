@@ -1,28 +1,34 @@
 #pragma once
-//********************************************************
-// cSymbol.h - Define a class for symbols
+//**************************************
+// cSymbol.h
 //
-// Author: Philip Howard
+// Defines class used to represent symbols.
+// Later labs will add features to this class.
 //
+// Author: Phil Howard 
+// phil.howard@oit.edu
+//
+
 #include <string>
 
 using std::string;
 
-class cSymbol
+#include "cAstNode.h"
+
+class cSymbol : public cAstNode
 {
     public:
-        // Construct a symbol given its name
+        // param is name of symbol
         cSymbol(string name);
 
-        // Return a string representation of a symbol
-        // Return value is an XML node
-        string ToString();
-
-        // Return name of symbol
+        // return name of symbol
         string GetName();
 
+        virtual string AttributesToString();
+        virtual string NodeType();
+        virtual void Visit(cVisitor *visitor);
     protected:
-        static long long nextId;    // keeps track of unique symbol IDs
-        long long m_id;             // Unique ID for this symbol
-        string m_name;              // Symbol name
+        static long long nextId;        // Next avail symbol ID
+        long long m_id;                 // Unique ID for this symbol
+        string m_name;                  // name of symbol
 };

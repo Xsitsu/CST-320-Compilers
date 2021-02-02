@@ -9,7 +9,6 @@
 
 #include <string>
 
-yylval_t yylval;
 cSymbolTable *g_symbolTable;
 
 cSymbol *Insert(const char *text)

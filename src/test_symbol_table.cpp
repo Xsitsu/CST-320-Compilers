@@ -13,7 +13,7 @@
 #include "cSymbol.h"
 //#include "cSymbolTable.h"
 #include "lex.h"
-#include "tokens.h"
+#include "langparse.h"
 
 #include "fileopen.h"
 

@@ -13,7 +13,7 @@ OBJ := obj
 INCL := hdr
 
 CC=g++
-COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL)
+COPTS=-Wall -g -c -O0 -std=c++11 -I$(INCL) -I./
 
 SRCS := $(wildcard $(SRC)/*.cpp)
 OBJS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
@@ -37,20 +37,28 @@ clean:
 	rm -f $(TESTPROG)
 	rm -f langlex.c
 	rm -f langlex.o
+	rm -f langparse.c
+	rm -f langparse.h
 	rm -f out.xml
 	rm -f out2.xml
 
-$(PROG): $(PROG).o $(OBJS) langlex.o
-	$(CC) $(OBJS) langlex.o $@.o  -o $@
+$(PROG): $(PROG).o langparse.o langlex.o $(OBJS)
+	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
-$(TESTPROG): $(TESTPROG).o $(OBJS) langlex.o
-	$(CC) $(OBJS) langlex.o $@.o  -o $@
+$(TESTPROG): $(TESTPROG).o langparse.o langlex.o $(OBJS)
+	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
 
-langlex.c: lang.l
+langlex.c: lang.l langparse.c
 	flex -o langlex.c lang.l
 
 langlex.o: langlex.c
 	$(CC) $(COPTS) -Wno-sign-compare $? -o $@
+
+langparse.c: lang.y
+	bison --defines=langparse.h lang.y -o langparse.c
+
+langparse.o: langparse.c
+		$(CC) $(COPTS) $? -o $@
 
 %.o: %.cpp
 	$(CC) $(COPTS) $? -o $@

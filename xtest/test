@@ -8,13 +8,21 @@ TEST_SUITES = [
     {
         "name": "Scanner",
         "test_dir": "scanner/",
-        "test_mode": 1
+        "test_mode": 1,
+        "enabled": False
     },
     {
         "name": "Symbol Table",
         "test_dir": "symbol_table/",
-        "test_mode": 2
-    }
+        "test_mode": 2,
+        "enabled": False
+    },
+    {
+        "name": "Lab 4 Provided Tests",
+        "test_dir": "lab4_provided/",
+        "test_mode": 3,
+        "enabled": True
+    },
 ]
 
 TEST_DIR = "xtest/tests/"
@@ -60,7 +68,7 @@ def run_test_suite(test_suite):
 
         subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
-        if test_mode == 2:
+        if test_mode == 2 or test_mode == 3:
             subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
 
         output_file = open(OUT_TEST_FILE, mode='r')
@@ -82,7 +90,8 @@ def run_test_suite(test_suite):
 
 def main():
     for test_suite in TEST_SUITES:
-        print("Running Test Suite: " + test_suite["name"])
-        run_test_suite(test_suite)
+        if test_suite["enabled"]:
+            print("Running Test Suite: " + test_suite["name"])
+            run_test_suite(test_suite)
 
 main()
