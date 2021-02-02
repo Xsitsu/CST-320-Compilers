@@ -67,6 +67,7 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 "while"                         DO_RETURN(WHILE);
 "print"                         DO_RETURN(PRINT);
 "int"|"float"|"char"            {
+                                    yylval.symbol = g_symbolTable.Find(yytext);
                                     DO_RETURN(TYPE_ID);
                                 };
 "struct"                        DO_RETURN(STRUCT);
