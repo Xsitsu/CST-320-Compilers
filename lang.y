@@ -23,6 +23,8 @@
     cAstNode*       ast_node;
     cProgramNode*   program_node;
     cBlockNode*     block_node;
+    cDeclsNode*     decls_node;
+    cDeclNode*      decl_node;
     cStmtsNode*     stmts_node;
     cPrintNode*     stmt_node;
     cExprNode*      expr_node;
@@ -61,9 +63,9 @@
 %type <block_node> block
 %type <ast_node> open
 %type <ast_node> close
-%type <cDeclsNode> decls
-%type <cDeclNode> decl
-%type <cVarDeclNode> var_decl
+%type <decls_node> decls
+%type <decl_node> decl
+%type <decl_node> var_decl
 %type <ast_node> struct_decl
 %type <ast_node> array_decl
 %type <ast_node> func_decl
