@@ -19,7 +19,7 @@ class cVarDeclNode : public cDeclNode
         {
             AddChild(type);
 
-            if (!g_symbolTable->FindLocal(name->GetName())
+            if (!g_symbolTable->FindLocal(name->GetName()))
             {
                 cSymbol *toInsert = name;
 
@@ -38,7 +38,7 @@ class cVarDeclNode : public cDeclNode
                 // Redefinition error
             }
         }
-        
+
         virtual string NodeType() { return string("var_decl"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 };

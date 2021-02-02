@@ -61,9 +61,9 @@
 %type <block_node> block
 %type <ast_node> open
 %type <ast_node> close
-%type <ast_node> decls
-%type <ast_node> decl
-%type <ast_node> var_decl
+%type <cDeclsNode> decls
+%type <cDeclNode> decl
+%type <cVarDeclNode> var_decl
 %type <ast_node> struct_decl
 %type <ast_node> array_decl
 %type <ast_node> func_decl
