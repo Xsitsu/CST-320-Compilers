@@ -11,9 +11,9 @@
 cSymbolTable::cSymbolTable()
 {
     this->IncreaseScope(); // Global Scope
+    this->Insert(new cSymbol("char"));
     this->Insert(new cSymbol("int"));
     this->Insert(new cSymbol("float"));
-    this->Insert(new cSymbol("char"));
 }
 
 symbolTable_t *cSymbolTable::IncreaseScope()
