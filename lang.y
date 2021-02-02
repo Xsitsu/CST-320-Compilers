@@ -183,7 +183,7 @@ term:       term '*' fact       { $$ = new cBinaryExprNode($1, '*', $3); }
 fact:        '(' expr ')'       {  }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
-        |   varref              { $$ = $1 }
+        |   varref              { $$ = $1; }
 
 %%
 
