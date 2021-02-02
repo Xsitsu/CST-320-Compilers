@@ -16,6 +16,7 @@ void cVisitor::Visit(cBinaryExprNode *node)   { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclsNode *node)        { node->VisitAllChildren(this); }
 void cVisitor::Visit(cVarDeclNode *node)      { node->VisitAllChildren(this); }
+void cVisitor::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
 void cVisitor::Visit(cExprNode *node)         { node->VisitAllChildren(this); }
 void cVisitor::Visit(cIntExprNode *node)      { node->VisitAllChildren(this); }
 void cVisitor::Visit(cFloatExprNode *node)    { node->VisitAllChildren(this); }

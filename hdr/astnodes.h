@@ -18,6 +18,7 @@
 #include "cDeclNode.h"
 #include "cDeclsNode.h"
 #include "cVarDeclNode.h"
+#include "cVarExprNode.h"
 #include "cBlockNode.h"
 #include "cBinaryExprNode.h"
 #include "cProgramNode.h"

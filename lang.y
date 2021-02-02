@@ -29,6 +29,7 @@
     cPrintNode*     stmt_node;
     cExprNode*      expr_node;
     cIntExprNode*   int_node;
+    cVarExprNode*   varref_node;
     cSymbol*        symbol;
     }
 
@@ -83,7 +84,7 @@
 %type <expr_node> addit
 %type <expr_node> term
 %type <expr_node> fact
-%type <ast_node> varref
+%type <varref_node> varref
 %type <symbol> varpart
 
 %%
@@ -156,7 +157,7 @@ func_call:  IDENTIFIER '(' params ')' {  }
 
 varref:   varref '.' varpart    {  }
         | varref '[' expr ']'   {  }
-        | varpart               {  }
+        | varpart               { $$ = new cVarExprNode($1); }
 
 varpart:  IDENTIFIER            {  }
 
@@ -182,7 +183,7 @@ term:       term '*' fact       { $$ = new cBinaryExprNode($1, '*', $3); }
 fact:        '(' expr ')'       {  }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
-        |   varref              {  }
+        |   varref              { $$ = $1 }
 
 %%
 
