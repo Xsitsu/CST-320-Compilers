@@ -16,6 +16,7 @@ class cBinaryExprNode;
 class cDeclNode;
 class cDeclsNode;
 class cVarDeclNode;
+class cVarExprNode;
 class cExprNode;
 class cIntExprNode;
 class cFloatExprNode;
