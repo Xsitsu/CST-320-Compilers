@@ -93,19 +93,19 @@ program: PROGRAM block          { $$ = new cProgramNode($2);
                                   else
                                       YYABORT;
                                 }
-block:  open decls stmts close  {  }
+block:  open decls stmts close  { $$ = new cBlockNode($2, $3); }
     |   open stmts close        { $$ = new cBlockNode(nullptr, $2); }
 
 open:   '{'                     { IncreaseScope(); }
 
 close:  '}'                     { DecreaseScope(); }
 
-decls:      decls decl          {  }
-        |   decl                {  }
+decls:      decls decl          { $$ = $1; $$->Insert($2); }
+        |   decl                { $$ = new cDeclsNode($1); }
 decl:       var_decl ';'        { $$ = $1; }
-        |   struct_decl ';'     {  }
-        |   array_decl ';'      {  }
-        |   func_decl           {  }
+        |   struct_decl ';'     { $$ = $1; }
+        |   array_decl ';'      { $$ = $1; }
+        |   func_decl           { $$ = $1; }
         |   error ';'           {  }
 
 var_decl:   TYPE_ID IDENTIFIER  {  }

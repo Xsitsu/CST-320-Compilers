@@ -76,7 +76,11 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
  /*Others*/
  {identifier}                   {
-                                    Insert(yytext);
+                                    yylval.symbol = g_symbolTable->Find(yytext);
+                                    if (yylval.symbol == nullptr)
+                                    {
+                                        yylval.symbol = new cSymbol(yytext);
+                                    }
                                     DO_RETURN(IDENTIFIER);
                                 }
 

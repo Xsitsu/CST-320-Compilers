@@ -17,6 +17,7 @@
 #include "cStmtsNode.h"
 #include "cDeclNode.h"
 #include "cDeclsNode.h"
+#include "cVarDeclNode.h"
 #include "cBlockNode.h"
 #include "cBinaryExprNode.h"
 #include "cProgramNode.h"
