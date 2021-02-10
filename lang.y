@@ -161,7 +161,7 @@ varref:   varref '.' varpart    {  }
 
 varpart:  IDENTIFIER            {  }
 
-lval:     varref                { $$ = $1 }
+lval:     varref                { $$ = $1; }
 
 params:     params',' param     {  }
         |   param               {  }
