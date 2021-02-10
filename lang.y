@@ -180,7 +180,7 @@ term:       term '*' fact       { $$ = new cBinaryExprNode($1, '*', $3); }
         |   term '%' fact       { $$ = new cBinaryExprNode($1, '%', $3); }
         |   fact                { $$ = $1; }
 
-fact:        '(' expr ')'       {  }
+fact:        '(' expr ')'       { $$ = $2; }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
         |   varref              { $$ = $1; }
