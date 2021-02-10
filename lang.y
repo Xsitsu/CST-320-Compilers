@@ -26,7 +26,7 @@
     cDeclsNode*     decls_node;
     cDeclNode*      decl_node;
     cStmtsNode*     stmts_node;
-    cPrintNode*     stmt_node;
+    cStmtNode*      stmt_node;
     cExprNode*      expr_node;
     cIntExprNode*   int_node;
     cVarExprNode*   varref_node;
