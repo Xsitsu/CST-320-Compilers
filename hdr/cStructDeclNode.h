@@ -37,6 +37,7 @@ class cStructDeclNode : public cDeclNode
                 g_symbolTable->Insert(name);
             }
 
+            name->SetIsType(true);
             AddChild(name);
         }
 
