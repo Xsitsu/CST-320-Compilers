@@ -127,8 +127,8 @@ func_decl:  func_header ';'
         |   func_header  '{' decls stmts '}'
                                 {
                                         $$ = $1;
-                                        $$->AddDecls($2);
-                                        $$->AddStmts($3);
+                                        $$->AddDecls($3);
+                                        $$->AddStmts($4);
                                         g_symbolTable->DecreaseScope();
                                 }
         |   func_header  '{' stmts '}'
