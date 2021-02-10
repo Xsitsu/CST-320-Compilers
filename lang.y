@@ -31,7 +31,7 @@
     cIntExprNode*   int_node;
     cVarExprNode*   varref_node;
     cSymbol*        symbol;
-    symbolTable_t   sym_table;
+    symbolTable_t*  sym_table;
     }
 
 %{
