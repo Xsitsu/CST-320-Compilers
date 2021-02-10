@@ -31,6 +31,7 @@
     cIntExprNode*   int_node;
     cVarExprNode*   varref_node;
     cSymbol*        symbol;
+    symbolTable_t   sym_table;
     }
 
 %{
@@ -62,8 +63,8 @@
 
 %type <program_node> program
 %type <block_node> block
-%type <ast_node> open
-%type <ast_node> close
+%type <sym_table> open
+%type <sym_table> close
 %type <decls_node> decls
 %type <decl_node> decl
 %type <decl_node> var_decl
@@ -99,9 +100,9 @@ program: PROGRAM block          { $$ = new cProgramNode($2);
 block:  open decls stmts close  { $$ = new cBlockNode($2, $3); }
     |   open stmts close        { $$ = new cBlockNode(nullptr, $2); }
 
-open:   '{'                     { IncreaseScope(); }
+open:   '{'                     { $$ = g_symbolTable->IncreaseScope(); }
 
-close:  '}'                     { DecreaseScope(); }
+close:  '}'                     { $$ = g_symbolTable->DecreaseScope(); }
 
 decls:      decls decl          { $$ = $1; $$->Insert($2); }
         |   decl                { $$ = new cDeclsNode($1); }
@@ -113,7 +114,7 @@ decl:       var_decl ';'        { $$ = $1; }
 
 var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); }
 struct_decl:  STRUCT open decls close IDENTIFIER    
-                                {  }
+                                { $$= new cStructDeclNode($2, $3, $5); }
 array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
                                 {  }
 
