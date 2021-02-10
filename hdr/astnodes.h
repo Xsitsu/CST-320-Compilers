@@ -19,6 +19,8 @@
 #include "cDeclsNode.h"
 #include "cVarDeclNode.h"
 #include "cStructDeclNode.h"
+#include "cFuncDeclNode.h"
+#include "cParamsNode.h"
 #include "cVarExprNode.h"
 #include "cAssignNode.h"
 #include "cBlockNode.h"

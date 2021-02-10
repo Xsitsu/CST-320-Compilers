@@ -20,6 +20,8 @@ void cVisitor::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclsNode *node)        { node->VisitAllChildren(this); }
 void cVisitor::Visit(cVarDeclNode *node)      { node->VisitAllChildren(this); }
 void cVisitor::Visit(cStructDeclNode *node)   { node->VisitAllChildren(this); }
+void cVisitor::Visit(cFuncDeclNode *node)     { node->VisitAllChildren(this); }
+void cVisitor::Visit(cParamsNode *node)       { node->VisitAllChildren(this); }
 void cVisitor::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
 void cVisitor::Visit(cAssignNode *node)       { node->VisitAllChildren(this); }
 void cVisitor::Visit(cExprNode *node)         { node->VisitAllChildren(this); }

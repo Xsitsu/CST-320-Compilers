@@ -25,6 +25,7 @@
     cBlockNode*     block_node;
     cDeclsNode*     decls_node;
     cDeclNode*      decl_node;
+    cFuncDeclNode*  funcdecl_node;
     cStmtsNode*     stmts_node;
     cStmtNode*      stmt_node;
     cExprNode*      expr_node;
@@ -70,9 +71,9 @@
 %type <decl_node> var_decl
 %type <decl_node> struct_decl
 %type <decl_node> array_decl
-%type <decl_node> func_decl
-%type <ast_node> func_header
-%type <ast_node> func_prefix
+%type <funcdecl_node> func_decl
+%type <funcdecl_node> func_header
+%type <funcdecl_node> func_prefix
 %type <ast_node> func_call
 %type <ast_node> paramsspec
 %type <ast_node> paramspec
@@ -119,21 +120,36 @@ array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
                                 {  }
 
 func_decl:  func_header ';'
-                                {  }
+                                {
+                                        $$ = $1;
+                                        g_symbolTable->DecreaseScope();
+                                }
         |   func_header  '{' decls stmts '}'
-                                {  }
+                                {
+                                        $$ = $1;
+                                        $$->AddDecls($2);
+                                        $$->AddStmts($3);
+                                        g_symbolTable->DecreaseScope();
+                                }
         |   func_header  '{' stmts '}'
-                                {  }
+                                {
+                                        $$ = $1;
+                                        $$->AddStmts($3);
+                                        g_symbolTable->DecreaseScope();
+                                }
 func_header: func_prefix paramsspec ')'
-                                {  }
-        |    func_prefix ')'    {  }
+                                { $$ = $1; $$->AddParams($2); }
+        |    func_prefix ')'    { $$ = $1; }
 func_prefix: TYPE_ID IDENTIFIER '('
-                                {  }
+                                {
+                                        $$ = new cFuncDeclNode($1, $2);
+                                        g_symbolTable->IncreaseScope();
+                                }
 paramsspec: paramsspec',' paramspec 
-                                {  }
-        |   paramspec           {  }
+                                { $$ = $1; $$->Insert($3); }
+        |   paramspec           { $$ = new cParamsNode($1); }
 
-paramspec:  var_decl            {  }
+paramspec:  var_decl            { $$ = $1; }
 
 stmts:      stmts stmt          { $$ = $1; $$->Insert($2); }
         |   stmt                { $$ = new cStmtsNode($1); }
