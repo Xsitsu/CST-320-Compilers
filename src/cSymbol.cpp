@@ -25,7 +25,7 @@ bool cSymbol::IsType()
     return m_isType;
 }
 
-void SetIsType(bool val)
+void cSymbol::SetIsType(bool val)
 {
     m_isType = val;
 }
