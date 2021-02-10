@@ -24,6 +24,7 @@
 #include "cProgramNode.h"
 #include "cIfNode.h"
 #include "cReturnNode.h"
+#include "cWhileNode.h"
 #include "cOpNode.h"
 #include "cPrintNode.h"
 #include "cExprNode.h"
