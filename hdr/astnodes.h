@@ -23,6 +23,7 @@
 #include "cBinaryExprNode.h"
 #include "cProgramNode.h"
 #include "cIfNode.h"
+#include "cReturnNode.h"
 #include "cOpNode.h"
 #include "cPrintNode.h"
 #include "cExprNode.h"

@@ -149,7 +149,7 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
         |   lval '=' func_call ';'   {  }
         |   func_call ';'       {  }
         |   block               {  }
-        |   RETURN expr ';'     {  }
+        |   RETURN expr ';'     { $$ = new cReturnNode($2); }
         |   error ';'           {}
 
 func_call:  IDENTIFIER '(' params ')' {  }
