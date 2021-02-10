@@ -81,6 +81,11 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
                                     {
                                         yylval.symbol = new cSymbol(yytext);
                                     }
+
+                                    if (yylval.symbol->IsType())
+                                    {
+                                        DO_RETURN(TYPE_ID);
+                                    }
                                     DO_RETURN(IDENTIFIER);
                                 }
 

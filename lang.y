@@ -155,11 +155,11 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
 func_call:  IDENTIFIER '(' params ')' {  }
         |   IDENTIFIER '(' ')'  {  }
 
-varref:   varref '.' varpart    {  }
-        | varref '[' expr ']'   {  }
+varref:   varref '.' varpart    { $$ = $1; $$->Insert($3); }
+        | varref '[' expr ']'   { $$ = $1; $$->Insert($3); }
         | varpart               { $$ = new cVarExprNode($1); }
 
-varpart:  IDENTIFIER            {  }
+varpart:  IDENTIFIER            { $$ = $1; }
 
 lval:     varref                { $$ = $1; }
 
