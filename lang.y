@@ -77,7 +77,7 @@
 %type <ast_node> paramspec
 %type <stmts_node> stmts
 %type <stmt_node> stmt
-%type <ast_node> lval
+%type <varref_node> lval
 %type <ast_node> params
 %type <ast_node> param
 %type <expr_node> expr
