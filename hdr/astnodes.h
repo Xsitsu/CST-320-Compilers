@@ -22,6 +22,7 @@
 #include "cBlockNode.h"
 #include "cBinaryExprNode.h"
 #include "cProgramNode.h"
+#include "cIfNode.h"
 #include "cOpNode.h"
 #include "cPrintNode.h"
 #include "cExprNode.h"
