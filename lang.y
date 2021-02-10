@@ -145,7 +145,7 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
                                 { $$ = new cWhileNode($3, $5); }
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
-        |   lval '=' expr ';'   { $$ = new cAssignNode($3); }
+        |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); }
         |   lval '=' func_call ';'   {  }
         |   func_call ';'       {  }
         |   block               {  }
