@@ -20,6 +20,7 @@ class cDeclNode;
 class cDeclsNode;
 class cVarDeclNode;
 class cVarExprNode;
+class cAssignNode;
 class cExprNode;
 class cIntExprNode;
 class cFloatExprNode;
@@ -47,6 +48,7 @@ class cVisitor
         virtual void Visit(cDeclsNode *node);
         virtual void Visit(cVarDeclNode *node);
         virtual void Visit(cVarExprNode *node);
+        virtual void Visit(cAssignNode *node);
         virtual void Visit(cExprNode *node);
         virtual void Visit(cIntExprNode *node);
         virtual void Visit(cFloatExprNode *node);

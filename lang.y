@@ -145,7 +145,7 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
                                 { $$ = new cWhileNode($3, $5); }
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
-        |   lval '=' expr ';'   {  }
+        |   lval '=' expr ';'   { $$ = new cAssignNode($3); }
         |   lval '=' func_call ';'   {  }
         |   func_call ';'       {  }
         |   block               {  }
@@ -161,7 +161,7 @@ varref:   varref '.' varpart    {  }
 
 varpart:  IDENTIFIER            {  }
 
-lval:     varref                {  }
+lval:     varref                { $$ = $1 }
 
 params:     params',' param     {  }
         |   param               {  }
