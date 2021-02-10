@@ -14,6 +14,7 @@ class cAstNode;
 class cBlockNode;
 class cBinaryExprNode;
 class cIfNode;
+class cReturnNode;
 class cDeclNode;
 class cDeclsNode;
 class cVarDeclNode;
