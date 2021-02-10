@@ -24,17 +24,17 @@ class cStructDeclNode : public cDeclNode
 
             AddChild(decls);
 
-            name = g_symbolTable.FindLocal(structName->GetName());
+            name = g_symbolTable->FindLocal(structName->GetName());
             if (name == nullptr)
             {
                 name = structName;
 
-                if (g_symbolTable.Find(structName->GetName()) != nullptr)
+                if (g_symbolTable->Find(structName->GetName()) != nullptr)
                 {
                     name = new cSymbol(structName->GetName());
                 }
 
-                g_symbolTable.Insert(name);
+                g_symbolTable->Insert(name);
             }
 
             AddChild(name);
