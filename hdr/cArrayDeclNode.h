@@ -31,7 +31,7 @@ class cArrayDeclNode : public cDeclNode
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
         virtual string AttributesToString()
         {
-            return " count=\"" + std::to_string(m_count) + "\"";
+            return " count=\"" + std::to_string(m_size) + "\"";
         }
 
 protected:
