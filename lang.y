@@ -185,7 +185,7 @@ lval:     varref                { $$ = $1; }
 params:     params',' param     { $$ = $1; $$->Insert($3); }
         |   param               { $$ = new cParamListNode($1); }
 
-param:      expr                { $$ = $1 }
+param:      expr                { $$ = $1; }
 
 expr:       expr EQUALS addit   {  }
         |   addit               { $$ = $1; }
