@@ -1,0 +1,6 @@
+program
+{
+  if (5) 
+    return (5);
+  endif;
+}

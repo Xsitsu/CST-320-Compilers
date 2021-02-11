@@ -23,6 +23,8 @@ class cSymbol : public cAstNode
 
         // return name of symbol
         string GetName();
+        bool IsType();
+        void SetIsType(bool val);
 
         virtual string AttributesToString();
         virtual string NodeType();
@@ -31,4 +33,5 @@ class cSymbol : public cAstNode
         static long long nextId;        // Next avail symbol ID
         long long m_id;                 // Unique ID for this symbol
         string m_name;                  // name of symbol
+        bool m_isType;
 };

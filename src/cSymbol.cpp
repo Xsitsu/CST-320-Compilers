@@ -20,6 +20,16 @@ std::string cSymbol::GetName()
     return m_name;
 }
 
+bool cSymbol::IsType()
+{
+    return m_isType;
+}
+
+void cSymbol::SetIsType(bool val)
+{
+    m_isType = val;
+}
+
 string cSymbol::AttributesToString()
 {
     string result(" id=\"");
