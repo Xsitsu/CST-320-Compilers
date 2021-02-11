@@ -187,8 +187,15 @@ params:     params',' param     { $$ = $1; $$->Insert($3); }
 
 param:      expr                { $$ = $1; }
 
-expr:       expr EQUALS addit   { $$ = new cBinaryExprNode($1, $2, $3); }
+expr:       expr op addit       { $$ = new cBinaryExprNode($1, $2, $3); }
         |   addit               { $$ = $1; }
+
+op:         NOT_EQUALS          { $$ = $1; }
+        |   EQUALS              { $$ = $1; }
+        |   OR                  { $$ = $1; }
+        |   AND                 { $$ = $1; }
+        |   GE                  { $$ = $1; }
+        |   LE                  { $$ = $1; }
 
 addit:      addit '+' term      { $$ = new cBinaryExprNode($1, '+', $3); }
         |   addit '-' term      { $$ = new cBinaryExprNode($1, '-', $3); }
