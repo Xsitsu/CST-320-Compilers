@@ -23,6 +23,8 @@ class cStructDeclNode;
 class cFuncDeclNode;
 class cParamsNode;
 class cVarExprNode;
+class cFuncExprNode;
+class cParamListNode;
 class cAssignNode;
 class cExprNode;
 class cIntExprNode;
@@ -54,6 +56,8 @@ class cVisitor
         virtual void Visit(cFuncDeclNode *node);
         virtual void Visit(cParamsNode *node);
         virtual void Visit(cVarExprNode *node);
+        virtual void Visit(cFuncExprNode *node);
+        virtual void Visit(cParamListNode *node);
         virtual void Visit(cAssignNode *node);
         virtual void Visit(cExprNode *node);
         virtual void Visit(cIntExprNode *node);

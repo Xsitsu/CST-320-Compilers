@@ -31,6 +31,8 @@
     cExprNode*      expr_node;
     cIntExprNode*   int_node;
     cVarExprNode*   varref_node;
+    cFuncExprNode*  funccall_node;
+    cParamListNode* params_node;
     cSymbol*        symbol;
     symbolTable_t*  sym_table;
     }
@@ -74,14 +76,14 @@
 %type <funcdecl_node> func_decl
 %type <funcdecl_node> func_header
 %type <funcdecl_node> func_prefix
-%type <ast_node> func_call
+%type <funccall_node> func_call
 %type <decls_node> paramsspec
 %type <decl_node> paramspec
 %type <stmts_node> stmts
 %type <stmt_node> stmt
 %type <varref_node> lval
-%type <ast_node> params
-%type <ast_node> param
+%type <params_node> params
+%type <expr_node> param
 %type <expr_node> expr
 %type <expr_node> addit
 %type <expr_node> term
@@ -163,14 +165,14 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
         |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); }
-        |   lval '=' func_call ';'   {  }
+        |   lval '=' func_call ';'   { $$ = new cAssignNode($1, $3); }
         |   func_call ';'       {  }
         |   block               {  }
         |   RETURN expr ';'     { $$ = new cReturnNode($2); }
         |   error ';'           {}
 
-func_call:  IDENTIFIER '(' params ')' {  }
-        |   IDENTIFIER '(' ')'  {  }
+func_call:  IDENTIFIER '(' params ')' { $$ = new cFuncExprNode($1, $3); }
+        |   IDENTIFIER '(' ')'  { $$ = new cFuncExprNode($1, nullptr); }
 
 varref:   varref '.' varpart    { $$ = $1; $$->Insert($3); }
         | varref '[' expr ']'   { $$ = $1; $$->Insert($3); }
@@ -180,10 +182,10 @@ varpart:  IDENTIFIER            { $$ = $1; }
 
 lval:     varref                { $$ = $1; }
 
-params:     params',' param     {  }
-        |   param               {  }
+params:     params',' param     { $$ = $1; $$->Insert($3); }
+        |   param               { $$ = new cParamListNode($1); }
 
-param:      expr                {  }
+param:      expr                { $$ = $1 }
 
 expr:       expr EQUALS addit   {  }
         |   addit               { $$ = $1; }

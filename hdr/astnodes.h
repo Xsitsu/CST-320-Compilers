@@ -22,6 +22,8 @@
 #include "cFuncDeclNode.h"
 #include "cParamsNode.h"
 #include "cVarExprNode.h"
+#include "cFuncExprNode.h"
+#include "cParamListNode.h"
 #include "cAssignNode.h"
 #include "cBlockNode.h"
 #include "cBinaryExprNode.h"
