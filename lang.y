@@ -187,7 +187,7 @@ params:     params',' param     { $$ = $1; $$->Insert($3); }
 
 param:      expr                { $$ = $1; }
 
-expr:       expr EQUALS addit   {  }
+expr:       expr EQUALS addit   { $$ = new cBinaryExprNode($1, $2, $3); }
         |   addit               { $$ = $1; }
 
 addit:      addit '+' term      { $$ = new cBinaryExprNode($1, '+', $3); }
