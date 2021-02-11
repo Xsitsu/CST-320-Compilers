@@ -22,7 +22,7 @@ class cFuncDeclNode : public cDeclNode
             AddChild(type);
             AddChild(name);
 
-            g_SymbolTable.Insert(name);
+            g_symbolTable->Insert(name);
         }
 
         void AddParams(cDeclsNode *params)

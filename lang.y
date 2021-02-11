@@ -75,8 +75,8 @@
 %type <funcdecl_node> func_header
 %type <funcdecl_node> func_prefix
 %type <ast_node> func_call
-%type <ast_node> paramsspec
-%type <ast_node> paramspec
+%type <decls_node> paramsspec
+%type <decl_node> paramspec
 %type <stmts_node> stmts
 %type <stmt_node> stmt
 %type <varref_node> lval
