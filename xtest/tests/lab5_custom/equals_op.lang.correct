@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<program>
+  <block>
+    <stmts>
+      <expr>
+        <int value="1"/>
+        <op value="=="/>
+        <int value="2"/>
+      </expr>
+    </stmts>
+  </block>
+</program>
