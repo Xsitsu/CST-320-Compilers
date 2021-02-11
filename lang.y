@@ -119,7 +119,7 @@ var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); }
 struct_decl:  STRUCT open decls close IDENTIFIER    
                                 { $$= new cStructDeclNode($2, $3, $5); }
 array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
-                                {  }
+                                { $$ = new cArrayDeclNode($2, $6, $4); }
 
 func_decl:  func_header ';'
                                 {

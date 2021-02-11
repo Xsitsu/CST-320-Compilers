@@ -19,6 +19,7 @@ class cWhileNode;
 class cDeclNode;
 class cDeclsNode;
 class cVarDeclNode;
+class cArrayDeclNode;
 class cStructDeclNode;
 class cFuncDeclNode;
 class cParamsNode;
@@ -52,6 +53,7 @@ class cVisitor
         virtual void Visit(cDeclNode *node);
         virtual void Visit(cDeclsNode *node);
         virtual void Visit(cVarDeclNode *node);
+        virtual void Visit(cArrayDeclNode *node);
         virtual void Visit(cStructDeclNode *node);
         virtual void Visit(cFuncDeclNode *node);
         virtual void Visit(cParamsNode *node);
