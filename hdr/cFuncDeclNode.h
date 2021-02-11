@@ -19,7 +19,7 @@ class cFuncDeclNode : public cDeclNode
     public:
         cFuncDeclNode(cSymbol *type, cSymbol *inName) : cDeclNode()
         {
-            cSymbol *inName;
+            cSymbol *name;
 
             AddChild(type);
 
