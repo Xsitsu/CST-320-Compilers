@@ -17,26 +17,12 @@
 class cFuncDeclNode : public cDeclNode
 {
     public:
-        cFuncDeclNode(cSymbol *type, cSymbol *inName) : cDeclNode()
+        cFuncDeclNode(cSymbol *type, cSymbol *name) : cDeclNode()
         {
-            cSymbol *name;
-
             AddChild(type);
-
-            name = g_symbolTable->FindLocal(inName->GetName());
-            if (name == nullptr)
-            {
-                name = inName;
-
-                if (g_symbolTable->Find(inName->GetName()) != nullptr)
-                {
-                    name = new cSymbol(inName->GetName());
-                }
-
-                g_symbolTable->Insert(name);
-            }
-
             AddChild(name);
+
+            g_symbolTable->Insert(name);
         }
 
         void AddParams(cDeclsNode *params)
