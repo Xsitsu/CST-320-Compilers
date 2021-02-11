@@ -62,8 +62,8 @@ class cOpNode : public cAstNode
 
             return result;
         }
-        virtual string AttributesToString()   
-        { 
+        virtual string AttributesToString()
+        {
             string result(" value='");
 
             result += GetOpAsString();
