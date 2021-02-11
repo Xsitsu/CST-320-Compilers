@@ -85,6 +85,7 @@
 %type <params_node> params
 %type <expr_node> param
 %type <expr_node> expr
+%type <int_val> op
 %type <expr_node> addit
 %type <expr_node> term
 %type <expr_node> fact
