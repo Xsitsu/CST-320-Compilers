@@ -56,7 +56,7 @@ class cOpNode : public cAstNode
                     result += "LT";
                     break;
                 default:
-                    result += (char)m_op;
+                    result += static_cast<char>m_op;
                     break;
             }
 
