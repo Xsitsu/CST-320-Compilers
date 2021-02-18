@@ -52,6 +52,7 @@ class cVisitor
         virtual void Visit(cWhileNode *node);
         virtual void Visit(cDeclNode *node);
         virtual void Visit(cDeclsNode *node);
+        virtual void Visit(cBaseTypeNode *node);
         virtual void Visit(cVarDeclNode *node);
         virtual void Visit(cArrayDeclNode *node);
         virtual void Visit(cStructDeclNode *node);
