@@ -29,7 +29,7 @@ class cAssignNode : public cStmtNode
                 cSymbol *rvalSym = nullptr;
 
                 if (lvalType != nullptr) lvalSym = lvalType->GetName();
-                if (rvalType != nullptr) lvalSym = lvalType->GetName();
+                if (rvalType != nullptr) rvalSym = rvalType->GetName();
 
                 std::string error = "Cannot assign ";
                 if (rvalSym != nullptr) error += rvalSym->GetName();
