@@ -45,7 +45,14 @@ class cFuncDeclNode : public cDeclNode
 
         virtual cDeclNode* GetType()
         {
-            return static_cast<cSymbol*>(GetChild(0))->GetDecl(); 
+            cSymbol *type = this->GetTypeSymbol();
+            if (type != nullptr) return type->GetDecl(); 
+            return nullptr;
+        }
+
+        cSymbol* GetTypeSymbol()
+        {
+            return static_cast<cSymbol*>(GetChild(0));
         }
 
         virtual cSymbol* GetName()
