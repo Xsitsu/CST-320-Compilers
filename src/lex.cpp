@@ -33,11 +33,3 @@ void DecreaseScope()
 {
     g_symbolTable->DecreaseScope();
 }
-
-void SemanticError(std::string error)
-{
-    std::cout << "ERROR: " << error << " near line "
-              << yylineno << "\n";
-    g_semanticErrorHappened = true;
-    yynerrs++;
-}

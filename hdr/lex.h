@@ -20,7 +20,6 @@ extern FILE *yyin;                      // FILE pointer for input
 extern cAstNode *yyast_root;            // root of AST
 
 extern cSymbolTable *g_symbolTable;
-extern bool g_semanticErrorHappened;
 
 cSymbol *Insert(const char *text);
 void IncreaseScope();

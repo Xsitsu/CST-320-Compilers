@@ -41,6 +41,8 @@
     int yyerror(const char *msg);
 
     cAstNode *yyast_root;
+
+    static bool g_semanticErrorHappened = false;
 %}
 
 %start  program
@@ -222,3 +224,13 @@ int yyerror(const char *msg)
 
     return 0;
 }
+
+// Function that gets called when a semantic error happens
+void SemanticError(std::string error)
+{
+    std::cout << "ERROR: " << error << " near line "
+              << yylineno << "\n";
+    g_semanticErrorHappened = true;
+    yynerrs++;
+}
+
