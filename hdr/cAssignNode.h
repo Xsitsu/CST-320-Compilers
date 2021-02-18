@@ -25,8 +25,11 @@ class cAssignNode : public cStmtNode
 
             if (lvalType == nullptr || !lvalType->IsCompatible(rvalType))
             {
-                cSymbol *lvalSym = lvalType->GetName();
-                cSymbol *rvalSym = rvalType->GetName();
+                cSymbol *lvalSym = nullptr;
+                cSymbol *rvalSym = nullptr;
+
+                if (lvalType != nullptr) lvalSym = lvalType->GetName();
+                if (rvalType != nullptr) lvalSym = lvalType->GetName();
 
                 std::string error = "Cannot assign ";
                 if (rvalSym != nullptr) error += rvalSym->GetName();
