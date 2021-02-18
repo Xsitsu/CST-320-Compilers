@@ -19,7 +19,7 @@ class cVarExprNode : public cExprNode
 
             if (!g_symbolTable->Find(name->GetName()))
             {
-                std::string error = "Variable ";
+                std::string error = "Symbol ";
                 error += name->GetName();
                 error += " not defined";
                 SemanticError(error);
