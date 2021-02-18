@@ -19,6 +19,7 @@ class cWhileNode;
 class cDeclNode;
 class cDeclsNode;
 class cVarDeclNode;
+class cBaseTypeNode;
 class cArrayDeclNode;
 class cStructDeclNode;
 class cFuncDeclNode;
