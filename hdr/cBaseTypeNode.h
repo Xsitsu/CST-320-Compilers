@@ -30,6 +30,11 @@ class cBaseTypeNode : public cDeclNode
 
         virtual cDeclNode* GetType() { return this; }
 
+        virtual cSymbol* GetName()
+        {
+            return g_symbolTable.Find(m_name);
+        }
+
     protected:
         std::string m_name;
         int m_size;
