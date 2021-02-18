@@ -34,6 +34,7 @@ int main(int argc, char **argv)
     int test_mode = TEST_MODE_NONE;
 
     g_symbolTable = new cSymbolTable();
+    g_semanticErrorHappened = false;
 
     if (argc > 1)
     {

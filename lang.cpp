@@ -24,6 +24,7 @@ int main(int argc, char **argv)
     std::cout << "Jacob Locke" << std::endl;
 
     g_symbolTable = new cSymbolTable();
+    g_semanticErrorHappened = false;
     result = test_parse_tree(argc, argv);
 
     return result;

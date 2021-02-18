@@ -10,6 +10,7 @@
 #include <string>
 
 cSymbolTable *g_symbolTable;
+bool g_semanticErrorHappened;
 
 cSymbol *Insert(const char *text)
 {
@@ -31,4 +32,12 @@ void IncreaseScope()
 void DecreaseScope()
 {
     g_symbolTable->DecreaseScope();
+}
+
+void SemanticError(std::string error)
+{
+    std::cout << "ERROR: " << error << " near line "
+              << yylineno << "\n";
+    g_semanticErrorHappened = true;
+    yynerrs++;
 }
