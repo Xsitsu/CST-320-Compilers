@@ -84,10 +84,11 @@ def run_test_suite(test_suite):
             subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
 
         if test_mode == 4:
+            output_file = open(OUT_TEST_FILE, mode='r')
             ch = output_file.read(1)
+            output_file.close()
             if ch == '<':
                 subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
-            output_file.seek(0)
 
         output_file = open(OUT_TEST_FILE, mode='r')
         test_output = output_file.read()
