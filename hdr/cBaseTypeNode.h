@@ -28,7 +28,7 @@ class cBaseTypeNode : public cDeclNode
 
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 
-        virtual void cDeclNode* GetType() { return this; }
+        virtual cDeclNode* GetType() { return this; }
 
     protected:
         std::string m_name;
