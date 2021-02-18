@@ -38,13 +38,11 @@ class cIntExprNode : public cExprNode
             {
                 cSymbol *sym = g_symbolTable->Find("char");
                 if (sym != nullptr) return sym->GetDecl();
-                return nullptr;
             }
             else
             {
                 cSymbol *sym = g_symbolTable->Find("int");
                 if (sym != nullptr) return sym->GetDecl();
-                return nullptr;
             }
 
             return nullptr;
