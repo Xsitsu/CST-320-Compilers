@@ -24,8 +24,8 @@ TEST_SUITES = [
         "enabled": True
     },
     {
-        "name": "Lab 5 Custom",
-        "test_dir": "lab5_custom/",
+        "name": "Lab 4 Custom",
+        "test_dir": "lab4_custom/",
         "test_mode": 3,
         "enabled": True
     },
