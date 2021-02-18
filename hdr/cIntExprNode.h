@@ -36,11 +36,15 @@ class cIntExprNode : public cExprNode
         {
             if (m_value <= 127 && m_value >= -128)
             {
-                return g_symbolTable->Find("char")->GetDecl();
+                cSymbol *sym = g_symbolTable->Find("char");
+                if (sym != nullptr) return sym->GetDecl();
+                return nullptr;
             }
             else
             {
-                return g_symbolTable->Find("int")->GetDecl();
+                cSymbol *sym = g_symbolTable->Find("int");
+                if (sym != nullptr) return sym->GetDecl();
+                return nullptr;
             }
 
             return nullptr;

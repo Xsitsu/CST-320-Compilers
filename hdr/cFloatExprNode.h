@@ -33,7 +33,9 @@ class cFloatExprNode : public cExprNode
 
         virtual cDeclNode *GetType()
         {
-            return g_symbolTable->Find("float")->GetDecl();
+            cSymbol *sym = g_symbolTable->Find("float");
+            if (sym != nullptr) return sym->GetDecl();
+            return nullptr;
         }
 
     protected:
