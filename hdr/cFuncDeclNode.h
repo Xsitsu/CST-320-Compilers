@@ -47,4 +47,9 @@ class cFuncDeclNode : public cDeclNode
         {
             return static_cast<cSymbol*>(GetChild(0))->GetDecl(); 
         }
+
+        virtual cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(1));
+        }
 };

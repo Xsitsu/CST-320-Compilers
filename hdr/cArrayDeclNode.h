@@ -51,6 +51,11 @@ class cArrayDeclNode : public cDeclNode
 
         virtual cDeclNode* GetType() { return this; }
 
+        virtual cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(1));
+        }
+
 protected:
         int m_size;
 };
