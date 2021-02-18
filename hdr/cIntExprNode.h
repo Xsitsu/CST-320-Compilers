@@ -38,11 +38,15 @@ class cIntExprNode : public cExprNode
             {
                 cSymbol *sym = g_symbolTable->Find("char");
                 if (sym != nullptr) return sym->GetDecl();
+
+                SemanticError("char not defined as symbol");
             }
             else
             {
                 cSymbol *sym = g_symbolTable->Find("int");
                 if (sym != nullptr) return sym->GetDecl();
+
+                SemanticError("int not defined as symbol");
             }
 
             return nullptr;
