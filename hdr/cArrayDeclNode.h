@@ -49,6 +49,8 @@ class cArrayDeclNode : public cDeclNode
             return " count=\"" + std::to_string(m_size) + "\"";
         }
 
+        virtual cDeclNode* GetType() { return this; }
+
 protected:
         int m_size;
 };
