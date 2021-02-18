@@ -23,7 +23,7 @@ class cAssignNode : public cStmtNode
             cDeclNode *lvalType = lval->GetType();
             cDeclNode *rvalType = rval->GetType();
 
-            if (lvalType == nullptr || !lvalType->IsCompatible(rvalType))
+            if (lvalType == nullptr || rvalType == nullptr || !lvalType->IsCompatible(rvalType))
             {
                 cSymbol *lvalSym = nullptr;
                 cSymbol *rvalSym = nullptr;
