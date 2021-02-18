@@ -32,7 +32,7 @@ class cBaseTypeNode : public cDeclNode
 
         virtual cSymbol* GetName()
         {
-            return g_symbolTable.Find(m_name);
+            return g_symbolTable->Find(m_name);
         }
 
     protected:
