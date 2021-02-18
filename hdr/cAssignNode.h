@@ -19,6 +19,18 @@ class cAssignNode : public cStmtNode
         {
             AddChild(lval);
             AddChild(rval);
+
+            cDeclNode *lvalType = lval->GetType();
+            cDeclNode *rvalType = rval->GetType();
+
+            if (lvalType == nullptr || !lvalType->IsCompatible(rvalType))
+            {
+                std::string error = "Cannot assign ";
+                error += rvalType->GetName();
+                error += " to ";
+                error += lvalType->GetName();
+                SemanticError(error);
+            }
         }
 
         virtual string NodeType() { return string("assign"); }

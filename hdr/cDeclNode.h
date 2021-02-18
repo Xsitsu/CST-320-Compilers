@@ -17,10 +17,21 @@ class cDeclNode : public cAstNode
         cDeclNode() : cAstNode() {}
 
         virtual cDeclNode *GetType() = 0;
+        virtual cSymbol *GetName() = 0;
 
         virtual bool IsNumber() { return this->IsChar() || this->IsInt() || this->IsFloat(); }
         virtual bool IsChar() { return false; }
         virtual bool IsInt() { return false; }
         virtual bool IsFloat() { return false; }
+
+        bool IsCompatible(cDeclNode *other)
+        {
+            if (other == nullptr) return false;
+            if (this == decl) return true;
+            if (this->IsFloat()) return true;
+            if (this->IsInt() && other->IsChar()) return true;
+
+            return false;
+        }
 
 };
