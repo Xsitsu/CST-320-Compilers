@@ -216,6 +216,11 @@ fact:        '(' expr ')'       { $$ = $2; }
 
 %%
 
+#define CHECK_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; } }
+#define PROP_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; YYERROR; } }
+
 // Function to format error messages
 int yyerror(const char *msg)
 {
