@@ -17,4 +17,10 @@ class cDeclNode : public cAstNode
         cDeclNode() : cAstNode() {}
 
         virtual cDeclNode *GetType() = 0;
+
+        virtual bool IsNumber() { return this->IsChar() || this->IsInt || this->IsFloat() }
+        virtual bool IsChar() { return false; }
+        virtual bool IsInt() { return false; }
+        virtual bool IsFloat() { return false; }
+
 };
