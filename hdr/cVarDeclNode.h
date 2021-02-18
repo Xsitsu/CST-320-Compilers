@@ -35,7 +35,10 @@ class cVarDeclNode : public cDeclNode
             }
             else
             {
-                // Redefinition error
+                std::string error = "Symbol ";
+                error += name->GetName();
+                error += " already exists in current scope";
+                SemanticError(error);
             }
         }
 
