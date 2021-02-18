@@ -31,6 +31,7 @@ class cVarDeclNode : public cDeclNode
 
                 g_symbolTable->Insert(toInsert);
 
+                toInsert->SetDecl(this);
                 AddChild(toInsert);
             }
             else
