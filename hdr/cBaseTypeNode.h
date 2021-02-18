@@ -10,6 +10,8 @@
 #include "cDeclNode.h"
 #include "cSymbolTable.h"
 
+#include "lex.h"
+
 class cBaseTypeNode : public cDeclNode
 {
     public:
