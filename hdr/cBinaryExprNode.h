@@ -39,8 +39,8 @@ class cBinaryExprNode : public cExprNode
             cDeclNode *left;
             cDeclNode *right;
 
-            left = GetLeft()->GetDecl();
-            right = GetRight()->GetDecl();
+            left = GetLeft()->GetType();
+            right = GetRight()->GetType();
 
             if (left == nullptr || right == nullptr)
             {
