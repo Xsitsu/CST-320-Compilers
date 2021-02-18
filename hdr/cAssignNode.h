@@ -26,9 +26,9 @@ class cAssignNode : public cStmtNode
             if (lvalType == nullptr || !lvalType->IsCompatible(rvalType))
             {
                 std::string error = "Cannot assign ";
-                error += rvalType->GetName();
+                error += rvalType->GetName()->GetName();
                 error += " to ";
-                error += lvalType->GetName();
+                error += lvalType->GetName()->GetName();
                 SemanticError(error);
             }
         }

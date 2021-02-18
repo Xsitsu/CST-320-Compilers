@@ -27,7 +27,7 @@ class cDeclNode : public cAstNode
         bool IsCompatible(cDeclNode *other)
         {
             if (other == nullptr) return false;
-            if (this == decl) return true;
+            if (this == other) return true;
             if (this->IsFloat()) return true;
             if (this->IsInt() && other->IsChar()) return true;
 
