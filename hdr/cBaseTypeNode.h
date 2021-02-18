@@ -22,9 +22,9 @@ class cBaseTypeNode : public cDeclNode
             m_isFloat = isFloat;
         }
 
-        bool IsFloat() { return m_isFloat; }
-        bool IsInt() { return (!m_isFloat) && (m_size>1); }
-        bool IsChar() { return (!m_isFloat && m_size==1); }
+        virtual bool IsFloat() { return m_isFloat; }
+        virtual bool IsInt() { return (!m_isFloat) && (m_size>1); }
+        virtual bool IsChar() { return (!m_isFloat && m_size==1); }
 
         virtual string NodeType() { return "base_type"; }
 
