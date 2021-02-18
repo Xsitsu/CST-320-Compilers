@@ -24,9 +24,15 @@ TEST_SUITES = [
         "enabled": True
     },
     {
-        "name": "Lab 5 Custom",
-        "test_dir": "lab5_custom/",
+        "name": "Lab 4 Custom",
+        "test_dir": "lab4_custom/",
         "test_mode": 3,
+        "enabled": True
+    },
+    {
+        "name": "Lab 5 Provided",
+        "test_dir": "lab5_provided/",
+        "test_mode": 4,
         "enabled": True
     },
 ]
@@ -76,6 +82,13 @@ def run_test_suite(test_suite):
 
         if test_mode == 2 or test_mode == 3:
             subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
+
+        if test_mode == 4:
+            output_file = open(OUT_TEST_FILE, mode='r')
+            ch = output_file.read(1)
+            output_file.close()
+            if ch == '<':
+                subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
 
         output_file = open(OUT_TEST_FILE, mode='r')
         test_output = output_file.read()

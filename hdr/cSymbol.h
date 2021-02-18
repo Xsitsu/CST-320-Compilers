@@ -26,6 +26,9 @@ class cSymbol : public cAstNode
         bool IsType();
         void SetIsType(bool val);
 
+        void SetDecl(cDeclNode *decl);
+        cDeclNode* GetDecl();
+
         virtual string AttributesToString();
         virtual string NodeType();
         virtual void Visit(cVisitor *visitor);
@@ -34,4 +37,5 @@ class cSymbol : public cAstNode
         long long m_id;                 // Unique ID for this symbol
         string m_name;                  // name of symbol
         bool m_isType;
+        cDeclNode *m_decl;
 };

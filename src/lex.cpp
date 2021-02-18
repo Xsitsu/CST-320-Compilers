@@ -10,6 +10,7 @@
 #include <string>
 
 cSymbolTable *g_symbolTable;
+bool g_semanticErrorHappened;
 
 cSymbol *Insert(const char *text)
 {

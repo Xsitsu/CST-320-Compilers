@@ -41,6 +41,8 @@
     int yyerror(const char *msg);
 
     cAstNode *yyast_root;
+
+    static bool g_semanticErrorHappened = false;
 %}
 
 %start  program
@@ -214,6 +216,11 @@ fact:        '(' expr ')'       { $$ = $2; }
 
 %%
 
+#define CHECK_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; } }
+#define PROP_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; YYERROR; } }
+
 // Function to format error messages
 int yyerror(const char *msg)
 {
@@ -222,3 +229,13 @@ int yyerror(const char *msg)
 
     return 0;
 }
+
+// Function that gets called when a semantic error happens
+void SemanticError(std::string error)
+{
+    std::cout << "ERROR: " << error << " near line "
+              << yylineno << "\n";
+    g_semanticErrorHappened = true;
+    yynerrs++;
+}
+

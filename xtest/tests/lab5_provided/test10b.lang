@@ -1,0 +1,30 @@
+program
+{
+    struct
+    {
+       int a;        // 4
+       int b;        // 5
+    } struct_1;      // 6
+
+    struct
+    {
+       int c;        // 7
+       int b;        // 8
+       struct_1 d;   // 9
+    } struct_2;      // 10
+
+    struct_1 aa;     // 11
+    struct_2 bb;     // 12
+    int cc;          // 13
+    struct_2 dd;     // 14
+
+    bb.d.a = 3;
+    aa.a = 1;
+    aa.b = aa.a;
+
+    bb.c = 1;
+    bb.b = bb.c;
+    bb.d.a = 3;
+    bb.d.b = bb.d.a;
+    dd = bb;
+}

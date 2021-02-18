@@ -52,12 +52,12 @@ identifier                  [a-zA-Z_][a-zA-Z0-9_]*
 
 
  /*Operators*/
-"!="                            DO_RETURN(NOT_EQUALS);
-"=="                            DO_RETURN(EQUALS);
-"&&"                            DO_RETURN(AND);
-"||"                            DO_RETURN(OR);
-">="                            DO_RETURN(GE);
-"<="                            DO_RETURN(LE);
+"!="                            { yylval.int_val = NOT_EQUALS; DO_RETURN(NOT_EQUALS); }
+"=="                            { yylval.int_val = EQUALS; DO_RETURN(EQUALS); }
+"&&"                            { yylval.int_val = AND; DO_RETURN(AND); }
+"||"                            { yylval.int_val = OR; DO_RETURN(OR); }
+">="                            { yylval.int_val = GE; DO_RETURN(GE); }
+"<="                            { yylval.int_val = LE; DO_RETURN(LE); }
 
  /*Keywords*/
 "program"                       DO_RETURN(PROGRAM);

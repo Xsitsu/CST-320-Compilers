@@ -18,6 +18,7 @@ void cVisitor::Visit(cReturnNode *node)       { node->VisitAllChildren(this); }
 void cVisitor::Visit(cWhileNode *node)        { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cVisitor::Visit(cDeclsNode *node)        { node->VisitAllChildren(this); }
+void cVisitor::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
 void cVisitor::Visit(cVarDeclNode *node)      { node->VisitAllChildren(this); }
 void cVisitor::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
 void cVisitor::Visit(cStructDeclNode *node)   { node->VisitAllChildren(this); }

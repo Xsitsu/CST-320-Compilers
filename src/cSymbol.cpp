@@ -30,6 +30,16 @@ void cSymbol::SetIsType(bool val)
     m_isType = val;
 }
 
+void cSymbol::SetDecl(cDeclNode *decl)
+{
+    m_decl = decl;
+}
+
+cDeclNode* cSymbol::GetDecl()
+{
+    return m_decl;
+}
+
 string cSymbol::AttributesToString()
 {
     string result(" id=\"");

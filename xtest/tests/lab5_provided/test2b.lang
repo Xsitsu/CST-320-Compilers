@@ -1,0 +1,27 @@
+program
+{
+    int aaa;
+    {
+        int aaa;
+        int bbb;
+        aaa = 1;
+        bbb = 1;
+        ccc = 1;
+        {
+            int aaa;
+            int bbb;
+            int ccc;
+
+            aaa = 1;
+            bbb = 1;
+            ccc = 1;
+        }
+        aaa = 1;
+        bbb = 1;
+        ccc = 1;
+    }
+
+    aaa = 1;
+    bbb = 1;
+    ccc = 1;
+}

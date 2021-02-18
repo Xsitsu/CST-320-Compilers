@@ -42,4 +42,21 @@ class cFuncDeclNode : public cDeclNode
 
         virtual string NodeType() { return string("func"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        virtual cDeclNode* GetType()
+        {
+            cSymbol *type = this->GetTypeSymbol();
+            if (type != nullptr) return type->GetDecl(); 
+            return nullptr;
+        }
+
+        cSymbol* GetTypeSymbol()
+        {
+            return static_cast<cSymbol*>(GetChild(0));
+        }
+
+        virtual cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(1));
+        }
 };

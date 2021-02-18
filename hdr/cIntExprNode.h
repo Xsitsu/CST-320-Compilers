@@ -14,6 +14,8 @@
 #include "cAstNode.h"
 #include "cExprNode.h"
 
+#include "lex.h"
+
 class cIntExprNode : public cExprNode
 {
     public:
@@ -29,6 +31,27 @@ class cIntExprNode : public cExprNode
         }
         virtual string NodeType() { return string("int"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        virtual cDeclNode *GetType()
+        {
+            if (m_value <= 127 && m_value >= -128)
+            {
+                cSymbol *sym = g_symbolTable->Find("char");
+                if (sym != nullptr) return sym->GetDecl();
+
+                SemanticError("char not defined as symbol");
+            }
+            else
+            {
+                cSymbol *sym = g_symbolTable->Find("int");
+                if (sym != nullptr) return sym->GetDecl();
+
+                SemanticError("int not defined as symbol");
+            }
+
+            return nullptr;
+        }
+
     protected:
         int m_value;        // value of integer constant (literal)
 };

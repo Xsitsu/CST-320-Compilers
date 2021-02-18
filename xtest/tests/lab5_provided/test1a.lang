@@ -1,0 +1,9 @@
+program
+{
+    int aa;
+    int bb;
+    float aa;
+
+    bb = 1;
+}
+

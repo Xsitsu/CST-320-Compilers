@@ -1,0 +1,5 @@
+ERROR: foo previously defined with different return type near line 4
+ERROR: bar redeclared with a different number of parameters near line 7
+ERROR: stuff previously defined with different parameters near line 10
+ERROR: other already has a definition near line 23
+4 Errors in compile

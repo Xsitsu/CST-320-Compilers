@@ -24,3 +24,5 @@ extern cSymbolTable *g_symbolTable;
 cSymbol *Insert(const char *text);
 void IncreaseScope();
 void DecreaseScope();
+
+void SemanticError(std::string error);

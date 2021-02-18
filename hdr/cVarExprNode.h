@@ -16,6 +16,14 @@ class cVarExprNode : public cExprNode
         cVarExprNode(cSymbol *name) : cExprNode()
         {
             AddChild(name);
+
+            if (!g_symbolTable->Find(name->GetName()))
+            {
+                std::string error = "Symbol ";
+                error += name->GetName();
+                error += " not defined";
+                SemanticError(error);
+            }
         }
 
         void Insert(cSymbol *name)
@@ -26,6 +34,23 @@ class cVarExprNode : public cExprNode
         void Insert(cExprNode *index)
         {
             AddChild(index);
+        }
+
+        cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(0));
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            cSymbol *name = this->GetName();
+            cDeclNode *varDecl = name->GetDecl();
+            if (varDecl != nullptr)
+            {
+                return varDecl->GetType();
+            }
+
+            return nullptr;
         }
 
         virtual string NodeType() { return string("varref"); }

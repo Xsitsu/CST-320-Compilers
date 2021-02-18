@@ -31,12 +31,31 @@ class cVarDeclNode : public cDeclNode
 
                 g_symbolTable->Insert(toInsert);
 
+                toInsert->SetDecl(this);
                 AddChild(toInsert);
             }
             else
             {
-                // Redefinition error
+                std::string error = "Symbol ";
+                error += name->GetName();
+                error += " already defined in current scope";
+                SemanticError(error);
             }
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            return this->GetTypeSymbol()->GetDecl();
+        }
+
+        cSymbol* GetTypeSymbol()
+        {
+            return static_cast<cSymbol*>(GetChild(0));
+        }
+
+        cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(1));
         }
 
         virtual string NodeType() { return string("var_decl"); }

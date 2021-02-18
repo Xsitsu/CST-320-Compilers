@@ -4,24 +4,26 @@
 //
 
 #include "cSymbolTable.h"
+#include "cBaseTypeNode.h"
 
 #include <stdlib.h>
 #include <string>
 
+cSymbol* CreateBaseType(std::string name, int size, bool isFloat)
+{
+    cSymbol *sym = new cSymbol(name);
+    cBaseTypeNode *baseDecl = new cBaseTypeNode(name, size, isFloat);
+    sym->SetDecl(baseDecl);
+    sym->SetIsType(true);
+    return sym;
+}
+
 cSymbolTable::cSymbolTable()
 {
     this->IncreaseScope(); // Global Scope
-    cSymbol *sym1 = new cSymbol("char");
-    cSymbol *sym2 = new cSymbol("int");
-    cSymbol *sym3 = new cSymbol("float");
-
-    sym1->SetIsType(true);
-    sym2->SetIsType(true);
-    sym3->SetIsType(true);
-
-    this->Insert(sym1);
-    this->Insert(sym2);
-    this->Insert(sym3);
+    this->Insert(CreateBaseType("char", 1, false));
+    this->Insert(CreateBaseType("int", 4, false));
+    this->Insert(CreateBaseType("float", 4, true));
 }
 
 symbolTable_t *cSymbolTable::IncreaseScope()
