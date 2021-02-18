@@ -28,6 +28,23 @@ class cVarExprNode : public cExprNode
             AddChild(index);
         }
 
+        cSymbol* GetName()
+        {
+            return static_cast<cSymbol*>(GetChild(0));
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            cSymbol *name = this->GetName();
+            cDeclNode *varDecl = name->GetDecl();
+            if (varDecl != nullptr)
+            {
+                return varDecl->GetType()->GetDecl();
+            }
+
+            return nullptr;
+        }
+
         virtual string NodeType() { return string("varref"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 };

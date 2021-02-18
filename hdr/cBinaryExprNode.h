@@ -23,4 +23,33 @@ class cBinaryExprNode : public cExprNode
         
         virtual string NodeType() { return string("expr"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        virtual cDeclNode *GetType()
+        {
+            cDeclNode *left;
+            cDeclNode *right;
+
+            left = GetLeft()->GetDecl();
+            right = GetRight()->GetDecl();
+
+            if (left == nullptr || right == nullptr)
+            {
+                return nullptr;
+            }
+
+            if (!left->IsNumber() || !right->IsNumber())
+            {
+                // TODO: Semantic error
+                return nullptr;
+            }
+
+            if (left == right) return left;
+            if (left->IsFloat()) return left;
+            if (right->IsFloat()) return right;
+            if (left->IsInt()) return left;
+            if (right->IsInt()) return right;
+
+            // Shouldn't happen
+            return nullptr;
+        }
 };
