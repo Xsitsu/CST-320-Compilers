@@ -1,0 +1,5 @@
+ERROR: cc is not a struct near line 21
+ERROR: e is not a field of bb near line 22
+ERROR: f is not a field of bb near line 23
+ERROR: bb.c is not a struct near line 25
+4 Errors in compile

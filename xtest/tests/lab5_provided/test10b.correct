@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<program>
+  <block>
+    <decls>
+      <struct_decl>
+        <decls>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="4" name="a"/>
+          </var_decl>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="5" name="b"/>
+          </var_decl>
+        </decls>
+        <sym id="6" name="struct_1"/>
+      </struct_decl>
+      <struct_decl>
+        <decls>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="7" name="c"/>
+          </var_decl>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="8" name="b"/>
+          </var_decl>
+          <var_decl>
+            <sym id="6" name="struct_1"/>
+            <sym id="9" name="d"/>
+          </var_decl>
+        </decls>
+        <sym id="10" name="struct_2"/>
+      </struct_decl>
+      <var_decl>
+        <sym id="6" name="struct_1"/>
+        <sym id="11" name="aa"/>
+      </var_decl>
+      <var_decl>
+        <sym id="10" name="struct_2"/>
+        <sym id="12" name="bb"/>
+      </var_decl>
+      <var_decl>
+        <sym id="2" name="int"/>
+        <sym id="13" name="cc"/>
+      </var_decl>
+      <var_decl>
+        <sym id="10" name="struct_2"/>
+        <sym id="14" name="dd"/>
+      </var_decl>
+    </decls>
+    <stmts>
+      <assign>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="9" name="d"/>
+          <sym id="4" name="a"/>
+        </varref>
+        <int value="3"/>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="11" name="aa"/>
+          <sym id="4" name="a"/>
+        </varref>
+        <int value="1"/>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="11" name="aa"/>
+          <sym id="5" name="b"/>
+        </varref>
+        <varref>
+          <sym id="11" name="aa"/>
+          <sym id="4" name="a"/>
+        </varref>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="7" name="c"/>
+        </varref>
+        <int value="1"/>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="8" name="b"/>
+        </varref>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="7" name="c"/>
+        </varref>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="9" name="d"/>
+          <sym id="4" name="a"/>
+        </varref>
+        <int value="3"/>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="9" name="d"/>
+          <sym id="5" name="b"/>
+        </varref>
+        <varref>
+          <sym id="12" name="bb"/>
+          <sym id="9" name="d"/>
+          <sym id="4" name="a"/>
+        </varref>
+      </assign>
+      <assign>
+        <varref>
+          <sym id="14" name="dd"/>
+        </varref>
+        <varref>
+          <sym id="12" name="bb"/>
+        </varref>
+      </assign>
+    </stmts>
+  </block>
+</program>

@@ -1,0 +1,23 @@
+program
+{
+    char aa;
+    int bb;
+    float cc;
+
+    aa = 1;
+    bb = 2;
+    cc = 3.4;
+
+    bb = aa;
+    cc = bb;
+    cc = aa;
+    aa = 127;
+    aa = 0;
+
+    aa = 129;
+    aa = 128;
+    aa = bb;
+    aa = cc;
+    bb = cc;
+}
+

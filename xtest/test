@@ -29,6 +29,12 @@ TEST_SUITES = [
         "test_mode": 3,
         "enabled": True
     },
+    {
+        "name": "Lab 5 Provided",
+        "test_dir": "lab5_provided/",
+        "test_mode": 3,
+        "enabled": True
+    },
 ]
 
 TEST_DIR = "xtest/tests/"

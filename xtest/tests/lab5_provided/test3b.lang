@@ -1,0 +1,31 @@
+program
+{
+    char aa;
+    int bb;
+    float cc;
+
+    // these should be OK
+    aa = 2 * 4;
+    bb = 200 * 400;
+    cc = 3.4 * 4.5;
+    cc = 4 * 4.5;
+    cc = 304 * 4.5;
+
+    aa = 2 * 4 + 3 - 4 / 2 % 5;
+    bb = 200 * 400 / 1000 + 500 - 200;
+    cc = 3.4 * 4.5 + 5.3 / 3.8;
+
+    aa = aa - 5;
+    bb = bb + aa;
+    cc = cc + aa + bb;
+
+    // the rest are errors
+    aa = 2 - 400;
+    bb = 200 / 4.00;
+
+    aa = 2 - bb;
+    aa = 100 + cc;
+    bb = bb + 3.8;
+    bb = 8 - cc;
+}
+

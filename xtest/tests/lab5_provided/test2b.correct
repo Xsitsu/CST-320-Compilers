@@ -1,0 +1,5 @@
+ERROR: Symbol ccc not defined near line 9
+ERROR: Symbol ccc not defined near line 21
+ERROR: Symbol bbb not defined near line 25
+ERROR: Symbol ccc not defined near line 26
+4 Errors in compile

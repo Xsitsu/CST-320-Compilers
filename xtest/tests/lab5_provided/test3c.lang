@@ -1,0 +1,15 @@
+// make sure we detect correct function return types
+program
+{
+    int foo(int a) { return 0; }
+    float bar(int a) { return 0.0; }
+
+    int aa;
+    float bb;
+
+    aa = foo(2000);
+    aa = bar(2000);
+
+    bb = foo(2000);
+    bb = bar(2000);
+}

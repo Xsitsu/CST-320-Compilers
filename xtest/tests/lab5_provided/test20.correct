@@ -1,0 +1,957 @@
+<?xml version="1.0"?>
+<program>
+  <block>
+    <stmts>
+      <block>
+        <stmts>
+          <block>
+            <stmts>
+              <print>
+                <int value="5"/>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <stmts>
+              <print>
+                <int value="1"/>
+              </print>
+              <print>
+                <int value="2"/>
+              </print>
+              <print>
+                <int value="3"/>
+              </print>
+              <print>
+                <int value="4"/>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <stmts>
+              <print>
+                <expr>
+                  <expr>
+                    <float value="1.700000"/>
+                    <op value="*"/>
+                    <int value="5"/>
+                  </expr>
+                  <op value="+"/>
+                  <expr>
+                    <int value="2"/>
+                    <op value="*"/>
+                    <float value="3.500000"/>
+                  </expr>
+                </expr>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="4" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="5" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="6" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <print>
+                <int value="1"/>
+              </print>
+              <print>
+                <int value="2"/>
+              </print>
+              <print>
+                <varref>
+                  <sym id="4" name="aaa"/>
+                </varref>
+              </print>
+              <print>
+                <int value="4"/>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="7" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="8" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="9" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="7" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <varref>
+                      <sym id="9" name="ccc"/>
+                    </varref>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="8" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="10" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="11" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="12" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="10" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="11" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="10" name="aaa"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </if>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="13" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="14" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="15" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="13" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="14" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="13" name="aaa"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </if>
+              <while>
+                <int value="2"/>
+                <print>
+                  <int value="3"/>
+                </print>
+              </while>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="16" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="17" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="18" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="16" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="17" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="16" name="aaa"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </if>
+              <while>
+                <int value="2"/>
+                <print>
+                  <int value="3"/>
+                </print>
+              </while>
+              <while>
+                <int value="4"/>
+                <block>
+                  <stmts>
+                    <print>
+                      <int value="5"/>
+                    </print>
+                    <print>
+                      <int value="6"/>
+                    </print>
+                  </stmts>
+                </block>
+              </while>
+              <if>
+                <varref>
+                  <sym id="16" name="aaa"/>
+                </varref>
+                <stmts>
+                  <block>
+                    <stmts>
+                      <print>
+                        <int value="1"/>
+                      </print>
+                      <print>
+                        <int value="2"/>
+                      </print>
+                    </stmts>
+                  </block>
+                </stmts>
+              </if>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="19" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="20" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="21" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="19" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="20" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="19" name="aaa"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </if>
+              <while>
+                <int value="2"/>
+                <print>
+                  <int value="3"/>
+                </print>
+              </while>
+              <while>
+                <int value="4"/>
+                <block>
+                  <stmts>
+                    <print>
+                      <int value="5"/>
+                    </print>
+                    <print>
+                      <int value="6"/>
+                    </print>
+                  </stmts>
+                </block>
+              </while>
+              <if>
+                <varref>
+                  <sym id="19" name="aaa"/>
+                </varref>
+                <stmts>
+                  <block>
+                    <stmts>
+                      <print>
+                        <int value="1"/>
+                      </print>
+                      <print>
+                        <int value="2"/>
+                      </print>
+                    </stmts>
+                  </block>
+                </stmts>
+                <stmts>
+                  <if>
+                    <int value="5"/>
+                    <stmts>
+                      <while>
+                        <int value="7"/>
+                        <print>
+                          <int value="2"/>
+                        </print>
+                      </while>
+                    </stmts>
+                  </if>
+                </stmts>
+              </if>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="22" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="23" name="bbb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="3" name="float"/>
+                <sym id="24" name="ccc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <if>
+                <varref>
+                  <sym id="22" name="aaa"/>
+                </varref>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+              </if>
+              <if>
+                <expr>
+                  <varref>
+                    <sym id="23" name="bbb"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+                <stmts>
+                  <return>
+                    <int value="5"/>
+                  </return>
+                </stmts>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="22" name="aaa"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </if>
+              <while>
+                <int value="2"/>
+                <print>
+                  <int value="3"/>
+                </print>
+              </while>
+              <while>
+                <int value="4"/>
+                <block>
+                  <stmts>
+                    <print>
+                      <int value="5"/>
+                    </print>
+                    <print>
+                      <int value="6"/>
+                    </print>
+                  </stmts>
+                </block>
+              </while>
+              <if>
+                <varref>
+                  <sym id="22" name="aaa"/>
+                </varref>
+                <stmts>
+                  <print>
+                    <int value="1"/>
+                  </print>
+                  <print>
+                    <int value="2"/>
+                  </print>
+                </stmts>
+                <stmts>
+                  <if>
+                    <int value="5"/>
+                    <stmts>
+                      <while>
+                        <int value="7"/>
+                        <print>
+                          <int value="2"/>
+                        </print>
+                      </while>
+                    </stmts>
+                  </if>
+                </stmts>
+              </if>
+              <return>
+                <expr>
+                  <varref>
+                    <sym id="22" name="aaa"/>
+                  </varref>
+                  <op value="+"/>
+                  <int value="5"/>
+                </expr>
+              </return>
+              <assign>
+                <varref>
+                  <sym id="22" name="aaa"/>
+                </varref>
+                <int value="12"/>
+              </assign>
+              <assign>
+                <varref>
+                  <sym id="23" name="bbb"/>
+                </varref>
+                <expr>
+                  <int value="12"/>
+                  <op value="+"/>
+                  <varref>
+                    <sym id="22" name="aaa"/>
+                  </varref>
+                </expr>
+              </assign>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="25" name="aaa"/>
+              </var_decl>
+              <var_decl>
+                <sym id="1" name="char"/>
+                <sym id="26" name="bbb"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <print>
+                <varref>
+                  <sym id="25" name="aaa"/>
+                </varref>
+              </print>
+              <block>
+                <decls>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="27" name="aaa"/>
+                  </var_decl>
+                </decls>
+                <stmts>
+                  <print>
+                    <varref>
+                      <sym id="27" name="aaa"/>
+                    </varref>
+                  </print>
+                  <print>
+                    <varref>
+                      <sym id="26" name="bbb"/>
+                    </varref>
+                  </print>
+                </stmts>
+              </block>
+              <print>
+                <varref>
+                  <sym id="25" name="aaa"/>
+                </varref>
+              </print>
+              <print>
+                <varref>
+                  <sym id="26" name="bbb"/>
+                </varref>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="28" name="aa"/>
+              </var_decl>
+              <struct_decl>
+                <decls>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="29" name="aa"/>
+                  </var_decl>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="30" name="bb"/>
+                  </var_decl>
+                </decls>
+                <sym id="31" name="a_struct"/>
+              </struct_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="32" name="bb"/>
+              </var_decl>
+              <var_decl>
+                <sym id="31" name="a_struct"/>
+                <sym id="33" name="cc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <print>
+                <varref>
+                  <sym id="28" name="aa"/>
+                </varref>
+              </print>
+              <print>
+                <varref>
+                  <sym id="33" name="cc"/>
+                  <sym id="29" name="aa"/>
+                </varref>
+              </print>
+            </stmts>
+          </block>
+          <block>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="34" name="a"/>
+              </var_decl>
+              <func>
+                <sym id="2" name="int"/>
+                <sym id="35" name="f1"/>
+              </func>
+              <func>
+                <sym id="2" name="int"/>
+                <sym id="36" name="f2"/>
+                <args>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="37" name="a"/>
+                  </var_decl>
+                </args>
+              </func>
+              <func>
+                <sym id="3" name="float"/>
+                <sym id="38" name="f3"/>
+                <args>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="39" name="a"/>
+                  </var_decl>
+                  <var_decl>
+                    <sym id="3" name="float"/>
+                    <sym id="40" name="b"/>
+                  </var_decl>
+                </args>
+              </func>
+              <func>
+                <sym id="2" name="int"/>
+                <sym id="41" name="f4"/>
+                <args>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="42" name="a"/>
+                  </var_decl>
+                </args>
+                <stmts>
+                  <return>
+                    <varref>
+                      <sym id="42" name="a"/>
+                    </varref>
+                  </return>
+                </stmts>
+              </func>
+              <func>
+                <sym id="3" name="float"/>
+                <sym id="43" name="f5"/>
+                <args>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="44" name="a"/>
+                  </var_decl>
+                </args>
+                <decls>
+                  <var_decl>
+                    <sym id="2" name="int"/>
+                    <sym id="45" name="b"/>
+                  </var_decl>
+                </decls>
+                <stmts>
+                  <assign>
+                    <varref>
+                      <sym id="44" name="a"/>
+                    </varref>
+                    <varref>
+                      <sym id="45" name="b"/>
+                    </varref>
+                  </assign>
+                </stmts>
+              </func>
+            </decls>
+            <stmts>
+              <funcCall>
+                <sym id="43" name="f5"/>
+                <params>
+                  <varref>
+                    <sym id="34" name="a"/>
+                  </varref>
+                </params>
+              </funcCall>
+              <assign>
+                <varref>
+                  <sym id="34" name="a"/>
+                </varref>
+                <funcCall>
+                  <sym id="41" name="f4"/>
+                  <params>
+                    <varref>
+                      <sym id="34" name="a"/>
+                    </varref>
+                  </params>
+                </funcCall>
+              </assign>
+            </stmts>
+          </block>
+        </stmts>
+      </block>
+      <block>
+        <decls>
+          <struct_decl>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="46" name="a"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="47" name="b"/>
+              </var_decl>
+            </decls>
+            <sym id="48" name="struct_1"/>
+          </struct_decl>
+          <struct_decl>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="49" name="c"/>
+              </var_decl>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="50" name="b"/>
+              </var_decl>
+              <var_decl>
+                <sym id="48" name="struct_1"/>
+                <sym id="51" name="d"/>
+              </var_decl>
+            </decls>
+            <sym id="52" name="struct_2"/>
+          </struct_decl>
+          <var_decl>
+            <sym id="48" name="struct_1"/>
+            <sym id="53" name="aa"/>
+          </var_decl>
+          <var_decl>
+            <sym id="52" name="struct_2"/>
+            <sym id="54" name="bb"/>
+          </var_decl>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="55" name="cc"/>
+          </var_decl>
+          <var_decl>
+            <sym id="52" name="struct_2"/>
+            <sym id="56" name="dd"/>
+          </var_decl>
+        </decls>
+        <stmts>
+          <assign>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="51" name="d"/>
+              <sym id="46" name="a"/>
+            </varref>
+            <int value="3"/>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="53" name="aa"/>
+              <sym id="46" name="a"/>
+            </varref>
+            <int value="1"/>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="53" name="aa"/>
+              <sym id="47" name="b"/>
+            </varref>
+            <varref>
+              <sym id="53" name="aa"/>
+              <sym id="46" name="a"/>
+            </varref>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="49" name="c"/>
+            </varref>
+            <int value="1"/>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="50" name="b"/>
+            </varref>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="49" name="c"/>
+            </varref>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="51" name="d"/>
+              <sym id="46" name="a"/>
+            </varref>
+            <int value="3"/>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="51" name="d"/>
+              <sym id="47" name="b"/>
+            </varref>
+            <varref>
+              <sym id="54" name="bb"/>
+              <sym id="51" name="d"/>
+              <sym id="46" name="a"/>
+            </varref>
+          </assign>
+          <assign>
+            <varref>
+              <sym id="56" name="dd"/>
+            </varref>
+            <varref>
+              <sym id="54" name="bb"/>
+            </varref>
+          </assign>
+        </stmts>
+      </block>
+      <block>
+        <decls>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="71" name="aa"/>
+          </var_decl>
+          <var_decl>
+            <sym id="2" name="int"/>
+            <sym id="72" name="bb"/>
+          </var_decl>
+          <func>
+            <sym id="2" name="int"/>
+            <sym id="73" name="foo"/>
+          </func>
+          <func>
+            <sym id="3" name="float"/>
+            <sym id="74" name="bar"/>
+            <args>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="75" name="aa"/>
+              </var_decl>
+            </args>
+          </func>
+          <func>
+            <sym id="2" name="int"/>
+            <sym id="73" name="foo"/>
+          </func>
+          <func>
+            <sym id="3" name="float"/>
+            <sym id="74" name="bar"/>
+            <args>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="76" name="aa"/>
+              </var_decl>
+            </args>
+          </func>
+          <func>
+            <sym id="2" name="int"/>
+            <sym id="73" name="foo"/>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="77" name="aa"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <return>
+                <varref>
+                  <sym id="77" name="aa"/>
+                </varref>
+              </return>
+            </stmts>
+          </func>
+          <func>
+            <sym id="3" name="float"/>
+            <sym id="74" name="bar"/>
+            <args>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="78" name="aa"/>
+              </var_decl>
+            </args>
+            <decls>
+              <var_decl>
+                <sym id="2" name="int"/>
+                <sym id="79" name="cc"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <return>
+                <expr>
+                  <expr>
+                    <varref>
+                      <sym id="78" name="aa"/>
+                    </varref>
+                    <op value="*"/>
+                    <varref>
+                      <sym id="72" name="bb"/>
+                    </varref>
+                  </expr>
+                  <op value="*"/>
+                  <varref>
+                    <sym id="79" name="cc"/>
+                  </varref>
+                </expr>
+              </return>
+            </stmts>
+          </func>
+        </decls>
+        <stmts>
+          <print>
+            <expr>
+              <varref>
+                <sym id="71" name="aa"/>
+              </varref>
+              <op value="*"/>
+              <varref>
+                <sym id="72" name="bb"/>
+              </varref>
+            </expr>
+          </print>
+        </stmts>
+      </block>
+    </stmts>
+  </block>
+</program>
