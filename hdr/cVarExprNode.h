@@ -16,6 +16,14 @@ class cVarExprNode : public cExprNode
         cVarExprNode(cSymbol *name) : cExprNode()
         {
             AddChild(name);
+
+            if (!g_symbolTable->Find(name->GetName()))
+            {
+                std::string error = "Variable ";
+                error += name->GetName();
+                error += " not defined";
+                SemanticError(error);
+            }
         }
 
         void Insert(cSymbol *name)
