@@ -39,7 +39,7 @@ class cVarExprNode : public cExprNode
             cDeclNode *varDecl = name->GetDecl();
             if (varDecl != nullptr)
             {
-                return varDecl->GetType()->GetDecl();
+                return varDecl->GetType();
             }
 
             return nullptr;

@@ -15,4 +15,6 @@ class cDeclNode : public cAstNode
 {
     public:
         cDeclNode() : cAstNode() {}
+
+        virtual cDeclNode *GetType() = 0;
 };

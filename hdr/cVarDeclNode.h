@@ -39,7 +39,12 @@ class cVarDeclNode : public cDeclNode
             }
         }
 
-        cSymbol* GetType()
+        virtual cDeclNode *GetType()
+        {
+            return this->GetTypeSymbol()->GetDecl();
+        }
+
+        cSymbol* GetTypeSymbol()
         {
             return static_cast<cSymbol*>(GetChild(0));
         }
