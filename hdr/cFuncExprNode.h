@@ -18,6 +18,13 @@ class cFuncExprNode : public cExprNode
         {
             AddChild(name);
             AddChild(params);
+
+            if (!name->GetDecl()->IsFunc())
+            {
+                std::string error = name->GetName();
+                error += " is not a function";
+                SemanticError(error);
+            }
         }
 
         virtual string NodeType() { return string("funcCall"); }

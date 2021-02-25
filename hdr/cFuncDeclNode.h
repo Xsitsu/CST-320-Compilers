@@ -42,6 +42,8 @@ class cFuncDeclNode : public cDeclNode
             AddChild(stmts);
         }
 
+        virtual bool IsFunc() { return true; }
+
         virtual string NodeType() { return string("func"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 
