@@ -19,7 +19,13 @@ class cFuncExprNode : public cExprNode
             AddChild(name);
             AddChild(params);
 
-            if (!name->GetDecl()->IsFunc())
+            if (name->GetDecl() == nullptr)
+            {
+                std::string error name->GetName();
+                error += " is not declared";
+                SemanticError(error);
+            }
+            else if (!name->GetDecl()->IsFunc())
             {
                 std::string error = name->GetName();
                 error += " is not a function";
