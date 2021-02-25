@@ -55,7 +55,50 @@ class cFuncDeclNode : public cDeclNode
 
         void AddParams(cDeclsNode *params)
         {
-            m_children[2] = params;
+            cDeclsNode *oldParams = GetParams();
+            if (oldParams != nullptr)
+            {
+                bool maching = true;
+                bool matchingLen = true;
+                if (params == nullptr)
+                {
+                    matchingLen = false;
+                }
+                else if (params->NumChildren() != oldParams->NumChildren())
+                {
+                    matchingLen = false;
+                }
+                else
+                {
+                    for (int i = 0; i < params->NumChildren(); i++)
+                    {
+                        cDeclNode *oldP = oldParams->GetDecl(i);
+                        cDeclNode *p = params->GetDecl(i);
+                        if (oldP->GetType() != p->GetType())
+                        {
+                            matching = false;
+                        }
+                    }
+                }
+
+                if (matchingLen == false)
+                {
+                    std::string error = GetName()->GetName();
+                    error += " redeclared with a different number of parameters";
+                    SemanticError(error);
+                }
+
+                if (matching == false)
+                {
+                    std::string error = GetName()->GetName();
+                    error += " previously defined with different parameters";
+                    SemanticError(error);
+                }
+            }
+            else
+            {
+                m_children[2] = params;
+            }
         }
 
         void AddDecls(cDeclsNode *decls)
