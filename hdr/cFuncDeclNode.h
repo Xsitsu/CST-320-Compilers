@@ -58,7 +58,7 @@ class cFuncDeclNode : public cDeclNode
             cDeclsNode *oldParams = GetParams();
             if (oldParams != nullptr)
             {
-                bool maching = true;
+                bool matching = true;
                 bool matchingLen = true;
                 if (params == nullptr)
                 {
