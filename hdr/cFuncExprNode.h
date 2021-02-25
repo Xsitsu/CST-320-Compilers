@@ -33,7 +33,7 @@ class cFuncExprNode : public cExprNode
             }
             else
             {
-                cFuncDecl* funcDecl = static_cast<cFuncDecl*>(name->GetDecl());
+                cFuncDeclNode* funcDecl = static_cast<cFuncDeclNode*>(name->GetDecl());
                 if (!funcDecl->IsDefined())
                 {
                     std::string error = name->GetName();
