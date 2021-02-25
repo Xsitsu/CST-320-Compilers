@@ -25,12 +25,12 @@ class cFuncDeclNode : public cDeclNode
             AddChild(nullptr); // decls
             AddChild(nullptr); // stmts
 
-            cSymbol* funcName = g_symbolTable->FindLocal(name->GetName())
+            cSymbol* funcName = g_symbolTable->FindLocal(name->GetName());
 
             if (funcName != nullptr)
             {
                 cDeclNode* decl = funcName->GetDecl();
-                if (funcDecl->IsFunc())
+                if (decl->IsFunc())
                 {
                     cFuncDeclNode* funcDecl = static_cast<cFuncDeclNode*>(decl);
                     if (funcDecl->GetType() != type->GetDecl())
