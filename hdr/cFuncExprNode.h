@@ -21,7 +21,7 @@ class cFuncExprNode : public cExprNode
 
             if (name->GetDecl() == nullptr)
             {
-                std::string error name->GetName();
+                std::string error = name->GetName();
                 error += " is not declared";
                 SemanticError(error);
             }
