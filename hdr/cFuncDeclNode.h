@@ -23,6 +23,8 @@ class cFuncDeclNode : public cDeclNode
             AddChild(name);
 
             g_symbolTable->Insert(name);
+
+            name->SetDecl(this);
         }
 
         void AddParams(cDeclsNode *params)
