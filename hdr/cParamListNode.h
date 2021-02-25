@@ -22,6 +22,11 @@ public:
     {
         AddChild(param);
     }
+
+    int NumParams()
+    {
+        return NumChildren();
+    }
     
     virtual string NodeType() { return string("params"); }
     virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }

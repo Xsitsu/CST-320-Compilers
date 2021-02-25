@@ -40,6 +40,12 @@ class cFuncExprNode : public cExprNode
                     error += " is not fully defined";
                     SemanticError(error);
                 }
+                else if (funcDecl->GetParams()->NumDecls != params->NumParams())
+                {
+                    std::string error = name->GetName();
+                    error += " called with wrong number of arguments";
+                    Semanticerror(error);
+                }
             }
         }
 
