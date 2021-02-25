@@ -108,7 +108,16 @@ class cFuncDeclNode : public cDeclNode
 
         void AddStmts(cStmtsNode *stmts)
         {
-            m_children[4] = stmts;
+            if (this->GetStmts() != nullptr)
+            {
+                std::string error GetName()->GetName();
+                error += " already has a definition";
+                SemanticError(error);
+            }
+            else
+            {
+                m_children[4] = stmts;
+            }
         }
 
         virtual bool IsFunc() { return true; }
