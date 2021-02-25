@@ -110,7 +110,7 @@ class cFuncDeclNode : public cDeclNode
         {
             if (this->GetStmts() != nullptr)
             {
-                std::string error GetName()->GetName();
+                std::string error = GetName()->GetName();
                 error += " already has a definition";
                 SemanticError(error);
             }
