@@ -25,9 +25,32 @@ class cFuncDeclNode : public cDeclNode
             AddChild(nullptr); // decls
             AddChild(nullptr); // stmts
 
-            g_symbolTable->Insert(name);
+            cSymbol* funcName = g_symbolTable->FindLocal(name->GetName())
 
-            name->SetDecl(this);
+            if (funcName != nullptr)
+            {
+                cDeclNode* decl = funcName->GetDecl();
+                if (funcDecl->IsFunc())
+                {
+                    cFuncDeclNode* funcDecl = static_cast<cFuncDeclNode*>(decl);
+                    if (funcDecl->GetType() != type->GetDecl())
+                    {
+                        std::string error = name->GetName();
+                        error += " previously defined with different return type";
+                        SemanticError(error);
+                    }
+                    else
+                    {
+                        m_children = funcDecl->m_children;
+                        name->SetDecl(this);
+                    }
+                }
+            }
+            else
+            {
+                g_symbolTable->Insert(name);
+                name->SetDecl(this);
+            }
         }
 
         void AddParams(cDeclsNode *params)
@@ -65,5 +88,20 @@ class cFuncDeclNode : public cDeclNode
         virtual cSymbol* GetName()
         {
             return static_cast<cSymbol*>(GetChild(1));
+        }
+
+        cDeclsNode* GetParams()
+        {
+            return static_cast<cDeclsNode*>(GetChild(2));
+        }
+
+        cDeclsNode* GetDecls()
+        {
+            return static_cast<cDeclsNode*>(GetChild(3));
+        }
+
+        cStmtsNode* GetStmts()
+        {
+            return static_cast<cStmtsNode*>(GetChild(4));
         }
 };
