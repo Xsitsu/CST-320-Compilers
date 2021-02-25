@@ -64,13 +64,13 @@ class cFuncDeclNode : public cDeclNode
                 {
                     matchingLen = false;
                 }
-                else if (params->NumChildren() != oldParams->NumChildren())
+                else if (params->NumDecls() != oldParams->NumDecls())
                 {
                     matchingLen = false;
                 }
                 else
                 {
-                    for (int i = 0; i < params->NumChildren(); i++)
+                    for (int i = 0; i < params->NumDecls(); i++)
                     {
                         cDeclNode *oldP = oldParams->GetDecl(i);
                         cDeclNode *p = params->GetDecl(i);
