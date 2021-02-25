@@ -21,6 +21,9 @@ class cFuncDeclNode : public cDeclNode
         {
             AddChild(type);
             AddChild(name);
+            AddChild(nullptr); // params
+            AddChild(nullptr); // decls
+            AddChild(nullptr); // stmts
 
             g_symbolTable->Insert(name);
 
@@ -29,17 +32,17 @@ class cFuncDeclNode : public cDeclNode
 
         void AddParams(cDeclsNode *params)
         {
-            AddChild(params);
+            m_children[2] = params;
         }
 
         void AddDecls(cDeclsNode *decls)
         {
-            AddChild(decls);
+            m_children[3] = decls;
         }
 
         void AddStmts(cStmtsNode *stmts)
         {
-            AddChild(stmts);
+            m_children[4] = stmts;
         }
 
         virtual bool IsFunc() { return true; }
