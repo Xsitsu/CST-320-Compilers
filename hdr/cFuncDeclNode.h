@@ -95,10 +95,8 @@ class cFuncDeclNode : public cDeclNode
                     SemanticError(error);
                 }
             }
-            else
-            {
-                m_children[2] = params;
-            }
+
+            m_children[2] = params;
         }
 
         void AddDecls(cDeclsNode *decls)
