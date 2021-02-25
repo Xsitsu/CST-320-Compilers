@@ -31,6 +31,16 @@ class cFuncExprNode : public cExprNode
                 error += " is not a function";
                 SemanticError(error);
             }
+            else
+            {
+                cFuncDecl* funcDecl = static_cast<cFuncDecl*>(name->GetDecl());
+                if (!funcDecl->IsDefined())
+                {
+                    std::string error = name->GetName();
+                    error += " is not fully defined";
+                    SemanticError(error);
+                }
+            }
         }
 
         virtual string NodeType() { return string("funcCall"); }

@@ -118,6 +118,11 @@ class cFuncDeclNode : public cDeclNode
             }
         }
 
+        bool IsDefined()
+        {
+            return (GetStmts() != nullptr);
+        }
+
         virtual bool IsFunc() { return true; }
 
         virtual string NodeType() { return string("func"); }
