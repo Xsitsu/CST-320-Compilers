@@ -44,14 +44,16 @@ class cVarExprNode : public cExprNode
                 error += " is not a struct";
                 SemanticError(error);
             }
-
-            cStructDeclNode *structDecl = static_cast<cStructDeclNode*>(type);
-            if (!structDecl->HasMember(name->GetName()))
+            else
             {
-                std::string error = name->GetName();
-                error += " is not a field of ";
-                error += this->GetName()->GetName();
-                SemanticError(error);
+                cStructDeclNode *structDecl = static_cast<cStructDeclNode*>(type);
+                if (!structDecl->HasMember(name->GetName()))
+                {
+                    std::string error = name->GetName();
+                    error += " is not a field of ";
+                    error += this->GetName()->GetName();
+                    SemanticError(error);
+                }
             }
 
             AddChild(name);
