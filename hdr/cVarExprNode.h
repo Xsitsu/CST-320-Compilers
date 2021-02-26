@@ -38,7 +38,7 @@ class cVarExprNode : public cExprNode
                 type = this->GetType();
             }
 
-            if (!type->IsStruct())
+            if (type == nullptr || !type->IsStruct())
             {
                 std::string error = this->GetName()->GetName();
                 error += " is not a struct";
@@ -82,7 +82,7 @@ class cVarExprNode : public cExprNode
                 }
             }
 
-            return nullptr
+            return nullptr;
         }
 
         cSymbol* GetElement(int i)
