@@ -16,6 +16,7 @@ class cDeclNode : public cAstNode
     public:
         cDeclNode() : cAstNode() {}
 
+        virtual cDeclNode* GetBaseType() { return GetType(); }
         virtual cDeclNode *GetType() = 0;
         virtual cSymbol *GetName() = 0;
 

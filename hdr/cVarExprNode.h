@@ -28,7 +28,17 @@ class cVarExprNode : public cExprNode
 
         void InsertSymbol(cSymbol *name)
         {
-            if (!this->GetType()->IsStruct())
+            cDeclNode *type = nullptr;
+            if (this->NumElements() == 0)
+            {
+                type = this->GetBaseType();
+            }
+            else
+            {
+                type = this->GetType();
+            }
+
+            if (!type->IsStruct())
             {
                 std::string error = this->GetName()->GetName();
                 error += " is not a struct";
@@ -48,7 +58,7 @@ class cVarExprNode : public cExprNode
             return static_cast<cSymbol*>(GetChild(0));
         }
 
-        virtual cDeclNode *GetType()
+        virtual cDeclNode *GetBaseType()
         {
             cSymbol *name = this->GetName();
             cDeclNode *varDecl = name->GetDecl();
@@ -58,6 +68,31 @@ class cVarExprNode : public cExprNode
             }
 
             return nullptr;
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            cSymbol *last = GetElement(NumElements() - 1);
+            if (last != nullptr)
+            {
+                cDeclNode *decl = last->GetDecl();
+                if (decl != nullptr)
+                {
+                    return decl->GetType();
+                }
+            }
+
+            return nullptr
+        }
+
+        cSymbol* GetElement(int i)
+        {
+            return static_cast<cSymbol*>(GetChild(i + 1));
+        }
+
+        int NumElements()
+        {
+            return NumChildren() - 1;
         }
 
         virtual string NodeType() { return string("varref"); }
