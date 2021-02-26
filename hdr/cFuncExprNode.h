@@ -40,7 +40,7 @@ class cFuncExprNode : public cExprNode
                     error += " is not fully defined";
                     SemanticError(error);
                 }
-                else (funcDecl->NumParams() != this->NumParams())
+                else if (funcDecl->NumParams() != this->NumParams())
                 {
                     std::string error = name->GetName();
                     error += " called with wrong number of arguments";
@@ -59,7 +59,7 @@ class cFuncExprNode : public cExprNode
 
         cParamListNode* GetParams()
         {
-            reutrn static_cast<cParamListNode*>(GetChild(1));
+            return static_cast<cParamListNode*>(GetChild(1));
         }
 
         virtual cDeclNode *GetType()
