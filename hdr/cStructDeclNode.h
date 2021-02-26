@@ -40,6 +40,8 @@ class cStructDeclNode : public cDeclNode
             name->SetIsType(true);
             name->SetDecl(this);
             AddChild(name);
+
+            m_symTable = symTable;
         }
 
         virtual bool IsStruct() { return true; }
@@ -53,4 +55,12 @@ class cStructDeclNode : public cDeclNode
         {
             return static_cast<cSymbol*>(GetChild(1));
         }
+
+        bool HasMember(std::string name)
+        {
+            return (m_symTable[name] != nullptr);
+        }
+
+    protected:
+        symbolTable_t *m_symTable;
 };
