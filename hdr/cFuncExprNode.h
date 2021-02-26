@@ -44,7 +44,7 @@ class cFuncExprNode : public cExprNode
                 {
                     std::string error = name->GetName();
                     error += " called with wrong number of arguments";
-                    Semanticerror(error);
+                    SemanticError(error);
                 }
             }
         }
