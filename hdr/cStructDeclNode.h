@@ -38,6 +38,7 @@ class cStructDeclNode : public cDeclNode
             }
 
             name->SetIsType(true);
+            name->SetDecl(this);
             AddChild(name);
         }
 
