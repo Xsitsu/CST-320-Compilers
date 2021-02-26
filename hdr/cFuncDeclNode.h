@@ -123,6 +123,16 @@ class cFuncDeclNode : public cDeclNode
             return (GetStmts() != nullptr);
         }
 
+        int NumParams()
+        {
+            cDeclsNode* params = this->GetParams();
+            if (params != nullptr)
+            {
+                return params->NumDecls();
+            }
+            return 0;
+        }
+
         virtual bool IsFunc() { return true; }
 
         virtual string NodeType() { return string("func"); }
