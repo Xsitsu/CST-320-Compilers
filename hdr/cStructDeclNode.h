@@ -41,6 +41,8 @@ class cStructDeclNode : public cDeclNode
             AddChild(name);
         }
 
+        virtual bool IsStruct() { return true; }
+
         virtual string NodeType() { return string("struct_decl"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 

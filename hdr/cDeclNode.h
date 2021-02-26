@@ -20,6 +20,7 @@ class cDeclNode : public cAstNode
         virtual cSymbol *GetName() = 0;
 
         virtual bool IsFunc() { return false; }
+        virtual bool IsStruct() { return false; }
 
         virtual bool IsNumber() { return this->IsChar() || this->IsInt() || this->IsFloat(); }
         virtual bool IsChar() { return false; }
