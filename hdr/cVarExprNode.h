@@ -28,6 +28,13 @@ class cVarExprNode : public cExprNode
 
         void Insert(cSymbol *name)
         {
+            if (!this->GetName()->GetDecl()->IsStruct())
+            {
+                std::string error = this->GetName()->GetName();
+                error += " is not a struct";
+                SemanticError(error);
+            }
+
             AddChild(name);
         }
 
