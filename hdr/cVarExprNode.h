@@ -48,7 +48,7 @@ class cVarExprNode : public cExprNode
             cStructDeclNode *structDecl = static_cast<cStructDeclNode*>(type);
             if (!structDecl->HasMember(name->GetName()))
             {
-                std::string error = name->GetName()
+                std::string error = name->GetName();
                 error += " is not a field of ";
                 error += this->GetName()->GetName();
                 SemanticError(error);
