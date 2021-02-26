@@ -58,7 +58,12 @@ class cStructDeclNode : public cDeclNode
 
         bool HasMember(std::string name)
         {
-            return ((*m_symTable)[name] != nullptr);
+            return (this->GetMember(name) != nullptr);
+        }
+
+        cSymbol* GetMember(std::string name)
+        {
+            return (*m_symTable)[name];
         }
 
     protected:
