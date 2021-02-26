@@ -173,7 +173,7 @@ class cAstNode
             return false;
         }
 
-    private:
+    protected:
         vector<cAstNode *> m_children;      // list of all children
         int m_LineNum;                      // The source line at the time the
                                             // node was created

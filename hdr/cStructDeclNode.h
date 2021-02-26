@@ -38,8 +38,13 @@ class cStructDeclNode : public cDeclNode
             }
 
             name->SetIsType(true);
+            name->SetDecl(this);
             AddChild(name);
+
+            m_symTable = symTable;
         }
+
+        virtual bool IsStruct() { return true; }
 
         virtual string NodeType() { return string("struct_decl"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
@@ -50,4 +55,17 @@ class cStructDeclNode : public cDeclNode
         {
             return static_cast<cSymbol*>(GetChild(1));
         }
+
+        bool HasMember(std::string name)
+        {
+            return (this->GetMember(name) != nullptr);
+        }
+
+        cSymbol* GetMember(std::string name)
+        {
+            return (*m_symTable)[name];
+        }
+
+    protected:
+        symbolTable_t *m_symTable;
 };

@@ -16,8 +16,12 @@ class cDeclNode : public cAstNode
     public:
         cDeclNode() : cAstNode() {}
 
+        virtual cDeclNode* GetBaseType() { return GetType(); }
         virtual cDeclNode *GetType() = 0;
         virtual cSymbol *GetName() = 0;
+
+        virtual bool IsFunc() { return false; }
+        virtual bool IsStruct() { return false; }
 
         virtual bool IsNumber() { return this->IsChar() || this->IsInt() || this->IsFloat(); }
         virtual bool IsChar() { return false; }
