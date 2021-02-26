@@ -26,7 +26,7 @@ class cVarExprNode : public cExprNode
             }
         }
 
-        void Insert(cSymbol *name)
+        void InsertSymbol(cSymbol *name)
         {
             if (!this->GetName()->GetDecl()->IsStruct())
             {
@@ -38,7 +38,7 @@ class cVarExprNode : public cExprNode
             AddChild(name);
         }
 
-        void Insert(cExprNode *index)
+        void InsertExpr(cExprNode *index)
         {
             AddChild(index);
         }

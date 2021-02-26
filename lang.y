@@ -177,8 +177,8 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
 func_call:  IDENTIFIER '(' params ')' { $$ = new cFuncExprNode($1, $3); }
         |   IDENTIFIER '(' ')'  { $$ = new cFuncExprNode($1, nullptr); }
 
-varref:   varref '.' varpart    { $$ = $1; $$->Insert($3); }
-        | varref '[' expr ']'   { $$ = $1; $$->Insert($3); }
+varref:   varref '.' varpart    { $$ = $1; $$->InsertSymbol($3); }
+        | varref '[' expr ']'   { $$ = $1; $$->InsertExpr($3); }
         | varpart               { $$ = new cVarExprNode($1); }
 
 varpart:  IDENTIFIER            { $$ = $1; }
