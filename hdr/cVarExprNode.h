@@ -28,6 +28,16 @@ class cVarExprNode : public cExprNode
 
         void Insert(cSymbol *name)
         {
+            AddChild(name);
+        }
+
+        void Insert(cExprNode *index)
+        {
+            AddChild(index);
+        }
+
+        void StructIndex(cVarExprNode *index)
+        {
             if (!this->GetName()->GetDecl()->IsStruct())
             {
                 std::string error = this->GetName()->GetName();
@@ -35,11 +45,6 @@ class cVarExprNode : public cExprNode
                 SemanticError(error);
             }
 
-            AddChild(name);
-        }
-
-        void Insert(cExprNode *index)
-        {
             AddChild(index);
         }
 
