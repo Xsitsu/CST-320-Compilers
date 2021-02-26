@@ -40,7 +40,7 @@ class cVarExprNode : public cExprNode
 
             if (type == nullptr || !type->IsStruct())
             {
-                std::string error = this->GetName()->GetName();
+                std::string error = this->GetFullName();
                 error += " is not a struct";
                 SemanticError(error);
             }
@@ -52,7 +52,7 @@ class cVarExprNode : public cExprNode
                 {
                     std::string error = name->GetName();
                     error += " is not a field of ";
-                    error += this->GetName()->GetName();
+                    error += this->GetFullName();
                     SemanticError(error);
                 }
                 else
@@ -99,6 +99,21 @@ class cVarExprNode : public cExprNode
             }
 
             return nullptr;
+        }
+
+        std::string GetFullName()
+        {
+            cDeclNode *base = this->GetBaseType();
+            std::string name = this->GetName()->GetName();
+            if (base->IsStruct())
+            {
+                for (int i = 0; i < this->NumElements(); i++)
+                {
+                    name += "." + GetElement(i)->GetName();
+                }
+            }
+
+            return name;
         }
 
         cSymbol* GetElement(int i)
