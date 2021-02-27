@@ -38,6 +38,10 @@ class cFuncDeclNode : public cDeclNode
                         name->SetDecl(this);
                     }
                 }
+                else
+                {
+                    // TODO: Semantic error about redefining something else as a func.
+                }
             }
             else
             {

@@ -41,6 +41,10 @@ class cAssignNode : public cStmtNode
                     else error += "_NO_SYMBOL_";
                     SemanticError(error);
                 }
+                else if (lvalType->IsFunc())
+                {
+                    // TODO: Semantic error about can't use func as lval
+                }
             }
         }
 
