@@ -19,14 +19,7 @@ class cFuncDeclNode : public cDeclNode
     public:
         cFuncDeclNode(cSymbol *type, cSymbol *name) : cDeclNode()
         {
-            AddChild(type);
-            AddChild(name);
-            AddChild(nullptr); // params
-            AddChild(nullptr); // decls
-            AddChild(nullptr); // stmts
-
             cSymbol* funcName = g_symbolTable->FindLocal(name->GetName());
-
             if (funcName != nullptr)
             {
                 cDeclNode* decl = funcName->GetDecl();
@@ -41,13 +34,18 @@ class cFuncDeclNode : public cDeclNode
                     }
                     else
                     {
-                        m_children = funcDecl->m_children;
+                        AddAllChildren(funcDecl);
                         name->SetDecl(this);
                     }
                 }
             }
             else
             {
+                AddChild(type);
+                AddChild(name);
+                AddChild(nullptr); // params
+                AddChild(nullptr); // decls
+                AddChild(nullptr); // stmts
                 g_symbolTable->Insert(name);
                 name->SetDecl(this);
             }
@@ -96,12 +94,12 @@ class cFuncDeclNode : public cDeclNode
                 }
             }
 
-            m_children[2] = params;
+            SetChild(2, params);
         }
 
         void AddDecls(cDeclsNode *decls)
         {
-            m_children[3] = decls;
+            SetChild(3, decls);
         }
 
         void AddStmts(cStmtsNode *stmts)
@@ -114,7 +112,7 @@ class cFuncDeclNode : public cDeclNode
             }
             else
             {
-                m_children[4] = stmts;
+                SetChild(4, stmts);
             }
         }
 
