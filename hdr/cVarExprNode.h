@@ -54,8 +54,6 @@ class cVarExprNode : public cExprNode
                     error += " is not a field of ";
                     error += this->GetFullName();
                     SemanticError(error);
-
-                    PROP_ERROR();
                 }
                 else
                 {
