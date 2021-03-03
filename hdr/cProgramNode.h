@@ -36,4 +36,10 @@ class cProgramNode : public cAstNode
             }
             return "";
         }
+
+        int GetSize() { return m_size; }
+        void SetSize(int size) { m_size = size; }
+
+    protected:
+        int m_size;
 };

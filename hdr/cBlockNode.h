@@ -52,15 +52,6 @@ class cBlockNode : public cStmtNode
         int GetSize() { return this->m_size; }
         void SetSize(int size) { this->m_size = size; }
 
-        virtual string AttributesToString()
-        {
-            if (this->m_size > 0)
-            {
-                return " size=\"" + std::to_string(this->m_size) + "\"";
-            }
-            return "";
-        }
-
     protected:
         int m_size;
 };
