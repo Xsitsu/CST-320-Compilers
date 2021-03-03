@@ -23,7 +23,7 @@ cSymbolTable::cSymbolTable()
     this->IncreaseScope(); // Global Scope
     this->Insert(CreateBaseType("char", 1, false));
     this->Insert(CreateBaseType("int", 4, false));
-    this->Insert(CreateBaseType("float", 4, true));
+    this->Insert(CreateBaseType("float", 8, true));
 }
 
 symbolTable_t *cSymbolTable::IncreaseScope()

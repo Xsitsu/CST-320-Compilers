@@ -37,6 +37,8 @@ class cBaseTypeNode : public cDeclNode
             return g_symbolTable->Find(m_name);
         }
 
+        virtual int GetSize() { return m_size; }
+
     protected:
         std::string m_name;
         int m_size;
