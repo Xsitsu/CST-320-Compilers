@@ -40,7 +40,7 @@ void cComputeSize::Visit(cVarDeclNode *node)
 
 void cComputeSize::Visit(cProgramNode *node)
 {
-        this->VisitAllChildren(this);
+        node->VisitAllChildren(this);
 
         cBlockNode* block = node->GetBlock();
         int size = block->GetSize();
