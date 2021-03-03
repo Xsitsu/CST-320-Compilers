@@ -7,6 +7,8 @@ class cComputeSize : cVisitor
     public:
         cComputeSize() {}
 
+        virtual void VisitAllNodes(cAstNode *node);
+
         virtual void Visit(cBlockNode *node);
         //virtual void Visit(cBinaryExprNode *node);
         //virtual void Visit(cDeclNode *node);

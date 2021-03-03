@@ -2,6 +2,11 @@
 
 #include "astnodes.h"
 
+void cComputeSize::VisitAllNodes(cAstNode *node)
+{
+    cAstNode->Visit(this);
+}
+
 void cComputeSize::Visit(cBlockNode *node)
 {
     node->VisitAllChildren(this);
