@@ -43,6 +43,12 @@
     cAstNode *yyast_root;
 
     static bool g_semanticErrorHappened = false;
+
+#define CHECK_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; } }
+#define PROP_ERROR() { if (g_semanticErrorHappened) \
+    { g_semanticErrorHappened = false; YYERROR; } }
+
 %}
 
 %start  program
@@ -118,7 +124,7 @@ decl:       var_decl ';'        { $$ = $1; }
         |   func_decl           { $$ = $1; }
         |   error ';'           {  }
 
-var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); }
+var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); PROP_ERROR(); }
 struct_decl:  STRUCT open decls close IDENTIFIER    
                                 { $$= new cStructDeclNode($2, $3, $5); }
 array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
@@ -135,19 +141,22 @@ func_decl:  func_header ';'
                                         $$->AddDecls($3);
                                         $$->AddStmts($4);
                                         g_symbolTable->DecreaseScope();
+                                        PROP_ERROR();
                                 }
         |   func_header  '{' stmts '}'
                                 {
                                         $$ = $1;
                                         $$->AddStmts($3);
                                         g_symbolTable->DecreaseScope();
+                                        PROP_ERROR();
                                 }
 func_header: func_prefix paramsspec ')'
-                                { $$ = $1; $$->AddParams($2); }
+                                { $$ = $1; $$->AddParams($2); PROP_ERROR(); }
         |    func_prefix ')'    { $$ = $1; }
 func_prefix: TYPE_ID IDENTIFIER '('
                                 {
                                         $$ = new cFuncDeclNode($1, $2);
+                                        PROP_ERROR();
                                         g_symbolTable->IncreaseScope();
                                 }
 paramsspec: paramsspec',' paramspec 
@@ -167,8 +176,8 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
                                 { $$ = new cWhileNode($3, $5); }
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
-        |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); }
-        |   lval '=' func_call ';'   { $$ = new cAssignNode($1, $3); }
+        |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); PROP_ERROR(); }
+        |   lval '=' func_call ';'   { $$ = new cAssignNode($1, $3); PROP_ERROR(); }
         |   func_call ';'       { $$ = $1; }
         |   block               { $$ = $1; }
         |   RETURN expr ';'     { $$ = new cReturnNode($2); }
@@ -177,9 +186,9 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
 func_call:  IDENTIFIER '(' params ')' { $$ = new cFuncExprNode($1, $3); }
         |   IDENTIFIER '(' ')'  { $$ = new cFuncExprNode($1, nullptr); }
 
-varref:   varref '.' varpart    { $$ = $1; $$->InsertSymbol($3); }
-        | varref '[' expr ']'   { $$ = $1; $$->InsertExpr($3); }
-        | varpart               { $$ = new cVarExprNode($1); }
+varref:   varref '.' varpart    { $$ = $1; $$->InsertSymbol($3); PROP_ERROR(); }
+        | varref '[' expr ']'   { $$ = $1; $$->InsertExpr($3); PROP_ERROR(); }
+        | varpart               { $$ = new cVarExprNode($1); PROP_ERROR(); }
 
 varpart:  IDENTIFIER            { $$ = $1; }
 
@@ -215,11 +224,6 @@ fact:        '(' expr ')'       { $$ = $2; }
         |   varref              { $$ = $1; }
 
 %%
-
-#define CHECK_ERROR() { if (g_semanticErrorHappened) \
-    { g_semanticErrorHappened = false; } }
-#define PROP_ERROR() { if (g_semanticErrorHappened) \
-    { g_semanticErrorHappened = false; YYERROR; } }
 
 // Function to format error messages
 int yyerror(const char *msg)

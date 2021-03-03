@@ -63,7 +63,12 @@ class cStructDeclNode : public cDeclNode
 
         cSymbol* GetMember(std::string name)
         {
-            return (*m_symTable)[name];
+            auto found = m_symTable->find(name);
+            if (found != m_symTable->end())
+            {
+                return found->second;
+            }
+            return nullptr;
         }
 
     protected:

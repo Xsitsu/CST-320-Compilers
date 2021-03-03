@@ -57,11 +57,12 @@ class cVarExprNode : public cExprNode
                 }
                 else
                 {
-                    name->SetDecl(member->GetDecl());
+                    //name->SetDecl(member->GetDecl());
+                    AddChild(member);
                 }
             }
 
-            AddChild(name);
+            //AddChild(name);
         }
 
         void InsertExpr(cExprNode *index)
