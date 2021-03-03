@@ -24,4 +24,4 @@ class cComputeSize : cVisitor
         //virtual void Visit(cIntExprNode *node);
         //virtual void Visit(cFloatExprNode *node);
         virtual void Visit(cProgramNode *node);
-}
+};

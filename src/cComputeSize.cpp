@@ -5,7 +5,7 @@
 void cComputeSize::Visit(cBlockNode *node)
 {
     node->VisitAllChildren(this);
-    cDeclNode *decls = node->GetDecls();
+    cDeclsNode *decls = node->GetDecls();
     if (decls != nullptr)
     {
         node->SetSize(node->GetDecls()->GetSize());
@@ -29,7 +29,7 @@ void cComputeSize::Visit(cDeclsNode *node)
 
 void cComputeSize::Visit(cVarDeclNode *node)
 {
-    node->VisitAllChildren(node);
+    node->VisitAllChildren(this);
 
     cDeclNode *type = node->GetType();
     if (type != nullptr)
@@ -40,7 +40,7 @@ void cComputeSize::Visit(cVarDeclNode *node)
 
 void cComputeSize::Visit(cProgramNode *node)
 {
-        this->VisitAllChildren(node);
+        this->VisitAllChildren(this);
 
         cBlockNode* block = node->GetBlock();
         int size = block->GetSize();
