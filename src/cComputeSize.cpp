@@ -8,29 +8,29 @@ void cComputeSize::VisitAllNodes(cAstNode *node)
 }
 
 
-void cVisitor::Visit(cAstNode *node)          { node->VisitAllChildren(this); }
-void cVisitor::Visit(cBinaryExprNode *node)   { node->VisitAllChildren(this); }
-void cVisitor::Visit(cIfNode *node)           { node->VisitAllChildren(this); }
-void cVisitor::Visit(cReturnNode *node)       { node->VisitAllChildren(this); }
-void cVisitor::Visit(cWhileNode *node)        { node->VisitAllChildren(this); }
-void cVisitor::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
-void cVisitor::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
-void cVisitor::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
-void cVisitor::Visit(cStructDeclNode *node)   { node->VisitAllChildren(this); }
-void cVisitor::Visit(cFuncDeclNode *node)     { node->VisitAllChildren(this); }
-void cVisitor::Visit(cParamsNode *node)       { node->VisitAllChildren(this); }
-void cVisitor::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
-void cVisitor::Visit(cFuncExprNode *node)     { node->VisitAllChildren(this); }
-void cVisitor::Visit(cParamListNode *node)    { node->VisitAllChildren(this); }
-void cVisitor::Visit(cAssignNode *node)       { node->VisitAllChildren(this); }
-void cVisitor::Visit(cExprNode *node)         { node->VisitAllChildren(this); }
-void cVisitor::Visit(cIntExprNode *node)      { node->VisitAllChildren(this); }
-void cVisitor::Visit(cFloatExprNode *node)    { node->VisitAllChildren(this); }
-void cVisitor::Visit(cOpNode *node)           { node->VisitAllChildren(this); }
-void cVisitor::Visit(cPrintNode *node)        { node->VisitAllChildren(this); }
-void cVisitor::Visit(cStmtNode *node)         { node->VisitAllChildren(this); }
-void cVisitor::Visit(cStmtsNode *node)        { node->VisitAllChildren(this); }
-void cVisitor::Visit(cSymbol *node)           { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cAstNode *node)          { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cBinaryExprNode *node)   { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cIfNode *node)           { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cReturnNode *node)       { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cWhileNode *node)        { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cStructDeclNode *node)   { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cFuncDeclNode *node)     { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cParamsNode *node)       { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cFuncExprNode *node)     { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cParamListNode *node)    { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cAssignNode *node)       { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cExprNode *node)         { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cIntExprNode *node)      { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cFloatExprNode *node)    { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cOpNode *node)           { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cPrintNode *node)        { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cStmtNode *node)         { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cStmtsNode *node)        { node->VisitAllChildren(this); }
+void cComputeSize::Visit(cSymbol *node)           { node->VisitAllChildren(this); }
 
 
 
