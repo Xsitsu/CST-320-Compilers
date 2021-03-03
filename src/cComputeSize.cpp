@@ -4,7 +4,7 @@
 
 void cComputeSize::VisitAllNodes(cAstNode *node)
 {
-    cAstNode->Visit(this);
+    node->Visit(this);
 }
 
 void cComputeSize::Visit(cBlockNode *node)
