@@ -169,13 +169,10 @@ void cComputeSize::Visit(cParamsNode *node)
         if (!decl->IsStruct() && !decl->IsFunc())
         {
             int typeSize = decl->GetSize();
-            if (typeSize > 1)
+            while (this->m_offset % 4 != 0)
             {
-                while (this->m_offset % 4 != 0)
-                {
-                    this->m_offset++;
-                    this->m_size++;
-                }
+                this->m_offset++;
+                this->m_size++;
             }
 
             decl->SetOffset(-(this->m_offset));
