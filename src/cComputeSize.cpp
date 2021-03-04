@@ -56,11 +56,14 @@ void cComputeSize::Visit(cDeclsNode *node)
     node->VisitAllChildren(this);
 
     int totalSize = 0;
+    int offset = 0;
     for (int i = 0; i < node->NumDecls(); i++)
     {
         cDeclNode *decl = node->GetDecl(i);
-        decl->SetOffset(totalSize);
+        decl->SetOffset(offset);
         totalSize += decl->GetSize();
+        offset += decl->GetSize();
+        while (offset % 4 != 0) offset++;
     }
 
     node->SetSize(totalSize);
