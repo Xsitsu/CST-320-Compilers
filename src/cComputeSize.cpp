@@ -68,20 +68,22 @@ void cComputeSize::Visit(cDeclsNode *node)
     for (int i = 0; i < node->NumDecls(); i++)
     {
         cDeclNode *decl = node->GetDecl(i);
-
-        int typeSize = decl->GetSize();
-        if (typeSize > 1)
+        if (!decl->IsStruct() && !decl->isFunc())
         {
-            while (this->m_offset % 4 != 0)
+            int typeSize = decl->GetSize();
+            if (typeSize > 1)
             {
-                this->m_offset++;
-                this->m_size++;
+                while (this->m_offset % 4 != 0)
+                {
+                    this->m_offset++;
+                    this->m_size++;
+                }
             }
-        }
 
-        decl->SetOffset(this->m_offset);
-        this->m_size += typeSize;
-        this->m_offset += typeSize;
+            decl->SetOffset(this->m_offset);
+            this->m_size += typeSize;
+            this->m_offset += typeSize;
+        }
     }
 
     node->SetSize(this->m_size);
