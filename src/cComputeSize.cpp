@@ -68,7 +68,7 @@ void cComputeSize::Visit(cDeclsNode *node)
     for (int i = 0; i < node->NumDecls(); i++)
     {
         cDeclNode *decl = node->GetDecl(i);
-        if (!decl->IsStruct() && !decl->isFunc())
+        if (!decl->IsStruct() && !decl->IsFunc())
         {
             int typeSize = decl->GetSize();
             if (typeSize > 1)
