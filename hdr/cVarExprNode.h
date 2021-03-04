@@ -87,7 +87,7 @@ class cVarExprNode : public cExprNode
             return nullptr;
         }
 
-        void cDeclNode *GetLastDecl()
+        cDeclNode *GetLastDecl()
         {
             cSymbol *last = GetElement(NumElements() - 1);
             if (last != nullptr)
