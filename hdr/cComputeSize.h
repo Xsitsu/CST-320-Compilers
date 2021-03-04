@@ -5,7 +5,7 @@
 class cComputeSize : cVisitor
 {
     public:
-        cComputeSize() : m_offset(0) {}
+        cComputeSize() : m_offset(0), m_size(0), m_maxSize(0) {}
 
         virtual void VisitAllNodes(cAstNode *node);
 
@@ -39,4 +39,6 @@ class cComputeSize : cVisitor
 
     protected:
         int m_offset;
+        int m_size;
+        int m_maxSize;
 };
