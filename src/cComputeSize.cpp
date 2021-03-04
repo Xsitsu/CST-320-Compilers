@@ -43,10 +43,11 @@ void cComputeSize::Visit(cSymbol *node)           { node->VisitAllChildren(this)
 void cComputeSize::Visit(cBlockNode *node)
 {
     node->VisitAllChildren(this);
+
     cDeclsNode *decls = node->GetDecls();
     if (decls != nullptr)
     {
-        node->SetSize(node->GetDecls()->GetSize());
+        node->SetSize(decls->GetSize());
     }
 }
 
@@ -78,10 +79,10 @@ void cComputeSize::Visit(cVarDeclNode *node)
 
 void cComputeSize::Visit(cProgramNode *node)
 {
-        node->VisitAllChildren(this);
+    node->VisitAllChildren(this);
 
-        cBlockNode* block = node->GetBlock();
-        int size = block->GetSize();
-        if (size % 4 != 0) size = (size / 4) + 4;
-        block->SetSize(size);
+    cBlockNode* block = node->GetBlock();
+    int size = block->GetSize();
+    if (size % 4 != 0) size = (size / 4) + 4;
+    node->SetSize(size);
 }
