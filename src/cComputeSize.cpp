@@ -17,8 +17,6 @@ void cComputeSize::Visit(cWhileNode *node)        { node->VisitAllChildren(this)
 void cComputeSize::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
-void cComputeSize::Visit(cStructDeclNode *node)   { node->VisitAllChildren(this); }
-void cComputeSize::Visit(cFuncDeclNode *node)     { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cParamsNode *node)       { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cFuncExprNode *node)     { node->VisitAllChildren(this); }
@@ -87,6 +85,32 @@ void cComputeSize::Visit(cDeclsNode *node)
     }
 
     node->SetSize(this->m_size);
+}
+
+void cComputeSize::Visit(cStructDeclNode *node)
+{
+    node->VisitAllChildren(this);
+}
+
+void cComputeSize::Visit(cFuncDeclNode *node)
+{
+    int offsetOld = this->m_offset;
+    int maxSizeOld = this->m_maxSize;
+    int sizeOld = this->m_size;
+
+    this->m_offset = 0;
+    this->m_maxSize = 0;
+    this->m_size = 0;
+
+    node->VisitAllChildren(this);
+
+    int size = this->m_size + this->m_maxSize;
+    while (size % 4 != 0) size++;
+    node->SetSize(size);
+
+    this->m_offset = offsetOld;
+    this->m_maxSize = maxSizeOld;
+    this->m_size = sizeOld;
 }
 
 void cComputeSize::Visit(cVarDeclNode *node)
