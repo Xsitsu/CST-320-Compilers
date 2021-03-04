@@ -137,10 +137,10 @@ class cVarExprNode : public cExprNode
 
         virtual string AttributesToString()
         {
-            if (this->m_size > 0)
+            if (this->GetSize() > 0)
             {
-                return " size=\"" + std::to_string(this->m_size) + "\" \
-                offset=\"" + std::to_string(this->m_offset) + "\"";;
+                return " size=\"" + std::to_string(this->GetSize()) + "\" \
+                offset=\"" + std::to_string(this->GetOffset()) + "\"";;
             }
             return "";
         }
