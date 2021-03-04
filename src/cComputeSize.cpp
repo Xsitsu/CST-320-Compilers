@@ -63,10 +63,16 @@ void cComputeSize::Visit(cDeclsNode *node)
     for (int i = 0; i < node->NumDecls(); i++)
     {
         cDeclNode *decl = node->GetDecl(i);
+
+        while (this->m_offset % 4 != 0)
+        {
+            this->m_offset++;
+            totalSize++;
+        }
+
         decl->SetOffset(this->m_offset);
         totalSize += decl->GetSize();
         this->m_offset += decl->GetSize();
-        while (this->m_offset % 4 != 0) this->m_offset++;
     }
 
     node->SetSize(totalSize);
