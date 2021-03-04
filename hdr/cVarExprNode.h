@@ -150,27 +150,7 @@ class cVarExprNode : public cExprNode
             }
             return "";
         }
-        /*
-        int GetSize()
-        {
-            cDeclNode *decl = this->GetLastDecl();
-            if (decl != nullptr)
-            {
-                return decl->GetSize();
-            }
-            return 0;
-        }
 
-        int GetOffset()
-        {
-            cDeclNode *decl = this->GetLastDecl();
-            if (decl != nullptr)
-            {
-                return decl->GetOffset();
-            }
-            return 0;
-        }
-        */
     protected:
         int m_size;
         int m_offset;
