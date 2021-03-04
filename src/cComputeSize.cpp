@@ -17,7 +17,6 @@ void cComputeSize::Visit(cWhileNode *node)        { node->VisitAllChildren(this)
 void cComputeSize::Visit(cDeclNode *node)         { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
-void cComputeSize::Visit(cVarExprNode *node)      { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cFuncExprNode *node)     { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cParamListNode *node)    { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cAssignNode *node)       { node->VisitAllChildren(this); }
@@ -187,4 +186,16 @@ void cComputeSize::Visit(cParamsNode *node)
     this->m_offset = offsetOld;
     this->m_maxSize = maxSizeOld;
     this->m_size = sizeOld;
+}
+
+
+void cComputeSize::Visit(cVarExprNode *node)
+{
+    node->VisitAllChildren(this);
+    cDeclNode *type = node->GetType();
+    if (type != nullptr)
+    {
+        node->SetOffset(type->GetOffset());
+        node->SetSize(type->GetSize());
+    }
 }
