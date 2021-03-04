@@ -130,9 +130,9 @@ class cVarExprNode : public cExprNode
         virtual string NodeType() { return string("varref"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 
-        int GetSize() { return this->m_size; }
+        //int GetSize() { return this->m_size; }
         void SetSize(int size) { this->m_size = size; }
-        int GetOffset() { return this->m_offset; }
+        //int GetOffset() { return this->m_offset; }
         void SetOffset(int offset) { this->m_offset = offset; }
 
         virtual string AttributesToString()
@@ -143,6 +143,26 @@ class cVarExprNode : public cExprNode
                 offset=\"" + std::to_string(this->m_offset) + "\"";;
             }
             return "";
+        }
+
+        int GetSize()
+        {
+            cDeclNode *type = this->GetType();
+            if (type != nullptr)
+            {
+                return type->GetSize();
+            }
+            return 0;
+        }
+
+        int GetOffset()
+        {
+            cDeclNode *type = this->GetType();
+            if (type != nullptr)
+            {
+                return type->GetOffset();
+            }
+            return 0;
         }
 
     protected:

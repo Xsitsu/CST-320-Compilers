@@ -192,10 +192,12 @@ void cComputeSize::Visit(cParamsNode *node)
 void cComputeSize::Visit(cVarExprNode *node)
 {
     node->VisitAllChildren(this);
+    /*
     cDeclNode *type = node->GetType();
     if (type != nullptr)
     {
         node->SetOffset(type->GetOffset());
         node->SetSize(type->GetSize());
     }
+    */
 }
