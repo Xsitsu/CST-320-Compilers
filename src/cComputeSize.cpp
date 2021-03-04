@@ -5,6 +5,7 @@
 void cComputeSize::VisitAllNodes(cAstNode *node)
 {
     node->Visit(this);
+    node->VisitAllChildren(this);
 }
 
 
