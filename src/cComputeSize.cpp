@@ -51,13 +51,10 @@ void cComputeSize::Visit(cBlockNode *node)
 
     node->VisitAllChildren(this);
 
+    this->m_maxSize += this->m_size;
     node->SetSize(this->m_maxSize);
 
-    if (this->m_size + sizeOld > maxSizeOld)
-    {
-        this->m_maxSize = this->m_size + sizeOld;
-    }
-    else
+    if (maxSizeOld > this->m_maxSize)
     {
         this->m_maxSize = maxSizeOld;
     }
