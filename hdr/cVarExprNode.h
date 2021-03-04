@@ -87,18 +87,24 @@ class cVarExprNode : public cExprNode
             return nullptr;
         }
 
-        virtual cDeclNode *GetType()
+        void cDeclNode *GetLastDecl()
         {
             cSymbol *last = GetElement(NumElements() - 1);
             if (last != nullptr)
             {
-                cDeclNode *decl = last->GetDecl();
-                if (decl != nullptr)
-                {
-                    return decl->GetType();
-                }
+                return last->GetDecl();
             }
 
+            return nullptr;
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            cDeclNode *decl = this->GetLastDecl();
+            if (decl != nullptr)
+            {
+                return decl->GetType();
+            }
             return nullptr;
         }
 
@@ -147,20 +153,20 @@ class cVarExprNode : public cExprNode
 
         int GetSize()
         {
-            cDeclNode *type = this->GetType();
-            if (type != nullptr)
+            cDeclNode *decl = this->GetLastDecl();
+            if (decl != nullptr)
             {
-                return type->GetSize();
+                return decl->GetSize();
             }
             return 0;
         }
 
         int GetOffset()
         {
-            cDeclNode *type = this->GetType();
-            if (type != nullptr)
+            cDeclNode *decl = this->GetLastDecl();
+            if (decl != nullptr)
             {
-                return type->GetOffset();
+                return decl->GetOffset();
             }
             return 0;
         }
