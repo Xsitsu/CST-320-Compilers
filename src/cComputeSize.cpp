@@ -42,7 +42,7 @@ void cComputeSize::Visit(cSymbol *node)           { node->VisitAllChildren(this)
 
 void cComputeSize::Visit(cBlockNode *node)
 {
-    int offsetOld = this->offset;
+    int offsetOld = this->m_offset;
 
     node->VisitAllChildren(this);
 
@@ -52,7 +52,7 @@ void cComputeSize::Visit(cBlockNode *node)
         node->SetSize(decls->GetSize());
     }
 
-    this->offset = offsetOld;
+    this->m_offset = offsetOld;
 }
 
 void cComputeSize::Visit(cDeclsNode *node)
