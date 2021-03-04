@@ -5,7 +5,7 @@
 class cComputeSize : cVisitor
 {
     public:
-        cComputeSize() {}
+        cComputeSize() : m_offset(0) {}
 
         virtual void VisitAllNodes(cAstNode *node);
 
