@@ -184,7 +184,7 @@ void cComputeSize::Visit(cParamsNode *node)
         }
     }
 
-    while (this->m_size % 0 != 0) this->m_size++;
+    while (this->m_size % 4 != 0) this->m_size++;
     node->SetSize(this->m_size);
 
     this->m_offset = offsetOld;
