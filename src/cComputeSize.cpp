@@ -83,6 +83,6 @@ void cComputeSize::Visit(cProgramNode *node)
 
     cBlockNode* block = node->GetBlock();
     int size = block->GetSize();
-    if (size % 4 != 0) size = (size / 4) + 4;
+    if (size % 4 != 0) size = ((size / 4) * 4) + 4;
     node->SetSize(size);
 }
