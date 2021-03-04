@@ -89,7 +89,22 @@ void cComputeSize::Visit(cDeclsNode *node)
 
 void cComputeSize::Visit(cStructDeclNode *node)
 {
+    int offsetOld = this->m_offset;
+    int maxSizeOld = this->m_maxSize;
+    int sizeOld = this->m_size;
+
+    this->m_offset = 0;
+    this->m_maxSize = 0;
+    this->m_size = 0;
+
     node->VisitAllChildren(this);
+
+    int size = this->m_size + this->m_maxSize;
+    node->SetSize(size);
+
+    this->m_offset = offsetOld;
+    this->m_maxSize = maxSizeOld;
+    this->m_size = sizeOld;
 }
 
 void cComputeSize::Visit(cFuncDeclNode *node)
