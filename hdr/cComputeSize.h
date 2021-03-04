@@ -36,4 +36,7 @@ class cComputeSize : cVisitor
         virtual void Visit(cStmtNode *node);
         virtual void Visit(cStmtsNode *node);
         virtual void Visit(cSymbol *node);
+
+    protected:
+        int offset;
 };

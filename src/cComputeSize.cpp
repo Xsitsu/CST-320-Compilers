@@ -42,6 +42,8 @@ void cComputeSize::Visit(cSymbol *node)           { node->VisitAllChildren(this)
 
 void cComputeSize::Visit(cBlockNode *node)
 {
+    int offsetOld = this->offset;
+
     node->VisitAllChildren(this);
 
     cDeclsNode *decls = node->GetDecls();
@@ -49,6 +51,8 @@ void cComputeSize::Visit(cBlockNode *node)
     {
         node->SetSize(decls->GetSize());
     }
+
+    this->offset = offsetOld;
 }
 
 void cComputeSize::Visit(cDeclsNode *node)
@@ -56,14 +60,13 @@ void cComputeSize::Visit(cDeclsNode *node)
     node->VisitAllChildren(this);
 
     int totalSize = 0;
-    int offset = 0;
     for (int i = 0; i < node->NumDecls(); i++)
     {
         cDeclNode *decl = node->GetDecl(i);
-        decl->SetOffset(offset);
+        decl->SetOffset(this->m_offset);
         totalSize += decl->GetSize();
-        offset += decl->GetSize();
-        while (offset % 4 != 0) offset++;
+        this->m_offset += decl->GetSize();
+        while (this->m_offset % 4 != 0) this->m_offset++;
     }
 
     node->SetSize(totalSize);
