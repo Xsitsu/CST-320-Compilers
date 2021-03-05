@@ -194,20 +194,16 @@ void cComputeSize::Visit(cVarExprNode *node)
 
     cSymbol *name = node->GetName();
 
-    int totalOffset = name->GetDecl()->GetType()->GetOffset();
-    int setSize = name->GetDecl()->GetType()->GetSize();
+    int totalOffset = name->GetDecl()->GetOffset();
+    int setSize = name->GetDecl()->GetSize();
     for (int i = 0; i < node->NumElements(); i++)
     {
         cSymbol *element = node->GetElement(i);
         cDeclNode *decl = element->GetDecl();
         if (decl != nullptr)
         {
-            cDeclNode *type = decl->GetType();
-            if (type != nullptr)
-            {
-                totalOffset += type->GetOffset();
-                setSize = type->GetSize();
-            }
+            totalOffset += type->GetOffset();
+            setSize = type->GetSize();
         }
     }
     node->SetOffset(totalOffset);
