@@ -13,7 +13,7 @@
 class cParamListNode : public cAstNode
 {
 public:
-    cParamListNode(cExprNode *param) : cAstNode()
+    cParamListNode(cExprNode *param) : cAstNode(), m_size(0)
     {
         AddChild(param);
     }
@@ -27,7 +27,27 @@ public:
     {
         return NumChildren();
     }
+
+    cExprNode* GetParam(int i)
+    {
+        return static_cast<cExprNode*>(GetChild(i));
+    }
     
     virtual string NodeType() { return string("params"); }
     virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+    int GetSize() { return this->m_size; }
+    void SetSize(int size) { this->m_size = size; }
+
+    virtual string AttributesToString()
+    {
+        if (this->m_size == 0) return "";
+
+        string result(" size=\"");
+        result += std::to_string(this->m_size) + "\"";
+        return result;
+    }
+
+protected:
+    int m_size;
 };

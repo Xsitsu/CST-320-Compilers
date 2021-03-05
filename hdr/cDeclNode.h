@@ -38,4 +38,23 @@ class cDeclNode : public cAstNode
             return false;
         }
 
+        int GetSize() { return this->m_size; }
+        void SetSize(int size) { this->m_size = size; }
+        int GetOffset() { return this->m_offset; }
+        void SetOffset(int offset) { this->m_offset = offset; }
+
+        virtual string AttributesToString()
+        {
+            if (this->m_size > 0)
+            {
+                return " size=\"" + std::to_string(this->m_size) + "\" \
+                offset=\"" + std::to_string(this->m_offset) + "\"";;
+            }
+            return "";
+        }
+
+    protected:
+        int m_size;
+        int m_offset;
+
 };

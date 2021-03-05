@@ -19,6 +19,8 @@
 
 #include "fileopen.h"
 
+#include "cComputeSize.h"
+
 
 // **************************************************
 // argv[1] is the input file
@@ -39,6 +41,8 @@ int test_parse_tree(int argc, char **argv)
     {
         if (result == 0)
         {
+            cComputeSize sizer;
+            sizer.VisitAllNodes(yyast_root);
             std::cout << yyast_root->ToString() << std::endl;
         }
         else

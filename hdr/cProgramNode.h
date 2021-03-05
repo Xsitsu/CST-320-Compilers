@@ -22,4 +22,24 @@ class cProgramNode : public cAstNode
 
         virtual string NodeType() { return string("program"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        cBlockNode* GetBlock()
+        {
+            return static_cast<cBlockNode*>(GetChild(0));
+        }
+
+        virtual string AttributesToString()
+        {
+            if (this->m_size > 0)
+            {
+                return " size=\"" + std::to_string(this->m_size) + "\"";
+            }
+            return "";
+        }
+
+        int GetSize() { return m_size; }
+        void SetSize(int size) { m_size = size; }
+
+    protected:
+        int m_size;
 };

@@ -87,18 +87,24 @@ class cVarExprNode : public cExprNode
             return nullptr;
         }
 
-        virtual cDeclNode *GetType()
+        cDeclNode *GetLastDecl()
         {
             cSymbol *last = GetElement(NumElements() - 1);
             if (last != nullptr)
             {
-                cDeclNode *decl = last->GetDecl();
-                if (decl != nullptr)
-                {
-                    return decl->GetType();
-                }
+                return last->GetDecl();
             }
 
+            return nullptr;
+        }
+
+        virtual cDeclNode *GetType()
+        {
+            cDeclNode *decl = this->GetLastDecl();
+            if (decl != nullptr)
+            {
+                return decl->GetType();
+            }
             return nullptr;
         }
 
@@ -129,4 +135,23 @@ class cVarExprNode : public cExprNode
 
         virtual string NodeType() { return string("varref"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        int GetSize() { return this->m_size; }
+        void SetSize(int size) { this->m_size = size; }
+        int GetOffset() { return this->m_offset; }
+        void SetOffset(int offset) { this->m_offset = offset; }
+
+        virtual string AttributesToString()
+        {
+            if (this->GetSize() > 0)
+            {
+                return " size=\"" + std::to_string(this->GetSize()) + "\" \
+                offset=\"" + std::to_string(this->GetOffset()) + "\"";;
+            }
+            return "";
+        }
+
+    protected:
+        int m_size;
+        int m_offset;
 };
