@@ -18,7 +18,6 @@ void cComputeSize::Visit(cDeclNode *node)         { node->VisitAllChildren(this)
 void cComputeSize::Visit(cBaseTypeNode *node)     { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cArrayDeclNode *node)    { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cFuncExprNode *node)     { node->VisitAllChildren(this); }
-void cComputeSize::Visit(cParamListNode *node)    { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cAssignNode *node)       { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cExprNode *node)         { node->VisitAllChildren(this); }
 void cComputeSize::Visit(cIntExprNode *node)      { node->VisitAllChildren(this); }
@@ -198,4 +197,20 @@ void cComputeSize::Visit(cVarExprNode *node)
         node->SetOffset(decl->GetOffset());
         node->SetSize(decl->GetSize());
     }
+}
+
+
+void cComputeSize::Visit(cParamListNode *node)
+{
+    node->VisitAllChildren(this);
+    int count = 0;
+    for (int i = 0; i < node->NumParams(); i++)
+    {
+        cDeclNode *type = node->GetParam(i)->param->GetType();
+        if (type != nullptr)
+        {
+            count += type->GetSize();
+        }
+    }
+    node->SetSize(size);
 }
