@@ -203,7 +203,7 @@ void cComputeSize::Visit(cVarExprNode *node)
             cDeclNode *type = decl->GetType();
             if (type != nullptr)
             {
-                totaloffset += type->GetOffset();
+                totalOffset += type->GetOffset();
                 setSize = type->GetSize();
             }
         }
