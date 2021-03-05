@@ -191,12 +191,25 @@ void cComputeSize::Visit(cParamsNode *node)
 void cComputeSize::Visit(cVarExprNode *node)
 {
     node->VisitAllChildren(this);
-    cDeclNode *decl = node->GetLastDecl();
-    if (decl != nullptr)
+
+    int totalOffset = 0;
+    int setSize = 0;
+    for (int i = 0; i < node->NumElements(); i++)
     {
-        node->SetOffset(decl->GetOffset());
-        node->SetSize(decl->GetSize());
+        cSymbol *element = node->GetElement(i);
+        cDeclNode *decl = element->GetDecl();
+        if (decl != nullptr)
+        {
+            cDeclNode *type = decl->GetType();
+            if (type != nullptr)
+            {
+                totaloffset += type->GetOffset();
+                setSize = type->GetSize();
+            }
+        }
     }
+    node->SetOffset(totalOffset);
+    node->SetSize(setSize);
 }
 
 
