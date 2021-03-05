@@ -206,11 +206,11 @@ void cComputeSize::Visit(cParamListNode *node)
     int count = 0;
     for (int i = 0; i < node->NumParams(); i++)
     {
-        cDeclNode *type = node->GetParam(i)->param->GetType();
+        cDeclNode *type = node->GetParam(i)->GetType();
         if (type != nullptr)
         {
             count += type->GetSize();
         }
     }
-    node->SetSize(size);
+    node->SetSize(count);
 }
