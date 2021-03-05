@@ -13,7 +13,7 @@
 class cParamListNode : public cAstNode
 {
 public:
-    cParamListNode(cExprNode *param) m_size(0) : cAstNode()
+    cParamListNode(cExprNode *param) : cAstNode(), m_size(0)
     {
         AddChild(param);
     }
