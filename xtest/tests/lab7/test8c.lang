@@ -1,0 +1,16 @@
+// test8c.lang
+//
+// Tests functions with parameters and variable assignment
+//
+
+program
+{
+    int foo(int a)
+    {
+        return a + 2;
+    }
+
+    int b;
+    b = foo(1);
+    print(b);
+}

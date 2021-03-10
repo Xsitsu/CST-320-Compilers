@@ -1,0 +1,14 @@
+// test8b.lang
+//
+// Tests functions with parameters
+//
+
+program
+{
+    int foo(int a)
+    {
+        return a + 2;
+    }
+
+    print(foo(1));
+}

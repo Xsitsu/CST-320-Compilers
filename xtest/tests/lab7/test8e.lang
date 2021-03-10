@@ -1,0 +1,18 @@
+// test8a.lang
+//
+// Tests functions with local variables
+//
+
+program
+{
+    int foo()
+    {
+        int a;
+        int b;
+        a = 3;
+        b = 2;
+        return a + b;
+    }
+
+    print(foo());
+}

@@ -1,0 +1,23 @@
+// test8d.lang
+//
+// Tests functions with structs as parameters
+//
+
+program
+{
+    struct
+    {
+        int a;
+        int b;
+    } struct_1;
+
+    int foo(struct_1 str)
+    {
+        return str.a + str.b;
+    }
+
+    struct_1 str;
+    str.a = 2;
+    str.b = 3;
+    print(foo(str));
+}
