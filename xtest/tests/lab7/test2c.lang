@@ -1,0 +1,9 @@
+// test2c.lang
+//
+// Tests multiplication
+//
+
+program
+{
+    print(5 * 2);
+}

@@ -1,0 +1,9 @@
+// test1.lang
+//
+// Tests print(int) functionality
+//
+
+program
+{
+    print(5);
+}
