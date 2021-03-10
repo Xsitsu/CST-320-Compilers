@@ -1,0 +1,11 @@
+// test3a.lang
+//
+// Tests variable declaration, assignment, and reference
+//
+
+program
+{
+    int a;
+    a = 2;
+    print(a);
+}

@@ -1,0 +1,29 @@
+// test4c.lang
+//
+// Tests if functionality with else and variables
+//
+
+program
+{
+    int a;
+    int b;
+
+    a = 1;
+    b = 0;
+
+    if (a)
+        print(12);
+    else
+        print(1);
+    endif;
+
+    if (b)
+        print(23);
+    else
+        print(2);
+    endif;
+
+    if (b)
+        print(34);
+    endif;
+}

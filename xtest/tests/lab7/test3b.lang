@@ -1,0 +1,16 @@
+// test3b.lang
+//
+// Tests variables with addition.
+//
+
+program
+{
+    int a;
+    a = 2;
+    a = a + 3;
+    print(a);
+    print(2 + a);
+    a = a + a;
+    print(a);
+    print(a + a);
+}
