@@ -59,7 +59,7 @@ int test_code(int argc, char **argv)
                coder.VisitAllNodes(yyast_root);
            }
 
-           std::string cmd = "slasm" + outfile_name + ".sl io320.sl";
+           std::string cmd = "slasm " + outfile_name + ".sl io320.sl";
            system(cmd.c_str());
         }
         else
