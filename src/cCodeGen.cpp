@@ -1,5 +1,6 @@
 #include "cCodeGen.h"
 
+#include "astnodes.h"
 #include "emit.h"
 
 cCodeGen::cCodeGen(const std::string input_file)
