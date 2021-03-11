@@ -90,7 +90,11 @@ def run_test_suite(test_suite):
             print("Could not open solution file: " + solution_name)
             continue
 
-        subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
+        if test_mode == 5:
+            subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
+            subprocess.call(["stackl", "langout", ">", OUT_TEST_FILE])
+        else:
+            subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
         if test_mode == 2 or test_mode == 3:
             subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
