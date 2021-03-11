@@ -94,8 +94,10 @@ def run_test_suite(test_suite):
             subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
             subprocess.call(["stackl", "langout", ">", OUT_TEST_FILE])
 
+            global OUT_TEST_FILE
             OUT_TEST_FILE += ".sl"
         else:
+            global OUT_TEST_FILE
             OUT_TEST_FILE += ".txt"
             subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
