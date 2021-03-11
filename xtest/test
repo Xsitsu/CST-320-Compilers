@@ -78,6 +78,8 @@ def run_test_suite(test_suite):
         expected_lines = []
         test_lines = []
 
+        out_test_file = OUT_TEST_FILE
+
         print("Running test: " + test + " | ", end='')
 
         try:
@@ -91,28 +93,26 @@ def run_test_suite(test_suite):
             continue
 
         if test_mode == 5:
-            global OUT_TEST_FILE
 
             subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
             subprocess.call(["stackl", "langout", ">", OUT_TEST_FILE])
 
-            OUT_TEST_FILE += ".sl"
+            out_test_file = OUT_TEST_FILE + ".sl"
         else:
-            global OUT_TEST_FILE
-            OUT_TEST_FILE += ".txt"
-            subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
+            out_test_file = OUT_TEST_FILE + ".txt"
+            subprocess.call([TEST_PROG, str(test_mode), test_file, out_test_file])
 
         if test_mode == 2 or test_mode == 3:
-            subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
+            subprocess.call(["xmllint", "--format", out_test_file, "-o", out_test_file])
 
         if test_mode == 4:
-            output_file = open(OUT_TEST_FILE, mode='r')
+            output_file = open(out_test_file, mode='r')
             ch = output_file.read(1)
             output_file.close()
             if ch == '<':
-                subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
+                subprocess.call(["xmllint", "--format", out_test_file, "-o", out_test_file])
 
-        output_file = open(OUT_TEST_FILE, mode='r')
+        output_file = open(out_test_file, mode='r')
         test_output = output_file.read()
         output_file.seek(0)
         test_lines = output_file.readlines()
@@ -125,7 +125,7 @@ def run_test_suite(test_suite):
             diff = difflib.unified_diff(expected_lines, test_lines)
             sys.stdout.writelines(diff)
 
-        os.remove(OUT_TEST_FILE)
+        os.remove(out_test_file)
 
     print("")
 
