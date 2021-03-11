@@ -27,6 +27,7 @@
 int test_parse_tree(int argc, char **argv)
 {
     int result = 0;
+    std::string outfile_name;
 
     if (argc > 1)
     {
