@@ -51,7 +51,7 @@ TEST_SUITES = [
 
 TEST_DIR = "xtest/tests/"
 TEST_PROG = "./lang_test"
-OUT_TEST_FILE = "xtest/out.txt"
+OUT_TEST_FILE = "xtest/out"
 
 RE_TEST = re.compile(".+\.lang$")
 
@@ -93,7 +93,10 @@ def run_test_suite(test_suite):
         if test_mode == 5:
             subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
             subprocess.call(["stackl", "langout", ">", OUT_TEST_FILE])
+
+            OUT_TEST_FILE = OUT_TEST_FILE + ".sl"
         else:
+            OUT_TEST_FILE = OUT_TEST_FILE + ".txt"
             subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
         if test_mode == 2 or test_mode == 3:
