@@ -24,7 +24,7 @@ void cCodeGen::Visit(cBlockNode *node)
     EmitInt(node->GetSize());
     EmitString("\n");
 
-    this->VisitAllChildren(node);
+    node->VisitAllChildren(this);
 
     EmitString("ADJSP");
     EmitInt(-node->GetSize());
@@ -33,7 +33,7 @@ void cCodeGen::Visit(cBlockNode *node)
 
 void cCodeGen::Visit(cPrintNode* node)
 {
-    this->VisitAllChildren(node);
+    node->VisitAllChildren(this);
 
     EmitString("CALL @print\n");
 }

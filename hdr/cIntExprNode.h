@@ -25,6 +25,8 @@ class cIntExprNode : public cExprNode
             m_value = value;
         }
 
+        int GetValue() { return m_value; }
+
         virtual string AttributesToString() 
         {
             return " value=\"" + std::to_string(m_value) + "\"";
