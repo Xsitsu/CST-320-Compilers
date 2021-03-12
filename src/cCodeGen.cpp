@@ -96,3 +96,24 @@ void cCodeGen::Visit(cVarExprNode *node)
     EmitInt(node->GetOffset());
     EmitString("\n");
 }
+
+void cCodeGen::Visit(cIfNode *node)
+{
+    std::string label = GenerateLabel();
+    node->GetCondition()->Visit(this);
+    EmitString("JUMPE @" + label + "\n");
+    node->GetIfStmts()->Visit(this);
+
+    cStmtsNode *elseStmts = node->GetElseStmts();
+    if (elseStmts != nullptr)
+    {
+        EmitString("JUMP @" + label + "_ELSE\n");
+        EmitString(label + ":");
+        elseStmts->Visit(this);
+        EmitString(label + "_ELSE:\n");
+    }
+    else
+    {
+        EmitString(label + ":");
+    }
+}
