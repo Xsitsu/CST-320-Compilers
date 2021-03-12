@@ -41,6 +41,7 @@ clean:
 	rm -f langparse.h
 	rm -f out.xml
 	rm -f out2.xml
+	rm -f langout.sl
 
 $(PROG): $(PROG).o langparse.o langlex.o $(OBJS)
 	$(CC) $(OBJS) langlex.o langparse.o $@.o  -o $@
