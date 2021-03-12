@@ -153,7 +153,7 @@ void cCodeGen::Visit(cIfNode *node)
     }
 }
 
-void cCodeGen::Visit(WhileNode *node)
+void cCodeGen::Visit(cWhileNode *node)
 {
     std::string label = GenerateLabel();
     EmitString(label + "_WHILE_START:\n");
