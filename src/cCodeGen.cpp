@@ -108,7 +108,7 @@ void cCodeGen::Visit(cIfNode *node)
     if (elseStmts != nullptr)
     {
         EmitString("JUMP @" + label + "_ELSE\n");
-        EmitString(label + ":");
+        EmitString(label + ":"\n);
         elseStmts->Visit(this);
         EmitString(label + "_ELSE:\n");
     }
