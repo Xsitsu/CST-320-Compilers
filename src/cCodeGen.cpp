@@ -51,3 +51,32 @@ void cCodeGen::Visit(cIntExprNode* node)
     EmitInt(node->GetValue());
     EmitString("\n");
 }
+
+void cCodeGen::Visit(cBinaryExprNode *node)
+{
+    node->GetLeft()->Visit(this);
+    node->GetRight()->Visit(this);
+    node->GetOp()->Visit(this);
+}
+
+void cCodeGen::Visit(cOpNode *node)
+{
+    switch(node->GetOp())
+    {
+    case '+':
+        EmitString("PLUS\n");
+        break;
+    case '-':
+        EmitString("MINUS\n");
+        break;
+    case '*':
+        EmitString("TIMES\n");
+        break;
+    case '/':
+        EmitString("DIVIDE\n");
+        break;
+    case '%':
+        EmitString("MOD\n");
+        break;
+    }
+}
