@@ -38,7 +38,7 @@ void cCodeGen::Visit(cPrintNode* node)
     EmitString("CALL @print\n");
 }
 
-void Visit(cIntExprNode* node)
+void cCodeGen::Visit(cIntExprNode* node)
 {
     EmitString("PUSH");
     EmitInt(node->GetValue());
