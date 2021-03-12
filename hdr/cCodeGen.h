@@ -22,4 +22,5 @@ class cCodeGen : public cVisitor
         virtual void Visit(cVarExprNode *node);
         virtual void Visit(cIfNode *node);
         virtual void Visit(cWhileNode *node);
+        virtual void Visit(cFuncDeclNode *node);
 };

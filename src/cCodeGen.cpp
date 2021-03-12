@@ -163,3 +163,32 @@ void cCodeGen::Visit(cWhileNode *node)
     EmitString("JUMP @" + label + "_WHILE_START\n");
     EmitString(label + "_WHILE_END:\n");
 }
+
+void cCodeGen::Visit(cFuncDeclNode *node)
+{
+    std::string funcName = node->GetName()->GetName();
+    EmitString(".function " + funcName + "\n");
+    EmitString(funcName + ":\n");
+
+    EmitString("ADJSP ");
+    EmitInt(node->GetSize());
+    EmitString("\n");
+
+    cDeclsNode *decls = node->GetDecls();
+    if (decls != nullptr)
+    {
+        decls->VisitAllChildren(this);
+    }
+
+    cStmtsNode *stmts = node->GetStmts();
+    if (stmts != nullptr)
+    {
+        stmts->VisitAllChildren(this);
+    }
+
+    EmitString("ADJSP ");
+    EmitInt(-node->GetSize());
+    EmitString("\n");
+
+    EmitString("RETURNV\n");
+}
