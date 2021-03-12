@@ -61,23 +61,58 @@ void cCodeGen::Visit(cBinaryExprNode *node)
 
 void cCodeGen::Visit(cOpNode *node)
 {
-    switch(node->GetOp())
+    std::string op = node->GetOpAsString();
+    if (op == "+")
     {
-    case '+':
         EmitString("PLUS\n");
-        break;
-    case '-':
+    }
+    else if (op == "-")
+    {
         EmitString("MINUS\n");
-        break;
-    case '*':
+    }
+    else if (op == "*")
+    {
         EmitString("TIMES\n");
-        break;
-    case '/':
+    }
+    else if (op == "/")
+    {
         EmitString("DIVIDE\n");
-        break;
-    case '%':
+    }
+    else if (op == "%")
+    {
         EmitString("MOD\n");
-        break;
+    }
+    else if (op == "!=")
+    {
+        EmitString("NE\n");
+    }
+    else if (op == "==")
+    {
+        EmitString("EQ\n");
+    }
+    else if (op == "||")
+    {
+        EmitString("OR\n");
+    }
+    else if (op == "AND")
+    {
+        EmitString("AND\n");
+    }
+    else if (op == "GE")
+    {
+        EmitString("GE\n");
+    }
+    else if (op == "GT")
+    {
+        EmitString("GT\n");
+    }
+    else if (op == "LE")
+    {
+        EmitString("LE\n");
+    }
+    else if (op == "LT")
+    {
+        EmitString("LT\n");
     }
 }
 
