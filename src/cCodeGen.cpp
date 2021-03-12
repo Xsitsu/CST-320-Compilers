@@ -22,6 +22,7 @@ void cCodeGen::Visit(cProgramNode *node)
 {
     EmitString(".function main\n");
     EmitString("main:\n");
+    node->VisitAllChildren(node);
 }
 
 void cCodeGen::Visit(cBlockNode *node)
