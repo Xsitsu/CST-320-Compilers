@@ -152,3 +152,13 @@ void cCodeGen::Visit(cIfNode *node)
         EmitString(label + ":");
     }
 }
+
+void cCodeGen::Visit(WhileNode *node)
+{
+    std::string label = GenerateLabel();
+    EmitString(label + "_WHILE_START:\n");
+    node->GetExpr()->Visit(this);
+    EmitString("JUMP @" + label + "_WHILE_END\n");
+    node->GetStmt()->Visit(this);
+    EmitString(label + "_WHILE_END:\n");
+}
