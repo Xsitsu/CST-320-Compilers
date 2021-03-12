@@ -17,3 +17,30 @@ void cCodeGen::VisitAllNodes(cAstNode *node)
 {
     node->Visit(this);
 }
+
+void cCodeGen::Visit(cBlockNode *node)
+{
+    EmitString("ADJSP");
+    EmitInt(node->GetSize());
+    EmitString("\n");
+
+    this->VisitAllChildren(node);
+
+    EmitString("ADJSP");
+    EmitInt(-node->GetSize());
+    EmitString("\n");
+}
+
+void cCodeGen::Visit(cPrintNode* node)
+{
+    this->VisitAllChildren(node);
+
+    EmitString("CALL @print\n");
+}
+
+void Visit(cIntExprNode* node)
+{
+    EmitString("PUSH");
+    EmitInt(node->GetValue());
+    EmitString("\n");
+}

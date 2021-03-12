@@ -11,4 +11,8 @@ class cCodeGen : public cVisitor
         ~cCodeGen();
 
         virtual void VisitAllNodes(cAstNode *node);
+
+        virtual void Visit(cBlockNode *node);
+        virtual void Visit(cPrintNode *node);
+        virtual void Visit(cIntExprNode *node);
 };
