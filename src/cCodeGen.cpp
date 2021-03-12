@@ -160,5 +160,6 @@ void cCodeGen::Visit(cWhileNode *node)
     node->GetExpr()->Visit(this);
     EmitString("JUMP @" + label + "_WHILE_END\n");
     node->GetStmt()->Visit(this);
+    EmitString("JUMP @" + label + "_WHILE_START\n");
     EmitString(label + "_WHILE_END:\n");
 }
