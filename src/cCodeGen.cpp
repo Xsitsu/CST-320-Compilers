@@ -80,3 +80,19 @@ void cCodeGen::Visit(cOpNode *node)
         break;
     }
 }
+
+void cCodeGen::Visit(cAssignNode *node)
+{
+    node->GetExpr()->Visit(this);
+
+    EmitString("POPVAR");
+    EmitInt(node->GetLVal()->GetOffset());
+    EmitString("\n");
+}
+
+void cCodeGen::Visit(cVarExprNode *node)
+{
+    EmitString("PUSHVAR");
+    EmitInt(node->GetOffset());
+    EmitString("\n");
+}

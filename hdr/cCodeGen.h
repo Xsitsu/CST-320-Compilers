@@ -18,4 +18,6 @@ class cCodeGen : public cVisitor
         virtual void Visit(cIntExprNode *node);
         virtual void Visit(cBinaryExprNode *node);
         virtual void Visit(cOpNode *node);
+        virtual void Visit(cAssignNode *node);
+        virtual void Visit(cVarExprNode *node);
 };
