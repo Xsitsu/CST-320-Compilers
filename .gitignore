@@ -9,3 +9,4 @@ langlex.c
 langparse.c
 langparse.h
 langout.sl
+langout.slb

@@ -18,6 +18,12 @@ void cCodeGen::VisitAllNodes(cAstNode *node)
     node->Visit(this);
 }
 
+void cCodeGen::Visit(cProgramNode *node)
+{
+    EmitString(".function main\n");
+    EmitString("main:\n");
+}
+
 void cCodeGen::Visit(cBlockNode *node)
 {
     EmitString("ADJSP");
