@@ -192,3 +192,8 @@ void cCodeGen::Visit(cFuncDeclNode *node)
 
     EmitString("RETURNV\n");
 }
+
+void cCodeGen::Visit(cFuncExprNode *node)
+{
+    EmitString("CALL @" + node->GetName()->GetName() + "\n");
+}
