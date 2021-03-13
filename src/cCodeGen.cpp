@@ -59,12 +59,13 @@ void cCodeGen::Visit(cProgramNode *node)
     EmitString(".function main\n");
     EmitString("main:\n");
     node->VisitAllChildren(this);
+    EmitString("RETURN\n");
 
     // Must iterate by index because some weird people
     // may choose to declare functions inside of functions
     // which would modify func_decls and invalidate any
     // iterators.
-    for (int i = 0; i < this->func_decls.size(); i++)
+    for (int i = 0; i < (int)this->func_decls.size(); i++)
     {
         this->OutputcFuncDeclNode(this->func_decls[i]);
     }
