@@ -3,6 +3,16 @@
 #include "astnodes.h"
 #include "emit.h"
 
+void DoStackAdjust(int size)
+{
+    if (size != 0)
+    {
+        EmitString("ADJSP");
+        EmitInt(size);
+        EmitString("\n");
+    }
+}
+
 cCodeGen::cCodeGen(const std::string input_file)
 {
     InitOutput(input_file);
@@ -27,15 +37,10 @@ void cCodeGen::Visit(cProgramNode *node)
 
 void cCodeGen::Visit(cBlockNode *node)
 {
-    EmitString("ADJSP");
-    EmitInt(node->GetSize());
-    EmitString("\n");
-
+    int size = node->GetSize();
+    DoStackAdjust(size);
     node->VisitAllChildren(this);
-
-    EmitString("ADJSP");
-    EmitInt(-node->GetSize());
-    EmitString("\n");
+    DoStackAdjust(-size);
 }
 
 void cCodeGen::Visit(cPrintNode* node)
@@ -170,9 +175,8 @@ void cCodeGen::Visit(cFuncDeclNode *node)
     EmitString(".function " + funcName + "\n");
     EmitString(funcName + ":\n");
 
-    EmitString("ADJSP ");
-    EmitInt(node->GetSize());
-    EmitString("\n");
+    int size = node->GetSize();
+    DoStackAdjust(size);
 
     cDeclsNode *decls = node->GetDecls();
     if (decls != nullptr)
@@ -186,9 +190,7 @@ void cCodeGen::Visit(cFuncDeclNode *node)
         stmts->VisitAllChildren(this);
     }
 
-    EmitString("ADJSP ");
-    EmitInt(-node->GetSize());
-    EmitString("\n");
+    DoStackAdjust(-size);
 
     EmitString("RETURNV\n");
 }
