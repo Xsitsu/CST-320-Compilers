@@ -1,0 +1,25 @@
+// test8f.lang
+//
+// Tests functions with sub functions declared
+//
+
+program
+{
+    int foo()
+    {
+        int bar()
+        {
+            print(33);
+        }
+
+        print(3);
+        bar();
+        print(5);
+        bar();
+
+        return 1;
+    }
+
+    print(foo());
+    print(77);
+}
