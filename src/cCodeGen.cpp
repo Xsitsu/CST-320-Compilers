@@ -212,5 +212,14 @@ void cCodeGen::Visit(cFuncDeclNode *node)
 
 void cCodeGen::Visit(cFuncExprNode *node)
 {
+    node->VisitAllChildren(this);
     EmitString("CALL @" + node->GetName()->GetName() + "\n");
+}
+
+void cCodeGen::Visit(cParamListNode *node)
+{
+    for (int i = node->NumParams(); i > 0; --i)
+    {
+        node->GetParam(i)->Visit(this);
+    }
 }
