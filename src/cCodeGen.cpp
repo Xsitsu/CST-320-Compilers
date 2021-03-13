@@ -159,16 +159,47 @@ void cCodeGen::Visit(cAssignNode *node)
 {
     node->GetExpr()->Visit(this);
 
-    EmitString("POPVAR");
-    EmitInt(node->GetLVal()->GetOffset());
-    EmitString("\n");
+    cVarExprNode *lval = node->GetLVal();
+    if (lval->GetType()->IsNumber())
+    {
+        EmitString("POPVAR");
+        EmitInt(lval->GetOffset());
+        EmitString("\n");
+    }
+    else if (lval->GetType()->IsStruct())
+    {
+        cDeclNode *decl = lval->GetLastDecl();
+        cStructDeclNode *struct_decl = static_cast<cStructDeclNode*>(decl->GetType());
+        cDeclsNode *decls = struct_decl->GetDecls();
+        for (int i = decls->NumDecls(); i > 0; i--)
+        {
+            EmitString("POPVAR");
+            EmitInt(decl->GetOffset() + decls->GetDecl(i - 1)->GetOffset());
+            EmitString("\n");
+        }
+    }
 }
 
 void cCodeGen::Visit(cVarExprNode *node)
 {
-    EmitString("PUSHVAR");
-    EmitInt(node->GetOffset());
-    EmitString("\n");
+    if (node->GetType()->IsNumber())
+    {
+        EmitString("PUSHVAR");
+        EmitInt(node->GetOffset());
+        EmitString("\n");
+    }
+    else if (node->GetType()->IsStruct())
+    {
+        cDeclNode *decl = node->GetLastDecl();
+        cStructDeclNode *struct_decl = static_cast<cStructDeclNode*>(decl->GetType());
+        cDeclsNode *decls = struct_decl->GetDecls();
+        for (int i = 0; i < decls->NumDecls(); i++)
+        {
+            EmitString("PUSHVAR");
+            EmitInt(decl->GetOffset() + decls->GetDecl(i)->GetOffset());
+            EmitString("\n");
+        }
+    }
 }
 
 void cCodeGen::Visit(cIfNode *node)
