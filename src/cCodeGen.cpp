@@ -13,7 +13,33 @@ void DoStackAdjust(int size)
     }
 }
 
-cCodeGen::cCodeGen(const std::string input_file)
+void cCodeGen::OutputcFuncDeclNode(cFuncDeclNode *node)
+{
+    std::string funcName = node->GetName()->GetName();
+    EmitString("\n.function " + funcName + "\n");
+    EmitString(funcName + ":\n");
+
+    int size = node->GetSize();
+    DoStackAdjust(size);
+
+    cDeclsNode *decls = node->GetDecls();
+    if (decls != nullptr)
+    {
+        decls->VisitAllChildren(this);
+    }
+
+    cStmtsNode *stmts = node->GetStmts();
+    if (stmts != nullptr)
+    {
+        stmts->VisitAllChildren(this);
+    }
+
+    DoStackAdjust(-size);
+
+    EmitString("RETURNV\n");
+}
+
+cCodeGen::cCodeGen(const std::string input_file) : func_decls()
 {
     InitOutput(input_file);
 }
@@ -33,6 +59,15 @@ void cCodeGen::Visit(cProgramNode *node)
     EmitString(".function main\n");
     EmitString("main:\n");
     node->VisitAllChildren(this);
+
+    // Must iterate by index because some weird people
+    // may choose to declare functions inside of functions
+    // which would modify func_decls and invalidate any
+    // iterators.
+    for (int i = 0; i < this->func_decls.size(); i++)
+    {
+        this->OutputcFuncDeclNode(this->func_decls[i]);
+    }
 }
 
 void cCodeGen::Visit(cBlockNode *node)
@@ -171,28 +206,7 @@ void cCodeGen::Visit(cWhileNode *node)
 
 void cCodeGen::Visit(cFuncDeclNode *node)
 {
-    std::string funcName = node->GetName()->GetName();
-    EmitString(".function " + funcName + "\n");
-    EmitString(funcName + ":\n");
-
-    int size = node->GetSize();
-    DoStackAdjust(size);
-
-    cDeclsNode *decls = node->GetDecls();
-    if (decls != nullptr)
-    {
-        decls->VisitAllChildren(this);
-    }
-
-    cStmtsNode *stmts = node->GetStmts();
-    if (stmts != nullptr)
-    {
-        stmts->VisitAllChildren(this);
-    }
-
-    DoStackAdjust(-size);
-
-    EmitString("RETURNV\n");
+    this->func_decls.push_back(node);
 }
 
 void cCodeGen::Visit(cFuncExprNode *node)

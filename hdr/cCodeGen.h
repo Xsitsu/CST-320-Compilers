@@ -1,16 +1,20 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "cVisitor.h"
 
 class cCodeGen : public cVisitor
 {
+    protected:
+        std::vector<cFuncDeclNode*> func_decls;
     public:
         cCodeGen(const std::string input_file);
         ~cCodeGen();
 
         virtual void VisitAllNodes(cAstNode *node);
+        void OutputcFuncDeclNode(cFuncDeclNode *node);
 
         virtual void Visit(cProgramNode *node);
         virtual void Visit(cBlockNode *node);
