@@ -222,7 +222,7 @@ fact:        '(' expr ')'       { $$ = $2; }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
         |   varref              { $$ = $1; }
-
+        |   func_call           { $$ = $1; }
 %%
 
 // Function to format error messages
