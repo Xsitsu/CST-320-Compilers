@@ -34,8 +34,6 @@ void cCodeGen::OutputcFuncDeclNode(cFuncDeclNode *node)
         stmts->VisitAllChildren(this);
     }
 
-    DoStackAdjust(-size);
-
     EmitString("RETURNV\n");
 }
 
