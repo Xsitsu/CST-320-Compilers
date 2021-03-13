@@ -38,13 +38,13 @@ TEST_SUITES = [
     {
         "name": "Lab 6 Provided",
         "test_dir": "lab6_provided/",
-        "test_mode": 4,
+        "test_mode": 5,
         "enabled": False
     },
     {
         "name": "Lab 7",
         "test_dir": "lab7/",
-        "test_mode": 5,
+        "test_mode": 6,
         "enabled": True
     },
 ]
@@ -92,7 +92,7 @@ def run_test_suite(test_suite):
             print("Could not open solution file: " + solution_name)
             continue
 
-        if test_mode == 5:
+        if test_mode == 6:
             output_file = open(OUT_TEST_FILE, mode='w+')
 
             subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
@@ -102,10 +102,7 @@ def run_test_suite(test_suite):
         else:
             subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
 
-        if test_mode == 2 or test_mode == 3:
-            subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
-
-        if test_mode == 4:
+        if test_mode >= 2 and test_mode <= 5:
             output_file = open(OUT_TEST_FILE, mode='r')
             ch = output_file.read(1)
             output_file.close()
