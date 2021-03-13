@@ -1,0 +1,21 @@
+// test7a.lang
+//
+// Tests struct functionality
+//
+
+program
+{
+    struct
+    {
+        int a;
+        int b;
+    } struct_1;
+
+    struct_1 str;
+    str.a = 2;
+    str.b = 3;
+
+    print(str.a);
+    print(str.b);
+    print(str.a + str.b);
+}

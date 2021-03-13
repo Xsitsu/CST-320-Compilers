@@ -1,0 +1,9 @@
+// test2b.lang
+//
+// Tests subtraction
+//
+
+program
+{
+    print(5 - 2);
+}

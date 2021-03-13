@@ -1,0 +1,9 @@
+// test2d.lang
+//
+// Tests division
+//
+
+program
+{
+    print(4 / 2);
+}

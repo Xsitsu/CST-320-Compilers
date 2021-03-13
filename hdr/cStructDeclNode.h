@@ -51,6 +51,11 @@ class cStructDeclNode : public cDeclNode
 
         virtual cDeclNode* GetType() { return this; }
 
+        cDeclsNode *GetDecls()
+        {
+            return static_cast<cDeclsNode*>(GetChild(0));
+        }
+
         virtual cSymbol* GetName()
         {
             return static_cast<cSymbol*>(GetChild(1));

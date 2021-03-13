@@ -1,0 +1,19 @@
+// test4b.lang
+//
+// Tests if functionality with else
+//
+
+program
+{
+    if (0)
+        print(3);
+    else
+        print(5);
+    endif;
+
+    if (1)
+        print(2);
+    else
+        print(3);
+    endif;
+}

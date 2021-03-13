@@ -1,0 +1,9 @@
+// test2a.lang
+//
+// Tests addition
+//
+
+program
+{
+    print(5 + 2);
+}

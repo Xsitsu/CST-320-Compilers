@@ -1,0 +1,14 @@
+// test8a.lang
+//
+// Tests functions
+//
+
+program
+{
+    int foo()
+    {
+        return 1;
+    }
+
+    print(foo());
+}

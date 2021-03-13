@@ -38,7 +38,13 @@ TEST_SUITES = [
     {
         "name": "Lab 6 Provided",
         "test_dir": "lab6_provided/",
-        "test_mode": 4,
+        "test_mode": 5,
+        "enabled": False
+    },
+    {
+        "name": "Lab 7",
+        "test_dir": "lab7/",
+        "test_mode": 6,
         "enabled": True
     },
 ]
@@ -72,6 +78,8 @@ def run_test_suite(test_suite):
         expected_lines = []
         test_lines = []
 
+        out_test_file = OUT_TEST_FILE
+
         print("Running test: " + test + " | ", end='')
 
         try:
@@ -84,12 +92,17 @@ def run_test_suite(test_suite):
             print("Could not open solution file: " + solution_name)
             continue
 
-        subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
+        if test_mode == 6:
+            output_file = open(OUT_TEST_FILE, mode='w+')
 
-        if test_mode == 2 or test_mode == 3:
-            subprocess.call(["xmllint", "--format", OUT_TEST_FILE, "-o", OUT_TEST_FILE])
+            subprocess.call([TEST_PROG, str(test_mode), test_file, "langout"])
+            subprocess.call(["stackl", "langout"], stdout=output_file)
 
-        if test_mode == 4:
+            output_file.close()
+        else:
+            subprocess.call([TEST_PROG, str(test_mode), test_file, OUT_TEST_FILE])
+
+        if test_mode >= 2 and test_mode <= 5:
             output_file = open(OUT_TEST_FILE, mode='r')
             ch = output_file.read(1)
             output_file.close()

@@ -1,0 +1,30 @@
+// test7c.lang
+//
+// Tests struct functionality with nested structs and struct assignment
+//
+
+program
+{
+    struct
+    {
+        int a;
+        int b;
+    } struct_1;
+
+    struct
+    {
+        int a;
+        struct_1 str;
+    } struct_2;
+
+    struct_1 str;
+    struct_2 str2;
+
+    str.a = 2;
+    str2.a = 3;
+    str2.str = str;
+
+    print(str.a);
+    print(str2.a);
+    print(str2.str.a);
+}

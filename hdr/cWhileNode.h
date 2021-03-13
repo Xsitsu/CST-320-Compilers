@@ -22,4 +22,14 @@ class cWhileNode : public cStmtNode
 
         virtual string NodeType() { return string("while"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
+
+        cExprNode* GetExpr()
+        {
+            return static_cast<cExprNode*>(GetChild(0));
+        }
+
+        cStmtNode* GetStmt()
+        {
+            return static_cast<cStmtNode*>(GetChild(1));
+        }
 };

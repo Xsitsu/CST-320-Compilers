@@ -1,0 +1,15 @@
+// test4a.lang
+//
+// Tests if functionality
+//
+
+program
+{
+    if (1)
+        print(5);
+    endif;
+
+    if (0)
+        print(3);
+    endif;
+}

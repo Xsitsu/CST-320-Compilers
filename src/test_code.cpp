@@ -8,40 +8,59 @@
 // Date: Jan. 30, 2021
 //
 
+#include "test_code.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
-//#include "cSymbolTable.h"
 #include "lex.h"
 #include "astnodes.h"
 #include "langparse.h"
 
-#include "fileopen.h"
-
 #include "cComputeSize.h"
-
+#include "cCodeGen.h"
 
 // **************************************************
 // argv[1] is the input file
 // argv[2] if present, is the output file
-int test_parse_tree(int argc, char **argv)
+int test_code(int argc, char **argv)
 {
     int result = 0;
-    int open_result;
+    std::string outfile_name;
 
-    open_result = fileopen(argc, argv, yyin);
-    if (open_result != 0)
+    if (argc > 1)
     {
-        exit(open_result);
-    }   
+        yyin = fopen(argv[1], "r");
+        if (yyin == nullptr)
+        {
+            std::cerr << "ERROR: Unable to open file " << argv[1] << "\n";
+            exit(-1);
+        }
+    }
+
+    if (argc > 2)
+    {
+        outfile_name = argv[2];
+    } else {
+        outfile_name = "langout";
+    }
 
     result = yyparse();
     if (yyast_root != nullptr)
     {
         if (result == 0)
         {
-            std::cout << yyast_root->ToString() << std::endl;
+            cComputeSize sizer;
+            sizer.VisitAllNodes(yyast_root);
+           
+           {
+               cCodeGen coder(outfile_name + ".sl");
+               coder.VisitAllNodes(yyast_root);
+           }
+
+           std::string cmd = "slasm " + outfile_name + ".sl io320.sl";
+           system(cmd.c_str());
         }
         else
         {

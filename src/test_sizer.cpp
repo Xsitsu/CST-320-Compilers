@@ -1,7 +1,7 @@
 //**************************************
 // test_parse_tree.cpp
 //
-// Test routine for the parse tree.
+// Test routine for the size and offset visitor.
 //
 // Author: Jacob Locke
 //
@@ -25,7 +25,7 @@
 // **************************************************
 // argv[1] is the input file
 // argv[2] if present, is the output file
-int test_parse_tree(int argc, char **argv)
+int test_sizer(int argc, char **argv)
 {
     int result = 0;
     int open_result;
@@ -41,6 +41,8 @@ int test_parse_tree(int argc, char **argv)
     {
         if (result == 0)
         {
+            cComputeSize sizer;
+            sizer.VisitAllNodes(yyast_root);
             std::cout << yyast_root->ToString() << std::endl;
         }
         else

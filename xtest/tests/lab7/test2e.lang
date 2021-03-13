@@ -1,0 +1,9 @@
+// test2e.lang
+//
+// Tests % operator
+//
+
+program
+{
+    print(5 % 2);
+}
