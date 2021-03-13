@@ -218,8 +218,8 @@ void cCodeGen::Visit(cFuncExprNode *node)
 
 void cCodeGen::Visit(cParamListNode *node)
 {
-    for (int i = node->NumParams(); i > 0; --i)
+    for (int i = node->NumParams(); i > 0; i--)
     {
-        node->GetParam(i)->Visit(this);
+        node->GetParam(i - 1)->Visit(this);
     }
 }
